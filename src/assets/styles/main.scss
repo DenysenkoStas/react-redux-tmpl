@@ -1,0 +1,194 @@
+@import 'reset';
+@import 'vars';
+@import 'mixins';
+@import '../fonts/Roboto/roboto';
+//@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap&subset=cyrillic-ext');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--primary);
+  background-color: var(--light);
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--light);
+    border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 5px;
+
+    &:window-inactive {
+      background-color: var(--secondary);
+    }
+  }
+}
+
+a {
+  color: var(--info);
+}
+
+.root {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+.page-wrap {
+  flex: 1;
+  background-color: var(--light);
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: var(--container);
+  width: 100%;
+}
+
+.card-wrap {
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+h1,
+.h1 {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+h2,
+.h2,
+h3,
+.h3 {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 800;
+  color: var(--secondary);
+}
+
+h3,
+.h3 {
+  font-size: 18px;
+}
+
+.backlink {
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--info);
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  svg {
+    margin-right: 8px;
+  }
+}
+
+// Helper classes
+.flex {
+  display: flex;
+}
+
+.gap-25 {
+  gap: 25px;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.good {
+  color: var(--success);
+}
+
+.alert {
+  color: var(--error);
+}
+
+.good-hover {
+  transition: opacity ease 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.card-hover {
+  cursor: pointer;
+  transition: margin-top ease 0.3s, margin-bottom ease 0.3s;
+
+  &:hover {
+    margin-top: -3px;
+    margin-bottom: 3px;
+  }
+}
+
+.no-select {
+  user-select: none;
+}
+
+// Animations
+.pulse {
+  &:hover {
+    animation: pulse 2s infinite;
+  }
+}
+
+@keyframes pulse {
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  0% {
+    opacity: 1;
+  }
+}
+
+// React Toastify
+.Toastify__toast--error {
+  background: var(--error) !important;
+  padding: 6px 16px !important;
+  font-size: 0.875rem !important;
+  height: 48px !important;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 18px 0px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 4px !important;
+}
+
+.Toastify__toast-container {
+  width: 450px !important;
+}

@@ -1,0 +1,198 @@
+@import 'vars';
+
+$sizes: 100;
+$mediumSizes: 300;
+$bigSizes: 2000;
+$unit: 1px;
+
+// For margin & padding
+@mixin generateIndentClass($prefix, $property) {
+  @for $i from 1 through $mediumSizes {
+    .#{$prefix}-#{$i} {
+      #{$property}: $i * $unit;
+    }
+  }
+}
+
+$rules: [ [m, margin], [ml, margin-left], [mt, margin-top], [mb, margin-bottom], [mr, margin-right], [p, padding], [pl,
+  padding-left], [pt, padding-top], [pb, padding-bottom], [pr, padding-right], ];
+
+@each $item in $rules {
+  @include generateIndentClass(nth($item, 1), nth($item, 2));
+}
+
+// For margin & padding - X/Y
+@mixin indentXYClasses {
+  @for $i from 1 through $mediumSizes {
+    $value: $i * $unit;
+    .mx-#{$i} {
+      margin-left: $value;
+      margin-right: $value;
+    }
+    .my-#{$i} {
+      margin-top: $value;
+      margin-bottom: $value;
+    }
+    .px-#{$i} {
+      padding-left: $value;
+      padding-right: $value;
+    }
+    .py-#{$i} {
+      padding-top: $value;
+      padding-bottom: $value;
+    }
+  }
+}
+
+@include indentXYClasses;
+
+// For width
+@mixin width {
+  // width in percents
+  @for $i from 1 through $sizes {
+    .w-#{$i} {
+      width: $i * 1%;
+    }
+  }
+
+  // min/max-width in px
+  @for $i from 1 through $bigSizes {
+    $value: $i * $unit;
+    .min-w-#{$i} {
+      min-width: $value;
+    }
+    .max-w-#{$i} {
+      max-width: $value;
+    }
+  }
+}
+
+@include width;
+
+// For height
+@mixin height {
+  // height in percents
+  @for $i from 1 through $sizes {
+    .h-#{$i} {
+      height: $i * 1%;
+    }
+  }
+
+  // min/max-height in px
+  @for $i from 1 through $bigSizes {
+    $value: $i * $unit;
+    .min-h-#{$i} {
+      min-height: $value;
+    }
+    .max-h-#{$i} {
+      max-height: $value;
+    }
+  }
+}
+
+@include height;
+
+// Convert px to em
+$browser-context: 16;
+
+@function em($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1em;
+}
+
+// Media queries
+$mq-breakpoints: (
+  xsmall: em(575),
+  // 35.938em / phone @ portrait
+  small: em(576),
+  // 36em / phone @ landscape / small tablet (portrait)
+  medium: em(768),
+  // 48em / small tablet (landscape) / large tablet (portrait)
+  large: em(992),
+  // 62em / large tablet (landscape) / small desktop
+  xlarge: em(1200),
+  // 75em / standard desktop
+  xxlarge: em(1400) // 87.5em / large desktop,,,,
+) !default;
+
+@mixin mq($mq-list, $mq-map: $mq-breakpoints) {
+  $mq-feature: if(length($mq-list) == 2, nth($mq-list, 1), min-width);
+  $mq-breakpoint: if(length($mq-list) == 2, nth($mq-list, 2), $mq-list);
+  $mq: false;
+
+  @if $mq-breakpoint == landscape or $mq-breakpoint == portrait {
+    $mq: '(orientation: #{$mq-breakpoint})';
+  } @else if map-has-key($mq-map, $mq-breakpoint) {
+    $mq: '(#{$mq-feature}: #{map-get($mq-map, $mq-breakpoint)})';
+  }
+
+  @if $mq {
+    @media screen and #{$mq} {
+      @content;
+    }
+  } @else {
+    @warn 'A breakpoint named "#{$mq-breakpoint}" is not available in the breakpoint map';
+  }
+}
+
+// Media queries alt variant
+$xs: var(--xs);
+$sm: var(--sm);
+$md: var(--md);
+$lg: var(--lg);
+$xl: var(--xl);
+$xxl: var(--xxl);
+
+@mixin breakpoint($point) {
+  $media-query: false;
+
+  @if $point == sm {
+    $media-query: '(min-width: #{em($sm)})';
+  } @else if $point == md {
+    $media-query: '(min-width: #{em($md)})';
+  } @else if $point == lg {
+    $media-query: '(min-width: #{em($lg)})';
+  } @else if $point == xl {
+    $media-query: '(min-width: #{em($xl)})';
+  } @else if $point == xxl {
+    $media-query: '(min-width: #{em($xxl)})';
+  }
+
+  @if $point == xs-down {
+    $media-query: '(max-width: #{em($sm - 1)})';
+  } @else if $point == sm-down {
+    $media-query: '(max-width: #{em($md - 1)})';
+  } @else if $point == md-down {
+    $media-query: '(max-width: #{em($lg - 1)})';
+  } @else if $point == lg-down {
+    $media-query: '(max-width: #{em($xl - 1)})';
+  } @else if $point == xl-down {
+    $media-query: '(max-width: #{em($xxl - 1)})';
+  }
+
+  @if $point == xs-only {
+    $media-query: '(min-width: #{em($xs)}) and (max-width: #{em($sm - 1)})';
+  } @else if $point == sm-only {
+    $media-query: '(min-width: #{em($sm)}) and (max-width: #{em($md - 1)})';
+  } @else if $point == md-only {
+    $media-query: '(min-width: #{em($md)}) and (max-width: #{em($lg - 1)})';
+  } @else if $point == lg-only {
+    $media-query: '(min-width: #{em($lg)}) and (max-width: #{em($xl - 1)})';
+  } @else if $point == xl-only {
+    $media-query: '(min-width: #{em($xl)}) and (max-width: #{em($xxl - 1)})';
+  }
+
+  @if $media-query {
+    @media screen and #{$media-query} {
+      @content;
+    }
+  } @else {
+    @warn 'A breakpoint named "#{$point}" is not available in the breakpoint map';
+  }
+}

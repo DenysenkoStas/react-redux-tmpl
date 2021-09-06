@@ -1,0 +1,75 @@
+.default-button {
+  padding: 15px;
+  min-width: 175px;
+  height: 50px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 800;
+  border-radius: 4px;
+  box-shadow: none;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &--contained {
+    color: #ffffff;
+    background: #3796f6;
+
+    &.gray-btn {
+      color: #ffffff;
+      background: rgba(137, 156, 174, 0.4);
+
+      &:hover {
+        background: #3796f6;
+      }
+    }
+  }
+
+  &--outlined {
+    color: #3796f6;
+    border: 1px solid #3796f6;
+
+    &:hover {
+      background: rgba(55, 150, 246, 0.1);
+    }
+
+    &.gray-btn {
+      color: rgba(32, 69, 105, 0.5);
+      border-color: rgba(32, 69, 105, 0.5);
+
+      &:hover {
+        background: rgba(32, 69, 105, 0.1);
+      }
+    }
+
+    &.cancel-btn {
+      border: 1px solid #7f8fa4;
+      color: #7f8fa4;
+    }
+
+    &.blue-btn {
+      border: 1px solid #0253b3;
+      color: #0253b3;
+    }
+
+    &.delete-btn {
+      border: 1px solid #d0021b;
+      color: #d0021b;
+    }
+  }
+
+  &.small-btn {
+    padding: 5px;
+    min-width: 105px;
+    height: 35px;
+    font-size: 10px;
+    line-height: 16px;
+    font-weight: 600;
+  }
+
+  &.full-width-btn {
+    width: 100%;
+  }
+}

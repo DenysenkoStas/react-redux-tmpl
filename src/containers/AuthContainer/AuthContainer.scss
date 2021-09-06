@@ -1,0 +1,58 @@
+.auth-page {
+  display: flex;
+  height: 100vh;
+
+  &__bg {
+    background-color: var(--info);
+    background-image: url('../../assets/images/auth-bg.jpg');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+  }
+
+  .auth-box {
+    margin: auto;
+
+    &__res-pass-wrap {
+      position: relative;
+    }
+
+    &__res-pass-link {
+      position: absolute;
+      top: -20px;
+      right: 0;
+      font-size: 10px;
+      line-height: 13px;
+      font-weight: 600;
+    }
+
+    &__input-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__rounded-wrap {
+      background: var(--light);
+      border-radius: 10px;
+    }
+
+    &__btn-wrap {
+      position: relative;
+      width: fit-content;
+    }
+
+    &__footer {
+      text-align: center;
+    }
+
+    &__link {
+      font-weight: 800;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<svg width="124" height="112" viewBox="0 0 124 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="email">
+<g id="email_2">
+<g id="Group">
+<g id="Shape 2">
+<path id="Shape" fill-rule="evenodd" clip-rule="evenodd" d="M90.4471 24.5H9.35667C4.19708 24.5 0 28.6971 0 33.8567V89.9962C0 95.1558 4.19708 99.3529 9.35667 99.3529H90.4471C95.6067 99.3529 99.8037 95.1558 99.8037 89.9962V33.8567C99.8037 28.6971 95.6067 24.5 90.4471 24.5ZM90.447 30.7377C90.8707 30.7377 91.2738 30.8256 91.6424 30.9792L49.9018 67.1561L8.16094 30.9792C8.52948 30.8258 8.93261 30.7377 9.35636 30.7377H90.447ZM9.35673 93.115H90.4472C92.168 93.115 93.5659 91.7171 93.5661 89.9963V37.5694L51.9457 73.6404C51.3578 74.1492 50.6299 74.4019 49.9019 74.4019C49.174 74.4019 48.4461 74.149 47.8582 73.6404L6.23777 37.5694V89.9961C6.23777 91.7171 7.6359 93.115 9.35673 93.115Z" fill="#3796F6"/>
+</g>
+</g>
+</g>
+<g id="tick">
+<g id="Oval" filter="url(#filter0_d)">
+<circle cx="99.9908" cy="23.7419" r="19.7419" fill="#2CC197"/>
+</g>
+<path id="Path 8" d="M93.6038 23.8501L97.7908 28.0969L106.378 19.3872" stroke="white" stroke-width="2"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d" x="76.2489" y="0" width="47.4839" height="47.4839" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="2"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.0862745 0 0 0 0 0.588235 0 0 0 0 0.447059 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+</defs>
+</svg>

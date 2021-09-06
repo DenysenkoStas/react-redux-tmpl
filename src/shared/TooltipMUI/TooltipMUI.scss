@@ -1,0 +1,19 @@
+.message-popper {
+  .message-tooltip {
+    background-color: #29323C;
+    font-size: 10px;
+    word-break: break-word;
+  }
+
+  .error-message-tooltip {
+    background-color: #E44B4B;
+    font-size: 10px;
+  }
+}
+
+body {
+  .auth-tooltip-popper {
+    top: 8px !important;
+    left: 9px;
+  }
+}

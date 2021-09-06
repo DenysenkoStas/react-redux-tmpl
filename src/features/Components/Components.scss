@@ -1,0 +1,24 @@
+.components {
+  display: flex;
+
+  &__nav {
+    padding: 20px 0;
+    width: 20%;
+    background-color: #ffffff;
+  }
+
+  &__nav-link {
+    display: block;
+    padding: 10px 20px;
+    font-weight: 500;
+
+    &.active {
+      color: #ffffff;
+      background-color: var(--info);
+    }
+  }
+
+  &__content {
+    width: 80%;
+  }
+}
