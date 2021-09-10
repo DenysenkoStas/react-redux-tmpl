@@ -1,21 +1,23 @@
 import React, {Component} from 'react';
-import {TextField, InputAdornment} from '@material-ui/core';
+import {TextField} from 'mui-rff';
+import {InputAdornment} from '@material-ui/core';
+// import {TextField, InputAdornment} from '@material-ui/core';
 
 import './InputMUI.scss';
 
 class InputMUI extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: props.type,
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     type: props.type,
+  //   };
+  // }
 
-  changeType = () => {
-    this.setState(({type}) => ({
-      type: type === 'password' ? 'text' : 'password',
-    }));
-  };
+  // changeType = () => {
+  //   this.setState(({type}) => ({
+  //     type: type === 'password' ? 'text' : 'password',
+  //   }));
+  // };
 
   render() {
     const {
@@ -30,18 +32,18 @@ class InputMUI extends Component {
       shrink = true,
       multiline = false,
       readOnly = false,
-      meta: {touched, error},
+      // meta: {touched, error},
     } = this.props;
-    const {type} = this.state;
+    // const {type} = this.state;
     return (
       <TextField
         {...input}
         className={className}
-        type={type}
+        // type={type}
         label={label}
         variant='outlined'
         disabled={disabled}
-        error={touched && !!error}
+        // error={touched && !!error}
         placeholder={placeholder}
         autoComplete='off'
         autoFocus={autoFocus}
@@ -58,12 +60,12 @@ class InputMUI extends Component {
             ) : (
               ''
             ),
-          endAdornment: (
-            <InputAdornment position='start'>
-              <span className={symbol ? 'symbol' : ''}>{symbol}</span>
-              {touched && !!error && <span className='error-text'>{error}</span>}
-            </InputAdornment>
-          ),
+          // endAdornment: (
+          //   <InputAdornment position='start'>
+          //     <span className={symbol ? 'symbol' : ''}>{symbol}</span>
+          //     {touched && !!error && <span className='error-text'>{error}</span>}
+          //   </InputAdornment>
+          // ),
           classes: {
             root: 'custom-input',
             focused: 'custom-input-focused',
@@ -83,6 +85,12 @@ class InputMUI extends Component {
             error: 'custom-input-label-error',
           },
           shrink: shrink,
+        }}
+        FormHelperTextProps={{
+          // for React Final Form
+          classes: {
+            root: 'error-text',
+          },
         }}
       />
     );
