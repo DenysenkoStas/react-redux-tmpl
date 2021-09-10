@@ -12,7 +12,8 @@
     padding: 10px 20px;
     font-weight: 500;
 
-    &.active {
+    &.active,
+    &:hover {
       color: #ffffff;
       background-color: var(--info);
     }

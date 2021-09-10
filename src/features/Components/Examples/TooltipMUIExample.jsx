@@ -1,0 +1,43 @@
+import React from 'react';
+import ButtonMUI from '../../../shared/ButtonMUI';
+import TooltipMUI from '../../../shared/TooltipMUI';
+
+const TooltipMUIExample = () => {
+  return (
+    <>
+      <h2 className='mb-15'>TooltipMUI</h2>
+
+      <section className='card-wrap flex gap-25'>
+        <TooltipMUI title='Position top'>
+          <span>
+            <ButtonMUI>Hover me</ButtonMUI>
+          </span>
+        </TooltipMUI>
+
+        <TooltipMUI title='Position bottom' position='bottom'>
+          <span>
+            <ButtonMUI variant='outlined'>Hover me</ButtonMUI>
+          </span>
+        </TooltipMUI>
+
+        <TooltipMUI title='Position left' position='left'>
+          <span>
+            <ButtonMUI color='primary'>
+              Hover me
+            </ButtonMUI>
+          </span>
+        </TooltipMUI>
+
+        <TooltipMUI title='Position right' position='right'>
+          <span>
+            <ButtonMUI variant='outlined' color='primary'>
+              Hover me
+            </ButtonMUI>
+          </span>
+        </TooltipMUI>
+      </section>
+    </>
+  );
+};
+
+export default TooltipMUIExample;

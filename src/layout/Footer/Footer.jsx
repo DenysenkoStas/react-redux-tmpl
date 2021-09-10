@@ -3,11 +3,11 @@ import {NavLink} from 'react-router-dom';
 
 import './Footer.scss';
 
-import {ReactComponent as LinkedinIcon} from '../../../assets/icons/linkedin.svg';
-import {ReactComponent as FacebookIcon} from '../../../assets/icons/facebook.svg';
-import {ReactComponent as InstagramIcon} from '../../../assets/icons/instagram.svg';
-import {ReactComponent as TwitterIcon} from '../../../assets/icons/twitter.svg';
-import {mainPath} from '../../../helpers/const';
+import {ReactComponent as LinkedinIcon} from '../../assets/icons/linkedin.svg';
+import {ReactComponent as FacebookIcon} from '../../assets/icons/facebook.svg';
+import {ReactComponent as InstagramIcon} from '../../assets/icons/instagram.svg';
+import {ReactComponent as TwitterIcon} from '../../assets/icons/twitter.svg';
+import {mainPath} from '../../helpers/const';
 
 const Footer = () => {
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Snackbar} from '@material-ui/core';
 import {Alert} from '@material-ui/lab';
 
@@ -13,6 +14,15 @@ const SnackbarMUI = ({open, onClose, autoHideDuration, severity = 'error', error
       </Alert>
     </Snackbar>
   );
+};
+
+SnackbarMUI.propTypes = {
+  autoHideDuration: PropTypes.number,
+  children: PropTypes.any,
+  errors: PropTypes.object,
+  onClose: PropTypes.func,
+  open: PropTypes.bool,
+  severity: PropTypes.string,
 };
 
 export default SnackbarMUI;

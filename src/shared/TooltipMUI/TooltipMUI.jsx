@@ -1,31 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Tooltip from '@material-ui/core/Tooltip';
+
 import './TooltipMUI.scss';
 
-const TooltipMUI = ({
-  text,
-  children,
-  error = false,
-  delay = 1000,
-  position = 'top',
-  classes = 'auth-tooltip-popper',
-}) => {
+const TooltipMUI = ({className, title, children, enterDelay, leaveDelay, position = 'top'}) => {
   return (
     <Tooltip
-      title={text}
+      className={className}
+      title={title}
       placement={position}
-      enterDelay={delay}
-      leaveDelay={200}
+      enterDelay={enterDelay}
+      leaveDelay={leaveDelay}
       disableTouchListener
       disableFocusListener
       classes={{
-        tooltip: error ? 'error-message-tooltip' : 'message-tooltip',
-        popper: `message-popper ${classes}`,
+        tooltip: 'tooltip-mui',
       }}
     >
       {children}
     </Tooltip>
   );
+};
+
+TooltipMUI.propTypes = {
+  children: PropTypes.element.isRequired,
+  className: PropTypes.string,
+  enterDelay: PropTypes.number,
+  leaveDelay: PropTypes.number,
+  position: PropTypes.string,
+  title: PropTypes.node.isRequired,
 };
 
 export default TooltipMUI;

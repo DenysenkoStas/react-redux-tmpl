@@ -1,14 +1,14 @@
 import React from 'react';
 import {Link, NavLink, useHistory} from 'react-router-dom';
-import {authPath, mainPath} from '../../../helpers/const';
+import {authPath, mainPath} from '../../helpers/const';
 
 import './Header.scss';
 
-import {ReactComponent as HeaderLogo} from '../../../assets/images/logo.svg';
-import {ReactComponent as PlusIcon} from '../../../assets/icons/plus.svg';
-import {ReactComponent as FolderIcon} from '../../../assets/icons/folder.svg';
-import {ReactComponent as BoxIcon} from '../../../assets/icons/box.svg';
-import {ReactComponent as LogoutIcon} from '../../../assets/icons/logout.svg';
+import {ReactComponent as HeaderLogo} from '../../assets/images/logo.svg';
+import {ReactComponent as PlusIcon} from '../../assets/icons/plus.svg';
+import {ReactComponent as FolderIcon} from '../../assets/icons/folder.svg';
+import {ReactComponent as BoxIcon} from '../../assets/icons/box.svg';
+import {ReactComponent as LogoutIcon} from '../../assets/icons/logout.svg';
 
 const Header = () => {
   const history = useHistory();

@@ -1,7 +1,25 @@
-.skeleton-component {
-  background-color: var(--primaryColorOpacity05) !important;
+.skeleton-mui {
+  &--text {
+  }
 
-  &.border-radius-22 {
-    border-radius: 22px !important;
+  &--rect {
+  }
+
+  &--circle {
+  }
+
+  &--pulse {
+  }
+
+  &--wave {
+  }
+
+  &--with-children {
+  }
+
+  &--fit-content {
+  }
+
+  &--height-auto {
   }
 }

@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
+
 import './Pagination.scss';
 
 import {ReactComponent as PrevIcon} from './icons/prev.svg';
@@ -31,6 +33,14 @@ const Pagination = ({active, pageCount, onChange, count, pageLength}) => {
       )}
     </div>
   );
+};
+
+Pagination.propTypes = {
+  active: PropTypes.number,
+  count: PropTypes.number,
+  onChange: PropTypes.func,
+  pageCount: PropTypes.number.isRequired,
+  pageLength: PropTypes.number,
 };
 
 export default Pagination;

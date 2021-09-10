@@ -1,29 +1,55 @@
 import React from 'react';
-import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
+import IconButton from '@material-ui/core/IconButton';
 
 import './IconButtonMUI.scss';
 
-const propTypes = {
-  src: PropTypes.string,
-  children: PropTypes.node,
-  alt: PropTypes.string.isRequired,
-  classes: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
-  imageAsComponent: PropTypes.bool,
-};
-
-const IconButtonMUI = ({src, children, classes, onClick, alt, imageAsComponent}) => (
+const IconButtonMUI = ({
+  children,
+  className,
+  color = 'default',
+  disabled = false,
+  disableFocusRipple = false,
+  disableRipple = false,
+  edge = false,
+  size = 'small',
+  onClick,
+}) => (
   <IconButton
-    onClick={onClick}
+    className={className}
     classes={{
-      root: classes,
+      root: 'icon-button-mui',
+      edgeStart: 'icon-button-mui--start',
+      edgeEnd: 'icon-button-mui--end',
+      colorInherit: 'icon-button-mui--inherit',
+      colorPrimary: 'icon-button-mui--primary',
+      colorSecondary: 'icon-button-mui--secondary',
+      disabled: 'icon-button-mui--disabled',
+      sizeSmall: 'icon-button-mui--small',
+      label: 'icon-button-mui__label',
     }}
+    color={color}
+    disabled={disabled}
+    disableFocusRipple={disableFocusRipple}
+    disableRipple={disableRipple}
+    edge={edge}
+    size={size}
+    onClick={onClick}
   >
-    {imageAsComponent ? children : <img src={src} alt={alt} />}
+    {children}
   </IconButton>
 );
 
-IconButtonMUI.propTypes = propTypes;
+IconButtonMUI.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
+  disableFocusRipple: PropTypes.bool,
+  disableRipple: PropTypes.bool,
+  disabled: PropTypes.bool,
+  edge: PropTypes.oneOf(['start', 'end', false]),
+  onClick: PropTypes.func,
+  size: PropTypes.oneOf(['small', 'medium']),
+};
 
 export default IconButtonMUI;

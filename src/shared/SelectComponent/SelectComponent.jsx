@@ -1,15 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Select, {components} from 'react-select';
-import expand_icon from './icons/chevron-down.svg';
 
 import './SelectComponent.scss';
+
+import {ReactComponent as ExpandIcon} from './icons/chevron-down.svg';
 
 export const DropdownIndicator = (props) => {
   return (
     components.DropdownIndicator && (
       <components.DropdownIndicator {...props}>
         <div className={props.selectProps.menuIsOpen ? 'select-indicator indicator-active' : 'select-indicator'}>
-          <img src={expand_icon} alt='expand icon' />
+          <ExpandIcon alt='Expand icon' />
         </div>
       </components.DropdownIndicator>
     )
@@ -58,5 +60,25 @@ const SelectComponent = ({
     noOptionsMessage={() => 'No options'}
   />
 );
+
+SelectComponent.propTypes = {
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  id: PropTypes.string,
+  input: PropTypes.object,
+  isClearable: PropTypes.bool,
+  isSearchable: PropTypes.bool,
+  loading: PropTypes.bool,
+  loadingMessage: PropTypes.string,
+  menuIsOpen: PropTypes.bool,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  options: PropTypes.array.isRequired,
+  placeholder: PropTypes.string,
+  reduxForm: PropTypes.bool,
+  value: PropTypes.string,
+  withSearchIcon: PropTypes.bool,
+};
 
 export default SelectComponent;

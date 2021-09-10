@@ -1,3 +1,21 @@
+import AccordionMUIExample from '../features/Components/Examples/AccordionMUIExample';
+import ButtonMUIExample from '../features/Components/Examples/ButtonMUIExample';
+import CheckboxMUIExample from '../features/Components/Examples/CheckboxMUIExample';
+import DialogMUIExample from '../features/Components/Examples/DialogMUIExample';
+import IconButtonMUIExample from '../features/Components/Examples/IconButtonMUIExample';
+import InputMUIExample from '../features/Components/Examples/InputMUIExample';
+import LoaderMUIExample from '../features/Components/Examples/LoaderMUIExample';
+import NotFoundExample from '../features/Components/Examples/NotFoundExample';
+import PaginationExample from '../features/Components/Examples/PaginationExample';
+import PopperMUIExample from '../features/Components/Examples/PopperMUIExample';
+import ReCaptchaV2Example from '../features/Components/Examples/ReCaptchaV2Example';
+import SelectComponentExample from '../features/Components/Examples/SelectComponentExample';
+import SkeletonMUIExample from '../features/Components/Examples/SkeletonMUIExample';
+import SnackbarMUIExample from '../features/Components/Examples/SnackbarMUIExample';
+import SwitchMUIExample from '../features/Components/Examples/SwitchMUIExample';
+import TooltipMUIExample from '../features/Components/Examples/TooltipMUIExample';
+import TransitionedBlockExample from '../features/Components/Examples/TransitionedBlockExample';
+
 export const rootAuthPath = '/auth';
 export const rootMainPath = '/main';
 
@@ -17,19 +35,22 @@ export const mainPath = {
   navLink3: `${rootMainPath}/nav-link-3`,
 };
 
-export const componentsPath = {
-  buttonMUI: `${mainPath.components}/button-mui`,
-  dialogMUI: `${mainPath.components}/dialog-mui`,
-  iconButtonMUI: `${mainPath.components}/icon-button-mui`,
-  inputMUI: `${mainPath.components}/input-mui`,
-  loaderMUI: `${mainPath.components}/loader-mui`,
-  notFound: `${mainPath.components}/not-found`,
-  pagination: `${mainPath.components}/pagination`,
-  popperMUI: `${mainPath.components}/popper-mui`,
-  reCaptchaV2: `${mainPath.components}/re-captcha-v2`,
-  selectComponent: `${mainPath.components}/select-component`,
-  skeletonMUI: `${mainPath.components}/skeleton-mui`,
-  snackbarMUI: `${mainPath.components}/snackbar-mui`,
-  tooltipMUI: `${mainPath.components}/tooltip-mui`,
-  transitionedBlock: `${mainPath.components}/transitioned-block`,
-};
+export const componentsPath = [
+  {path: `${mainPath.components}/accordion-mui`, name: 'AccordionMUI', component: AccordionMUIExample},
+  {path: `${mainPath.components}/button-mui`, name: 'ButtonMUI', component: ButtonMUIExample},
+  {path: `${mainPath.components}/checkbox-mui`, name: 'CheckboxMUI', component: CheckboxMUIExample},
+  {path: `${mainPath.components}/dialog-mui`, name: 'DialogMUI', component: DialogMUIExample},
+  {path: `${mainPath.components}/icon-button-mui`, name: 'IconButtonMUI', component: IconButtonMUIExample},
+  {path: `${mainPath.components}/input-mui`, name: 'InputMUI', component: InputMUIExample},
+  {path: `${mainPath.components}/loader-mui`, name: 'LoaderMUI', component: LoaderMUIExample},
+  {path: `${mainPath.components}/not-found`, name: 'NotFound', component: NotFoundExample},
+  {path: `${mainPath.components}/pagination`, name: 'Pagination', component: PaginationExample},
+  {path: `${mainPath.components}/popper-mui`, name: 'PopperMUI', component: PopperMUIExample},
+  {path: `${mainPath.components}/re-captcha-v2`, name: 'ReCaptchaV2', component: ReCaptchaV2Example},
+  {path: `${mainPath.components}/select-component`, name: 'SelectComponent', component: SelectComponentExample},
+  {path: `${mainPath.components}/skeleton-mui`, name: 'SkeletonMUI', component: SkeletonMUIExample},
+  {path: `${mainPath.components}/snackbar-mui`, name: 'SnackbarMUI', component: SnackbarMUIExample},
+  {path: `${mainPath.components}/switch-mui`, name: 'SwitchMUI', component: SwitchMUIExample},
+  {path: `${mainPath.components}/tooltip-mui`, name: 'TooltipMUI', component: TooltipMUIExample},
+  {path: `${mainPath.components}/transitioned-block`, name: 'TransitionedBlock', component: TransitionedBlockExample},
+];

@@ -1,3 +1,27 @@
-.primary-color {
-  color: var(--primaryColor)!important;
+.icon-button-mui {
+  color: var(--info);
+
+  &:hover {
+    background-color: lighten(#3796f6, 37%);
+  }
+
+  &--primary {
+    color: var(--primary);
+
+    &:hover {
+      background-color: lighten(#204569, 70%);
+    }
+  }
+
+  &--secondary {
+    color: var(--error);
+
+    &:hover {
+      background-color: lighten(#e44b4b, 37%);
+    }
+  }
+
+  &--inherit {
+    color: inherit;
+  }
 }

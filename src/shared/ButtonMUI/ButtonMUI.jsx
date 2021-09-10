@@ -20,7 +20,6 @@ const ButtonMUI = ({
   startIcon,
   variant = 'contained',
   type = 'button',
-  to,
   formAction,
   onClick,
   loading,
@@ -57,7 +56,6 @@ const ButtonMUI = ({
       startIcon={startIcon}
       variant={variant}
       type={formAction ? 'submit' : type}
-      to={to}
       onClick={onClick}
     >
       {loading ? <CircularProgress size={24} color='inherit' /> : children}
@@ -68,9 +66,22 @@ const ButtonMUI = ({
 ButtonMUI.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  color: PropTypes.string,
-  component: PropTypes.elementType,
+  color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
+  component: PropTypes.any,
+  disableFocusRipple: PropTypes.bool,
+  disableRipple: PropTypes.bool,
   disabled: PropTypes.bool,
+  endIcon: PropTypes.node,
+  formAction: PropTypes.bool,
+  fullWidth: PropTypes.bool,
+  href: PropTypes.string,
+  loading: PropTypes.bool,
+  noShadow: PropTypes.bool,
+  onClick: PropTypes.func,
+  size: PropTypes.oneOf(['large', 'medium', 'small']),
+  startIcon: PropTypes.node,
+  type: PropTypes.string,
+  variant: PropTypes.oneOf(['contained', 'outlined', 'text']),
 };
 
 export default ButtonMUI;

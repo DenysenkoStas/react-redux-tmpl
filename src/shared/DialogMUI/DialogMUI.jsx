@@ -1,28 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
 
 import './DialogMUI.scss';
 
 import {ReactComponent as CloseIcon} from './icons/close.svg';
 
-const DialogMUI = ({open, onClose, className = '', children}) => {
+const DialogMUI = ({open, onClose, className = '', children, fullScreen = false}) => {
   return (
     <Dialog
       open={open}
       onClose={onClose}
+      className={className}
       classes={{
-        root: `default-dialog-root${className && ` ${className}`}`,
-        paper: 'paper-custom-dialog',
+        root: 'dialog-mui',
+        paper: 'dialog-mui__paper',
       }}
+      fullScreen={fullScreen}
     >
-      <div className='dialog-wrapper'>
-        <button onClick={onClose} className='dialog-close-button'>
-          <CloseIcon />
+      <div className='dialog-mui__content'>
+        <button onClick={onClose} className='dialog-mui__close-button' aria-label='Close dialog button'>
+          <CloseIcon className='dialog-mui__close-icon' />
         </button>
         {children}
       </div>
     </Dialog>
   );
+};
+
+DialogMUI.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  fullScreen: PropTypes.bool,
+  onClose: PropTypes.func,
+  open: PropTypes.bool,
 };
 
 export default DialogMUI;
