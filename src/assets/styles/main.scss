@@ -1,20 +1,21 @@
 @import 'reset';
 @import 'vars';
 @import 'mixins';
-@import '../fonts/Roboto/roboto';
+@import '../fonts/Inter/stylesheet';
+@import '../fonts/Montserrat/stylesheet';
 //@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap&subset=cyrillic-ext');
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font);
   font-size: 14px;
   line-height: 1.5;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--primary);
   background-color: var(--light);
 
   &::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
   }
 
   &::-webkit-scrollbar-track {
@@ -69,8 +70,6 @@ h1,
 .h1 {
   font-size: 32px;
   line-height: 41px;
-  font-weight: 600;
-  letter-spacing: -1px;
 }
 
 h2,
@@ -79,7 +78,6 @@ h3,
 .h3 {
   font-size: 24px;
   line-height: 24px;
-  font-weight: 800;
   color: var(--secondary);
 }
 
@@ -107,6 +105,15 @@ h3,
 // Helper classes
 .flex {
   display: flex;
+  flex-wrap: wrap;
+
+  &--column {
+    flex-direction: column;
+  }
+}
+
+.no-wrap {
+  flex-wrap: nowrap;
 }
 
 .gap-25 {

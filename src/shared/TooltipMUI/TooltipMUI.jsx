@@ -4,7 +4,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 import './TooltipMUI.scss';
 
-const TooltipMUI = ({className, title, children, enterDelay, leaveDelay, position = 'top'}) => {
+const TooltipMUI = ({className = '', title, children, enterDelay, leaveDelay, position = 'top'}) => {
   return (
     <Tooltip
       className={className}

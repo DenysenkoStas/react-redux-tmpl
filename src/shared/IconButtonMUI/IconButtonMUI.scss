@@ -5,7 +5,7 @@
     background-color: lighten(#3796f6, 37%);
   }
 
-  &--primary {
+  &--color-primary {
     color: var(--primary);
 
     &:hover {
@@ -13,7 +13,7 @@
     }
   }
 
-  &--secondary {
+  &--color-secondary {
     color: var(--error);
 
     &:hover {
@@ -21,7 +21,15 @@
     }
   }
 
-  &--inherit {
-    color: inherit;
+  &--edge-start {
+  }
+
+  &--edge-end {
+  }
+
+  &--size-small {
+  }
+
+  &__label {
   }
 }

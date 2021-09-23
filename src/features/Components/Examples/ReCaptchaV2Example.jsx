@@ -1,5 +1,4 @@
 import React from 'react';
-import {Field, reduxForm} from 'redux-form';
 import {ReCaptchaV2} from '../../../shared/ReCaptchaV2';
 
 const ReCaptchaV2Example = () => {
@@ -7,13 +6,24 @@ const ReCaptchaV2Example = () => {
     <>
       <h2 className='mb-15'>ReCaptchaV2</h2>
 
-      <section className='card-wrap flex gap-25'>
-        <Field name='recaptcha' component={ReCaptchaV2} />
+      <section className='card-wrap'>
+        <p>
+          <b>Props:</b> center, className, onChange, reduxForm, siteKey, theme
+        </p>
+
+        <p className='mb-10 mt-25'>center</p>
+        <div className='flex gap-25'>
+          <ReCaptchaV2 center />
+        </div>
+
+        <p className='mb-10 mt-25'>theme="light / dark"</p>
+        <div className='flex gap-25'>
+          <ReCaptchaV2 />
+          <ReCaptchaV2 theme='dark' />
+        </div>
       </section>
     </>
   );
 };
 
-export default reduxForm({
-  form: 'ReCaptchaV2Example',
-})(ReCaptchaV2Example);
+export default ReCaptchaV2Example;

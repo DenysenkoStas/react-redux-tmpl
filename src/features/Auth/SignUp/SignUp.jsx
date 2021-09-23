@@ -9,7 +9,7 @@ import SignUpStep2 from './SignUpStep2';
 import SignUpStep3 from './SignUpStep3';
 import SignUpSuccessDialog from './SignUpSuccessDialog';
 import SnackbarMUI from '../../../shared/SnackbarMUI/SnackbarMUI';
-import {authPath} from '../../../helpers/const';
+import {authPath} from '../../../routes/paths';
 
 import {ReactComponent as ArrowBlueIcon} from '../../../assets/icons/arrow-blue.svg';
 

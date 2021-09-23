@@ -7,12 +7,12 @@ import './SkeletonMUI.scss';
 const SkeletonMUI = ({
   animation = 'pulse',
   children,
+  className = '',
   component = 'span',
-  width,
   height,
-  variant = 'text',
-  className,
   loading = true,
+  variant = 'text',
+  width,
 }) => {
   if (loading) {
     return (
@@ -43,14 +43,14 @@ const SkeletonMUI = ({
 };
 
 SkeletonMUI.propTypes = {
-  animation: PropTypes.string,
+  animation: PropTypes.oneOf(['pulse', 'wave', false]),
   children: PropTypes.node,
-  component: PropTypes.string,
-  width: PropTypes.number,
-  height: PropTypes.number,
-  variant: PropTypes.string,
   className: PropTypes.string,
+  component: PropTypes.elementType,
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   loading: PropTypes.bool.isRequired,
+  variant: PropTypes.oneOf(['text', 'rect', 'circle']),
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default SkeletonMUI;

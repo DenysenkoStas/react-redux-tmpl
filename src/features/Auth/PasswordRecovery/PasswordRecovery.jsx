@@ -11,7 +11,7 @@ import SnackbarMUI from '../../../shared/SnackbarMUI/SnackbarMUI';
 
 import {ReactComponent as ArrowBlue} from '../../../assets/icons/arrow-blue.svg';
 import {ReactComponent as EnvelopeIcon} from '../../../assets/icons/envelope.svg';
-import {authPath} from '../../../helpers/const';
+import {authPath} from '../../../routes/paths';
 
 const PasswordRecovery = ({handleSubmit, pristine, submitting, invalid}) => {
   const dispatch = useDispatch();

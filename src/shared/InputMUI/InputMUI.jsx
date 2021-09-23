@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {TextField} from 'mui-rff';
-import {InputAdornment} from '@material-ui/core';
-// import {TextField, InputAdornment} from '@material-ui/core';
+// import {TextField} from 'mui-rff';
+// import InputAdornment from '@material-ui/core/InputAdornment';
+import {TextField, InputAdornment} from '@material-ui/core';
 
 import './InputMUI.scss';
 
@@ -91,6 +91,7 @@ class InputMUI extends Component {
           classes: {
             root: 'error-text',
           },
+          // for React Final Form
         }}
       />
     );

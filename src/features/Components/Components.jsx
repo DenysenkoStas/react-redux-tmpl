@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink, Redirect, Route, Switch} from 'react-router-dom';
-import {componentsPath, mainPath} from '../../helpers/const';
+import {componentsPath, mainPath} from '../../routes/paths';
 
 import './Components.scss';
 

@@ -6,7 +6,7 @@ import './IconButtonMUI.scss';
 
 const IconButtonMUI = ({
   children,
-  className,
+  className = '',
   color = 'default',
   disabled = false,
   disableFocusRipple = false,
@@ -19,13 +19,12 @@ const IconButtonMUI = ({
     className={className}
     classes={{
       root: 'icon-button-mui',
-      edgeStart: 'icon-button-mui--start',
-      edgeEnd: 'icon-button-mui--end',
-      colorInherit: 'icon-button-mui--inherit',
-      colorPrimary: 'icon-button-mui--primary',
-      colorSecondary: 'icon-button-mui--secondary',
+      edgeStart: 'icon-button-mui--edge-start',
+      edgeEnd: 'icon-button-mui--edge-end',
+      colorPrimary: 'icon-button-mui--color-primary',
+      colorSecondary: 'icon-button-mui--color-secondary',
       disabled: 'icon-button-mui--disabled',
-      sizeSmall: 'icon-button-mui--small',
+      sizeSmall: 'icon-button-mui--size-small',
       label: 'icon-button-mui__label',
     }}
     color={color}
@@ -43,7 +42,7 @@ const IconButtonMUI = ({
 IconButtonMUI.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
+  color: PropTypes.oneOf(['default', 'primary', 'secondary']),
   disableFocusRipple: PropTypes.bool,
   disableRipple: PropTypes.bool,
   disabled: PropTypes.bool,

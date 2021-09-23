@@ -5,7 +5,7 @@
   font-family: inherit;
   font-size: 14px;
   line-height: 16px;
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: normal;
   border-radius: 4px;
   box-shadow: none;
@@ -15,7 +15,6 @@
   }
 
   &:disabled {
-    opacity: 0.5;
   }
 
   // variant='contained'

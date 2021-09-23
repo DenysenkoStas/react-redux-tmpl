@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import Components from '../features/Components';
 import Dashboard from '../features/Dashboard';
-import {rootMainPath, rootAuthPath, mainPath} from '../helpers/const';
+import {rootMainPath, rootAuthPath, mainPath} from './paths';
 import NotFound from '../shared/NotFound';
 
 const MainRoutes = () => {

@@ -11,7 +11,7 @@ import EmailVerification from '../EmailVerification/EmailVerification';
 import {useToggle} from '../../../helpers/hooks';
 
 import captcha from '../../../assets/images/captcha.png';
-import {authPath, rootMainPath} from '../../../helpers/const';
+import {authPath, rootMainPath} from '../../../routes/paths';
 
 const SignIn = ({history, handleSubmit, submitting, pristine, invalid}) => {
   const dispatch = useDispatch();

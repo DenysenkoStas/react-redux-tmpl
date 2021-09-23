@@ -11,11 +11,17 @@ const DialogMUIExample = () => {
     <>
       <h2 className='mb-15'>DialogMUI</h2>
 
-      <section className='card-wrap flex gap-25'>
-        <ButtonMUI onClick={toggleDialog}>Simple dialog</ButtonMUI>
-        <ButtonMUI variant='outlined' onClick={toggleSecondDialog}>
-          Full screen dialog
-        </ButtonMUI>
+      <section className='card-wrap'>
+        <p>
+          <b>Props:</b> children, className, fullScreen, onClose, open
+        </p>
+
+        <div className='flex gap-25 mt-25'>
+          <ButtonMUI onClick={toggleDialog}>Simple dialog</ButtonMUI>
+          <ButtonMUI variant='outlined' onClick={toggleSecondDialog}>
+            Full screen dialog
+          </ButtonMUI>
+        </div>
       </section>
 
       <DialogMUI open={dialog} onClose={toggleDialog}>

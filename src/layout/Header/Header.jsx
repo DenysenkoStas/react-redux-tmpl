@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, NavLink, useHistory} from 'react-router-dom';
-import {authPath, mainPath} from '../../helpers/const';
+import {authPath, mainPath} from '../../routes/paths';
 
 import './Header.scss';
 

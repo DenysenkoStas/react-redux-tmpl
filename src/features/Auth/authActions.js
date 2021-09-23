@@ -6,7 +6,7 @@ export function postSignIn(data) {
     payload: {
       client: 'default',
       request: {
-        url: `sign-in/`,
+        url: `signin/`,
         method: 'post',
         data,
       },

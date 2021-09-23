@@ -1,10 +1,19 @@
+import PropTypes from 'prop-types';
 import React, {useState} from 'react';
 import {Accordion, AccordionSummary, AccordionDetails} from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import './AccordionMUI.scss';
 
-const AccordionMUI = ({className = '', accordionData, square, expandIcon, controlled = true, color = '', minSpaces}) => {
+const AccordionMUI = ({
+  className = '',
+  accordionData,
+  square = false,
+  expandIcon = <ExpandMoreIcon />,
+  controlled = true,
+  color = '',
+  minSpaces = false,
+}) => {
   const [expanded, setExpanded] = useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -32,13 +41,12 @@ const AccordionMUI = ({className = '', accordionData, square, expandIcon, contro
             classes={{
               root: 'accordion-mui-item__summary',
               expanded: 'accordion-mui-item__summary--expanded',
-              focused: 'accordion-mui-item__summary--focused',
               focusVisible: 'accordion-mui-item__summary--focus-visible',
               disabled: 'accordion-mui-item__summary--disabled',
               content: 'accordion-mui-item__summary-content',
               expandIcon: 'accordion-mui-item__expand-icon',
             }}
-            expandIcon={expandIcon ? expandIcon : <ExpandMoreIcon />}
+            expandIcon={expandIcon}
           >
             {summary}
           </AccordionSummary>
@@ -47,6 +55,16 @@ const AccordionMUI = ({className = '', accordionData, square, expandIcon, contro
       ))}
     </div>
   );
+};
+
+AccordionMUI.propTypes = {
+  accordionData: PropTypes.array.isRequired,
+  className: PropTypes.string,
+  color: PropTypes.oneOf(['default', 'primary', 'secondary']),
+  controlled: PropTypes.bool,
+  expandIcon: PropTypes.node,
+  minSpaces: PropTypes.bool,
+  square: PropTypes.bool,
 };
 
 export default AccordionMUI;

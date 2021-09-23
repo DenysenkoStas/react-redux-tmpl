@@ -11,18 +11,16 @@ const ButtonMUI = ({
   component = 'button',
   disabled = false,
   noShadow = false,
-  disableFocusRipple = false,
-  disableRipple = false,
   endIcon,
   fullWidth = false,
   href,
   size = 'medium',
   startIcon,
   variant = 'contained',
-  type = 'button',
-  formAction,
+  formAction = false,
   onClick,
-  loading,
+  loading = false,
+  ...props
 }) => {
   return (
     <Button
@@ -47,16 +45,15 @@ const ButtonMUI = ({
       component={component}
       disabled={disabled}
       disableElevation={noShadow}
-      disableFocusRipple={disableFocusRipple}
-      disableRipple={disableRipple}
       endIcon={endIcon}
       fullWidth={fullWidth}
       href={href}
       size={size}
       startIcon={startIcon}
       variant={variant}
-      type={formAction ? 'submit' : type}
+      type={formAction ? 'submit' : 'button'}
       onClick={onClick}
+      {...props}
     >
       {loading ? <CircularProgress size={24} color='inherit' /> : children}
     </Button>
@@ -66,10 +63,8 @@ const ButtonMUI = ({
 ButtonMUI.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
-  component: PropTypes.any,
-  disableFocusRipple: PropTypes.bool,
-  disableRipple: PropTypes.bool,
+  color: PropTypes.oneOf(['default', 'primary', 'secondary']),
+  component: PropTypes.elementType,
   disabled: PropTypes.bool,
   endIcon: PropTypes.node,
   formAction: PropTypes.bool,
@@ -80,7 +75,6 @@ ButtonMUI.propTypes = {
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['large', 'medium', 'small']),
   startIcon: PropTypes.node,
-  type: PropTypes.string,
   variant: PropTypes.oneOf(['contained', 'outlined', 'text']),
 };
 

@@ -1,11 +1,21 @@
 .accordion-mui {
   .accordion-mui-item {
-    color: var(--primary);
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color: var(--info);
 
     &--color-default {
       color: #ffffff;
       background-color: var(--info);
+    }
+
+    &--color-primary {
+      color: #ffffff;
+      background-color: var(--primary);
+    }
+
+    &--color-secondary {
+      color: #ffffff;
+      background-color: var(--error);
     }
 
     &--min-spaces {

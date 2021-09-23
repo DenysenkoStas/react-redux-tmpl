@@ -1,7 +1,10 @@
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
-import {SignIn, SignUp, PasswordRecovery, PasswordConfirm} from '../features/Auth';
-import {rootMainPath, rootAuthPath, authPath} from '../helpers/const';
+// import {SignIn, _SignUp, PasswordRecovery, PasswordConfirm} from '../features/Auth';
+// import {SignIn, SignUp, PasswordRecovery, PasswordConfirm} from '../features/Auth/ReactFinalForm';
+import {SignUp, PasswordRecovery, PasswordConfirm} from '../features/Auth/ReactFinalForm';
+import {SignIn} from '../features/Auth/ReactHookForm';
+import {rootMainPath, rootAuthPath, authPath} from './paths';
 import NotFound from '../shared/NotFound';
 
 const AuthRoutes = () => {

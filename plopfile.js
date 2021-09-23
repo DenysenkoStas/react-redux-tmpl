@@ -1,16 +1,18 @@
 const promptDirectory = require('inquirer-directory');
 
-const componentTypes = {
-  FUNCTION_COMPONENT: 'Function component',
-  CLASS_COMPONENT: 'Class component',
-};
-
-const reactFunctionComponentGenerator = () => ({
-  description: componentTypes.FUNCTION_COMPONENT,
+const reactComponentGenerator = () => ({
+  description: 'Component generator',
   prompts: [
     {
       type: 'list',
-      name: 'src',
+      name: 'component',
+      message: 'Component type',
+      choices: ['Function', 'Class', 'Redux'],
+      default: 0,
+    },
+    {
+      type: 'list',
+      name: 'base',
       message: 'Base directory',
       choices: ['features', 'shared'],
       default: 0,
@@ -18,90 +20,60 @@ const reactFunctionComponentGenerator = () => ({
     {
       type: 'directory',
       name: 'directory',
-      message: 'select directory',
+      message: 'Select directory',
       basePath: './src/features',
-      when: (answers) => answers.src === 'features',
+      when: (answers) => answers.base === 'features',
     },
     {
       type: 'directory',
       name: 'directory',
-      message: 'select directory',
+      message: 'Select directory',
       basePath: './src/shared',
-      when: (answers) => answers.src === 'shared',
+      when: (answers) => answers.base === 'shared',
     },
     {
       type: 'input',
       name: 'name',
-      message: 'component name',
+      message: 'Component name',
     },
   ],
   actions: function (data) {
     return [
       {
         type: 'add',
-        path: `src/${data.src}/{{directory}}/{{pascalCase name}}/{{pascalCase name}}.jsx`,
-        templateFile: 'plop-templates/component/Component.hbs',
+        path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{pascalCase name}}.jsx`,
+        templateFile: `plop-templates/component/${data.component === 'Class' ? 'Class' : ''}Component.hbs`,
       },
       {
         type: 'add',
-        path: `src/${data.src}/{{directory}}/{{pascalCase name}}/{{pascalCase name}}.scss`,
+        path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{pascalCase name}}.scss`,
         templateFile: 'plop-templates/component/Component.scss.hbs',
       },
       {
         type: 'add',
-        path: `src/${data.src}/{{directory}}/{{pascalCase name}}/index.js`,
+        path: `src/${data.base}/{{directory}}/{{pascalCase name}}/index.js`,
         templateFile: 'plop-templates/component/Component.index.hbs',
       },
-    ];
-  },
-});
-
-const reactClassComponentGenerator = () => ({
-  description: componentTypes.CLASS_COMPONENT,
-  prompts: [
-    {
-      type: 'list',
-      name: 'src',
-      message: 'Base directory',
-      choices: ['features', 'shared'],
-      default: 0,
-    },
-    {
-      type: 'directory',
-      name: 'directory',
-      message: 'select directory',
-      basePath: './src/features',
-      when: (answers) => answers.src === 'features',
-    },
-    {
-      type: 'directory',
-      name: 'directory',
-      message: 'select directory',
-      basePath: './src/shared',
-      when: (answers) => answers.src === 'shared',
-    },
-    {
-      type: 'input',
-      name: 'name',
-      message: 'component name',
-    },
-  ],
-  actions: function (data) {
-    return [
+      // For Redux & Saga
       {
-        type: 'add',
-        path: `src/${data.src}/{{directory}}/{{pascalCase name}}/{{pascalCase name}}.jsx`,
-        templateFile: 'plop-templates/component/ClassComponent.hbs',
+        type: `${data.component === 'Redux' && 'add'}`,
+        path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{camelCase name}}ActionTypes.js`,
+        templateFile: 'plop-templates/component/reduxActionTypes.hbs',
       },
       {
-        type: 'add',
-        path: `src/${data.src}/{{directory}}/{{pascalCase name}}/{{pascalCase name}}.scss`,
-        templateFile: 'plop-templates/component/Component.scss.hbs',
+        type: `${data.component === 'Redux' && 'add'}`,
+        path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{camelCase name}}Actions.js`,
+        templateFile: 'plop-templates/component/reduxActions.hbs',
       },
       {
-        type: 'add',
-        path: `src/${data.src}/{{directory}}/{{pascalCase name}}/index.js`,
-        templateFile: 'plop-templates/component/Component.index.hbs',
+        type: `${data.component === 'Redux' && 'add'}`,
+        path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{camelCase name}}Reducer.js`,
+        templateFile: 'plop-templates/component/reduxReducer.hbs',
+      },
+      {
+        type: `${data.component === 'Redux' && 'add'}`,
+        path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{camelCase name}}Saga.js`,
+        templateFile: 'plop-templates/component/reduxSaga.hbs',
       },
     ];
   },
@@ -109,6 +81,5 @@ const reactClassComponentGenerator = () => ({
 
 module.exports = function (plop) {
   plop.setPrompt('directory', promptDirectory);
-  plop.setGenerator(componentTypes.FUNCTION_COMPONENT, reactFunctionComponentGenerator());
-  plop.setGenerator(componentTypes.CLASS_COMPONENT, reactClassComponentGenerator());
+  plop.setGenerator('Component generator', reactComponentGenerator());
 };

@@ -24,7 +24,8 @@
       padding-left: 0;
     }
 
-    &:hover, &.active {
+    &:hover,
+    &.active {
       color: var(--primary);
       opacity: 1;
     }
@@ -46,7 +47,7 @@
   height: 28px;
 
   &__link {
-    opacity: .7;
+    opacity: 0.7;
 
     &:hover {
       opacity: 1;

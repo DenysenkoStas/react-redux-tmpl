@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import ErrorIcon from "@material-ui/icons/Error";
+import React from 'react';
+import PropTypes from 'prop-types';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import ErrorIcon from '@material-ui/icons/Error';
 
-import TooltipMessage from "../TooltipMUI";
+import TooltipMessage from '../TooltipMUI';
 
-import "./InputField.scss";
+import './InputField.scss';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -16,7 +16,7 @@ const propTypes = {
   disabled: PropTypes.bool,
   multiline: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  endAdornment: PropTypes.node
+  endAdornment: PropTypes.node,
 };
 
 const InputField = ({
@@ -35,20 +35,20 @@ const InputField = ({
     id={id}
     type={type}
     label={label}
-    variant="filled"
+    variant='filled'
     disabled={disabled}
     error={!!error}
-    autoComplete="off"
+    autoComplete='off'
     autoFocus={autoFocus}
     multiline={multiline}
-    rows="4"
-    rowsMax="10"
+    rows='4'
+    rowsMax='10'
     classes={{
-      root: "input-field"
+      root: 'input-field',
     }}
     InputProps={{
       endAdornment: (
-        <InputAdornment position="end">
+        <InputAdornment position='end'>
           {error ? (
             <TooltipMessage text={error} delay={200} error>
               <ErrorIcon />
@@ -56,27 +56,27 @@ const InputField = ({
           ) : endAdornment ? (
             endAdornment
           ) : (
-            ""
+            ''
           )}
         </InputAdornment>
       ),
       classes: {
-        root: "custom-input",
-        focused: "input-focused",
-        error: "input-error",
-        adornedEnd: "input-adorned",
-        multiline: "input-multiline",
-        disabled: "input-disabled"
-      }
+        root: 'custom-input',
+        focused: 'input-focused',
+        error: 'input-error',
+        adornedEnd: 'input-adorned',
+        multiline: 'input-multiline',
+        disabled: 'input-disabled',
+      },
     }}
     InputLabelProps={{
       classes: {
-        root: "input-label",
-        focused: "input-label-focused",
-        shrink: "input-label-active",
-        error: "input-label-error",
-        disabled: "input-label-disabled"
-      }
+        root: 'input-label',
+        focused: 'input-label-focused',
+        shrink: 'input-label-active',
+        error: 'input-label-error',
+        disabled: 'input-label-disabled',
+      },
     }}
   />
 );

@@ -118,7 +118,7 @@ $mq-breakpoints: (
   // 62em / large tablet (landscape) / small desktop
   xlarge: em(1200),
   // 75em / standard desktop
-  xxlarge: em(1400) // 87.5em / large desktop,,,,
+  xxlarge: em(1400) // 87.5em / large desktop,,,,,,,,
 ) !default;
 
 @mixin mq($mq-list, $mq-map: $mq-breakpoints) {
