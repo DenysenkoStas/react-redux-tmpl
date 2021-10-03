@@ -11,6 +11,8 @@ import {Controller, useForm} from 'react-hook-form';
 import ButtonMUI from '../../../shared/ButtonMUI';
 import SnackbarMUI from '../../../shared/SnackbarMUI';
 import EmailVerification from '../EmailVerification';
+import {postSignIn} from '../authActions';
+import {ReCaptchaV2} from '../../../shared/ReCaptchaV2';
 
 const SignIn = ({history}) => {
   const dispatch = useDispatch();
@@ -29,8 +31,8 @@ const SignIn = ({history}) => {
   const {
     control,
     handleSubmit,
-    setError,
-    formState: {errors},
+    // setError,
+    // formState: {errors},
   } = useForm({
     mode: 'onTouched',
     reValidateMode: 'onChange',
@@ -39,6 +41,7 @@ const SignIn = ({history}) => {
     defaultValues: {
       email: '',
       password: '',
+      recaptcha: '',
     },
   });
 
@@ -49,17 +52,17 @@ const SignIn = ({history}) => {
   }, []);
 
   const submitForm = (data) => {
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
 
-    // return dispatch(postSignIn(data)).then((res) => {
-    //   if (res.payload && res.payload.status && res.payload.status === 200) {
-    //     localStorage.setItem('token', res.payload.data.token);
-    //     history.push(rootMainPath);
-    //   } else {
-    //     toggleError();
-    // throw new SubmissionError({...res.error.response.data, _error: res.error.response.data.detail});
-    // }
-    // });
+    return dispatch(postSignIn(data)).then((res) => {
+      if (res.payload && res.payload.status && res.payload.status === 200) {
+        localStorage.setItem('token', res.payload.data.token);
+        history.push(rootMainPath);
+      } else {
+        toggleError();
+        // throw new SubmissionError({...res.error.response.data, _error: res.error.response.data.detail});
+      }
+    });
   };
 
   return (
@@ -101,6 +104,12 @@ const SignIn = ({history}) => {
           )}
         />
       </div>
+
+      <Controller
+        name='recaptcha'
+        control={control}
+        render={({field: {onChange}}) => <ReCaptchaV2 center onChange={onChange} />}
+      />
 
       <div className='auth-box__btn-wrap mt-65 mx-auto'>
         <ButtonMUI disabled={buttonLoading} loading={buttonLoading} formAction>
