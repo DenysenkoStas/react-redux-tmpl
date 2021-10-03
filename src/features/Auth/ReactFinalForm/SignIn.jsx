@@ -4,12 +4,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import {postSignIn} from '../authActions';
 import {Form, Field} from 'react-final-form';
 import {FORM_ERROR} from 'final-form';
-import InputMUI from '../../../shared/InputMUI';
+import {InputMUIFinalForm} from '../../../shared/InputMUI';
 import ButtonMUI from '../../../shared/ButtonMUI';
 import {useToggle} from '../../../helpers/hooks';
 import {email, minLength8, required, composeValidators} from '../../../helpers/formValidation';
 import SnackbarMUI from '../../../shared/SnackbarMUI';
-import EmailVerification from '../EmailVerification/EmailVerification';
+import EmailVerification from '../EmailVerification';
 import {authPath, rootMainPath} from '../../../routes/paths';
 
 const SignIn = ({history}) => {
@@ -43,7 +43,7 @@ const SignIn = ({history}) => {
           <p className='mb-85'>Provide your credentials below</p>
 
           <Field
-            component={InputMUI}
+            component={InputMUIFinalForm}
             className='auth-box__input min-w-530 mb-55'
             name='email'
             type='email'
@@ -55,7 +55,7 @@ const SignIn = ({history}) => {
               Forgot password?
             </Link>
             <Field
-              component={InputMUI}
+              component={InputMUIFinalForm}
               className='auth-box__input mb-30 min-w-530'
               name='password'
               type='password'

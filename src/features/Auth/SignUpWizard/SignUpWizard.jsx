@@ -13,7 +13,7 @@ import {authPath} from '../../../routes/paths';
 
 import {ReactComponent as ArrowBlueIcon} from '../../../assets/icons/arrow-blue.svg';
 
-const SignUp = ({match}) => {
+const SignUpWizard = ({match}) => {
   const dispatch = useDispatch();
   const {loading} = useSelector(({app}) => app);
   const {signUpError} = useSelector(({auth}) => auth);
@@ -44,7 +44,7 @@ const SignUp = ({match}) => {
   const [error, toggleError] = useToggle(false);
   const onSignUpSuccess = () => {
     toggleDialog();
-    dispatch(reset('SignUp'));
+    dispatch(reset('SignUpWizard'));
     setPage(1);
   };
 
@@ -89,4 +89,4 @@ const SignUp = ({match}) => {
   );
 };
 
-export default SignUp;
+export default SignUpWizard;

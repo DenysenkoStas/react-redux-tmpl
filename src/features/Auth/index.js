@@ -1,6 +1,6 @@
-import SignIn from './SignIn/SignIn';
-import SignUp from './SignUp/SignUp';
-import PasswordRecovery from './PasswordRecovery/PasswordRecovery';
-import PasswordConfirm from './PasswordRecovery/PasswordConfirm';
+import SignIn from './SignIn';
+import SignUpWizard from './SignUpWizard/SignUpWizard';
+import PasswordRecovery from './PasswordRecovery';
+import PasswordConfirm from './PasswordConfirm';
 
-export {SignIn, SignUp, PasswordRecovery, PasswordConfirm};
+export {SignIn, SignUpWizard, PasswordRecovery, PasswordConfirm};

@@ -5,6 +5,7 @@
   "author": "Stas Denysenko <denysenko.stas@gmail.com> (https://www.linkedin.com/in/stas-denysenko/)",
   "dependencies": {
     "@date-io/dayjs": "1.x",
+    "@hookform/resolvers": "^2.8.1",
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
@@ -33,7 +34,8 @@
     "redux": "^4.1.0",
     "redux-axios-middleware": "^4.0.1",
     "redux-form": "^8.3.7",
-    "redux-saga": "^1.1.3"
+    "redux-saga": "^1.1.3",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",

@@ -1,101 +1,131 @@
-import React, {Component} from 'react';
-// import {TextField} from 'mui-rff';
-// import InputAdornment from '@material-ui/core/InputAdornment';
-import {TextField, InputAdornment} from '@material-ui/core';
+import React from 'react';
+import PropTypes from 'prop-types';
+import {TextField} from '@material-ui/core';
 
 import './InputMUI.scss';
 
-class InputMUI extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     type: props.type,
-  //   };
-  // }
+const InputMUI = ({
+  autoComplete = '',
+  autoFocus = false,
+  className = '',
+  color = 'primary',
+  defaultValue,
+  disabled = false,
+  error = false,
+  fullWidth = false,
+  helperText,
+  id = '',
+  inputProps = {},
+  inputRef,
+  label,
+  margin = 'none',
+  maxRows = 10,
+  minRows,
+  multiline = false,
+  name = '',
+  onChange,
+  placeholder = '',
+  required = false,
+  select = false,
+  size = 'medium',
+  type = 'text',
+  value,
+  variant = 'outlined',
 
-  // changeType = () => {
-  //   this.setState(({type}) => ({
-  //     type: type === 'password' ? 'text' : 'password',
-  //   }));
-  // };
+  shrink,
+  readOnly = false,
+  ...props
+}) => {
+  return (
+    <TextField
+      autoComplete={autoComplete}
+      autoFocus={autoFocus}
+      className={className}
+      classes={{
+        root: 'input-mui',
+      }}
+      color={color}
+      defaultValue={defaultValue}
+      disabled={disabled}
+      error={error}
+      fullWidth={fullWidth}
+      helperText={helperText}
+      id={id}
+      inputProps={inputProps}
+      inputRef={inputRef}
+      label={label}
+      margin={margin}
+      maxRows={maxRows}
+      minRows={minRows}
+      multiline={multiline}
+      name={name}
+      onChange={onChange}
+      placeholder={placeholder}
+      required={required}
+      select={select}
+      size={size}
+      type={type}
+      variant={variant}
+      {...props}
+      InputProps={{
+        classes: {
+          root: 'input-mui__input',
+          focused: 'input-mui__input--focused',
+          disabled: 'input-mui__input--disabled',
+          error: 'input-mui__input-error',
+        },
+        readOnly: readOnly,
+      }}
+      // label
+      InputLabelProps={{
+        classes: {
+          root: 'input-mui__label',
+          focused: 'input-mui__label--focused',
+          shrink: 'input-mui__label--active',
+          error: 'input-mui__label--error',
+          disabled: 'input-mui__label--disabled',
+        },
+        shrink: shrink,
+      }}
+      // helper
+      FormHelperTextProps={{
+        classes: {
+          root: `input-mui__helper-text${error ? ' input-mui__helper-text--error' : ''}`,
+        },
+      }}
+    />
+  );
+};
 
-  render() {
-    const {
-      className,
-      input,
-      placeholder = 'Type here…',
-      label,
-      autoFocus,
-      symbol,
-      disabled,
-      placement = 'end',
-      shrink = true,
-      multiline = false,
-      readOnly = false,
-      // meta: {touched, error},
-    } = this.props;
-    // const {type} = this.state;
-    return (
-      <TextField
-        {...input}
-        className={className}
-        // type={type}
-        label={label}
-        variant='outlined'
-        disabled={disabled}
-        // error={touched && !!error}
-        placeholder={placeholder}
-        autoComplete='off'
-        autoFocus={autoFocus}
-        classes={{
-          root: `custom-input-wrapper${readOnly ? ' readonly' : ''}`,
-        }}
-        multiline={multiline}
-        InputProps={{
-          startAdornment:
-            symbol !== undefined && placement === 'start' ? (
-              <InputAdornment position='start'>
-                <span>{symbol}</span>
-              </InputAdornment>
-            ) : (
-              ''
-            ),
-          // endAdornment: (
-          //   <InputAdornment position='start'>
-          //     <span className={symbol ? 'symbol' : ''}>{symbol}</span>
-          //     {touched && !!error && <span className='error-text'>{error}</span>}
-          //   </InputAdornment>
-          // ),
-          classes: {
-            root: 'custom-input',
-            focused: 'custom-input-focused',
-            disabled: 'custom-input-disabled',
-            error: 'custom-input-error',
-            adornedEnd: 'custom-input-adorned-end',
-            adornedStart: 'custom-input-adorned-start',
-            notchedOutline: 'custom-input-outline',
-          },
-          readOnly: readOnly,
-        }}
-        InputLabelProps={{
-          classes: {
-            root: 'custom-input-label',
-            focused: 'custom-input-label-focused',
-            shrink: 'custom-input-label-active',
-            error: 'custom-input-label-error',
-          },
-          shrink: shrink,
-        }}
-        FormHelperTextProps={{
-          // for React Final Form
-          classes: {
-            root: 'error-text',
-          },
-          // for React Final Form
-        }}
-      />
-    );
-  }
-}
+InputMUI.propTypes = {
+  autoComplete: PropTypes.string,
+  autoFocus: PropTypes.bool,
+  className: PropTypes.string,
+  color: PropTypes.oneOf(['primary', 'secondary']),
+  defaultValue: PropTypes.any,
+  disabled: PropTypes.bool,
+  error: PropTypes.bool,
+  fullWidth: PropTypes.bool,
+  helperText: PropTypes.node,
+  id: PropTypes.string,
+  inputProps: PropTypes.object,
+  inputRef: PropTypes.any,
+  label: PropTypes.node,
+  margin: PropTypes.oneOf(['dense', 'none', 'normal']),
+  maxRows: PropTypes.number,
+  minRows: PropTypes.number,
+  multiline: PropTypes.bool,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  readOnly: PropTypes.bool,
+  required: PropTypes.bool,
+  select: PropTypes.bool,
+  shrink: PropTypes.any,
+  size: PropTypes.oneOf(['medium', 'small']),
+  type: PropTypes.string,
+  value: PropTypes.any,
+  variant: PropTypes.oneOf(['filled', 'outlined', 'standard']),
+};
 
 export default InputMUI;

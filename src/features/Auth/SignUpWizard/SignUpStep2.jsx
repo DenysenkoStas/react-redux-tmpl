@@ -1,6 +1,6 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
-import InputMUI from '../../../shared/InputMUI/InputMUI';
+import {InputMUIReduxForm} from '../../../shared/InputMUI';
 import ButtonMUI from '../../../shared/ButtonMUI';
 import {number, required} from '../../../helpers/formValidation';
 
@@ -8,7 +8,7 @@ const SignUpStep2 = ({handleSubmit, pristine, invalid}) => {
   return (
     <form onSubmit={handleSubmit}>
       <Field
-        component={InputMUI}
+        component={InputMUIReduxForm}
         className='auth-box__input min-w-530 mb-55'
         name='address'
         type='text'
@@ -17,7 +17,7 @@ const SignUpStep2 = ({handleSubmit, pristine, invalid}) => {
       />
       <div className='auth-box__input-group mb-55'>
         <Field
-          component={InputMUI}
+          component={InputMUIReduxForm}
           className='auth-box__input w-48'
           name='city'
           type='text'
@@ -25,7 +25,7 @@ const SignUpStep2 = ({handleSubmit, pristine, invalid}) => {
           validate={[required]}
         />
         <Field
-          component={InputMUI}
+          component={InputMUIReduxForm}
           className='auth-box__input w-48'
           name='state'
           type='text'
@@ -35,7 +35,7 @@ const SignUpStep2 = ({handleSubmit, pristine, invalid}) => {
       </div>
       <div className='auth-box__input-group'>
         <Field
-          component={InputMUI}
+          component={InputMUIReduxForm}
           className='auth-box__input w-48'
           name='postcode'
           type='number'
@@ -43,7 +43,7 @@ const SignUpStep2 = ({handleSubmit, pristine, invalid}) => {
           validate={[required, number]}
         />
         <Field
-          component={InputMUI}
+          component={InputMUIReduxForm}
           className='auth-box__input w-48'
           name='country'
           type='text'

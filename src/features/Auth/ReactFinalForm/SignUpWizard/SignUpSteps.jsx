@@ -1,10 +1,10 @@
 import React from 'react';
 import {Field} from 'react-final-form';
-import SignUpWrap from './SignUpWrap';
-import InputMUI from '../../../shared/InputMUI';
-import {composeValidators, email, number, required} from '../../../helpers/formValidation';
+import SignUpWizard from './SignUpWizard';
+import {InputMUIFinalForm} from '../../../../shared/InputMUI';
+import {composeValidators, email, number, required} from '../../../../helpers/formValidation';
 
-const SignUp = () => {
+const SignUpSteps = () => {
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const onSubmit = async (values) => {
@@ -14,10 +14,10 @@ const SignUp = () => {
 
   return (
     <>
-      <SignUpWrap onSubmit={onSubmit}>
-        <SignUpWrap.Page>
+      <SignUpWizard onSubmit={onSubmit}>
+        <SignUpWizard.Page>
           <Field
-            component={InputMUI}
+            component={InputMUIFinalForm}
             className='auth-box__input min-w-530 mb-55'
             name='email'
             type='email'
@@ -26,7 +26,7 @@ const SignUp = () => {
           />
           <div className='auth-box__input-group mb-30'>
             <Field
-              component={InputMUI}
+              component={InputMUIFinalForm}
               className='auth-box__input w-48'
               name='first_name'
               type='text'
@@ -34,7 +34,7 @@ const SignUp = () => {
               validate={required}
             />
             <Field
-              component={InputMUI}
+              component={InputMUIFinalForm}
               className='auth-box__input w-48'
               name='last_name'
               type='text'
@@ -42,10 +42,10 @@ const SignUp = () => {
               validate={required}
             />
           </div>
-        </SignUpWrap.Page>
-        <SignUpWrap.Page>
+        </SignUpWizard.Page>
+        <SignUpWizard.Page>
           <Field
-            component={InputMUI}
+            component={InputMUIFinalForm}
             className='auth-box__input min-w-530 mb-55'
             name='address'
             type='text'
@@ -54,7 +54,7 @@ const SignUp = () => {
           />
           <div className='auth-box__input-group mb-55'>
             <Field
-              component={InputMUI}
+              component={InputMUIFinalForm}
               className='auth-box__input w-48'
               name='city'
               type='text'
@@ -62,7 +62,7 @@ const SignUp = () => {
               validate={required}
             />
             <Field
-              component={InputMUI}
+              component={InputMUIFinalForm}
               className='auth-box__input w-48'
               name='state'
               type='text'
@@ -72,7 +72,7 @@ const SignUp = () => {
           </div>
           <div className='auth-box__input-group'>
             <Field
-              component={InputMUI}
+              component={InputMUIFinalForm}
               className='auth-box__input w-48'
               name='postcode'
               type='number'
@@ -80,7 +80,7 @@ const SignUp = () => {
               validate={composeValidators(required, number)}
             />
             <Field
-              component={InputMUI}
+              component={InputMUIFinalForm}
               className='auth-box__input w-48'
               name='country'
               type='text'
@@ -88,10 +88,10 @@ const SignUp = () => {
               validate={required}
             />
           </div>
-        </SignUpWrap.Page>
-        <SignUpWrap.Page>
+        </SignUpWizard.Page>
+        <SignUpWizard.Page>
           <Field
-            component={InputMUI}
+            component={InputMUIFinalForm}
             className='auth-box__input min-w-530 mb-55'
             name='password'
             type='password'
@@ -99,17 +99,17 @@ const SignUp = () => {
             validate={required}
           />
           <Field
-            component={InputMUI}
+            component={InputMUIFinalForm}
             className='auth-box__input min-w-530'
             name='repeat_password'
             type='password'
             label='Repeat Password'
             validate={required}
           />
-        </SignUpWrap.Page>
-      </SignUpWrap>
+        </SignUpWizard.Page>
+      </SignUpWizard>
     </>
   );
 };
 
-export default SignUp;
+export default SignUpSteps;

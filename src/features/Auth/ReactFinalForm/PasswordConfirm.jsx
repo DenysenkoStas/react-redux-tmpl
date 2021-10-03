@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {postPassConfirm} from '../authActions';
 import {Field, reduxForm, SubmissionError} from 'redux-form';
 import {minLength8, passwordMatch, required} from '../../../helpers/formValidation';
-import InputMUI from '../../../shared/InputMUI/InputMUI';
+import {InputMUIFinalForm} from '../../../shared/InputMUI';
 import {useQueryParams, useToggle} from '../../../helpers/hooks';
 import SnackbarMUI from '../../../shared/SnackbarMUI/SnackbarMUI';
 import ButtonMUI from '../../../shared/ButtonMUI';
@@ -58,7 +58,7 @@ const PasswordConfirm = ({history, handleSubmit, pristine, submitting, invalid})
       {!sent ? (
         <>
           <Field
-            component={InputMUI}
+            component={InputMUIFinalForm}
             className='auth-box__input mt-85 mb-55 min-w-530'
             name='password'
             type='password'
@@ -66,7 +66,7 @@ const PasswordConfirm = ({history, handleSubmit, pristine, submitting, invalid})
             validate={[required, minLength8]}
           />
           <Field
-            component={InputMUI}
+            component={InputMUIFinalForm}
             className='auth-box__input min-w-530'
             name='confirm_password'
             type='password'

@@ -1,17 +1,17 @@
 import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {postSignIn} from '../authActions';
+import {postSignIn} from './authActions';
 import {Field, reduxForm, SubmissionError} from 'redux-form';
-import InputMUI from '../../../shared/InputMUI';
-import ButtonMUI from '../../../shared/ButtonMUI';
-import {email, minLength8, required} from '../../../helpers/formValidation';
-import SnackbarMUI from '../../../shared/SnackbarMUI';
-import EmailVerification from '../EmailVerification/EmailVerification';
-import {useToggle} from '../../../helpers/hooks';
+import {InputMUIReduxForm} from '../../shared/InputMUI';
+import ButtonMUI from '../../shared/ButtonMUI';
+import {email, minLength8, required} from '../../helpers/formValidation';
+import SnackbarMUI from '../../shared/SnackbarMUI';
+import EmailVerification from './EmailVerification';
+import {useToggle} from '../../helpers/hooks';
 
-import captcha from '../../../assets/images/captcha.png';
-import {authPath, rootMainPath} from '../../../routes/paths';
+import captcha from '../../assets/images/captcha.png';
+import {authPath, rootMainPath} from '../../routes/paths';
 
 const SignIn = ({history, handleSubmit, submitting, pristine, invalid}) => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const SignIn = ({history, handleSubmit, submitting, pristine, invalid}) => {
       <p className='mb-85'>Provide your credentials below</p>
 
       <Field
-        component={InputMUI}
+        component={InputMUIReduxForm}
         className='auth-box__input min-w-530 mb-55'
         name='email'
         type='email'
@@ -54,7 +54,7 @@ const SignIn = ({history, handleSubmit, submitting, pristine, invalid}) => {
           Forgot password?
         </Link>
         <Field
-          component={InputMUI}
+          component={InputMUIReduxForm}
           className='auth-box__input mb-30 min-w-530'
           name='password'
           type='password'

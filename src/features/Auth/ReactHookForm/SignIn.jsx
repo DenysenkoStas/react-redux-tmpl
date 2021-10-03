@@ -1,22 +1,46 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {postSignIn} from '../authActions';
-import InputMUI from '../../../shared/InputMUI';
-import ButtonMUI from '../../../shared/ButtonMUI';
+import {InputMUI} from '../../../shared/InputMUI';
 import {useToggle} from '../../../helpers/hooks';
 import SnackbarMUI from '../../../shared/SnackbarMUI';
-import EmailVerification from '../EmailVerification/EmailVerification';
+import EmailVerification from '../EmailVerification';
 import {authPath, rootMainPath} from '../../../routes/paths';
+import * as yup from 'yup';
+import {yupResolver} from '@hookform/resolvers/yup';
 
 import {Controller, useForm} from 'react-hook-form';
+import ButtonMUI from '../../../shared/ButtonMUI';
 
 const SignIn = ({history}) => {
   const dispatch = useDispatch();
   const {buttonLoading} = useSelector(({app}) => app);
   const {signInError} = useSelector(({auth}) => auth);
 
-  const {control, handleSubmit} = useForm();
+  const schema = useMemo(
+    () =>
+      yup.object().shape({
+        email: yup.string().required('No email provided').email('Incorrect email'),
+        password: yup.string().required('No password provided'),
+      }),
+    [],
+  );
+
+  const {
+    control,
+    handleSubmit,
+    setError,
+    formState: {errors},
+  } = useForm({
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
+    resolver: yupResolver(schema),
+    shouldFocusError: true,
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
   const [error, toggleError] = useToggle(false);
 
@@ -25,31 +49,30 @@ const SignIn = ({history}) => {
   }, []);
 
   const submitForm = (data) => {
-    return dispatch(postSignIn(data)).then((res) => {
-      if (res.payload && res.payload.status && res.payload.status === 200) {
-        localStorage.setItem('token', res.payload.data.token);
-        history.push(rootMainPath);
-      } else {
-        toggleError();
-        // throw new SubmissionError({...res.error.response.data, _error: res.error.response.data.detail});
-      }
-    });
+    alert(JSON.stringify(data));
+
+    // return dispatch(postSignIn(data)).then((res) => {
+    //   if (res.payload && res.payload.status && res.payload.status === 200) {
+    //     localStorage.setItem('token', res.payload.data.token);
+    //     history.push(rootMainPath);
+    //   } else {
+    //     toggleError();
+    // throw new SubmissionError({...res.error.response.data, _error: res.error.response.data.detail});
+    // }
+    // });
   };
 
   return (
-    <form className='auth-box max-w-530' onSubmit={handleSubmit(submitForm)}>
+    <form className='auth-box min-w-530' onSubmit={handleSubmit(submitForm)}>
       <h1 className='h1 mb-15'>Sign in</h1>
       <p className='mb-85'>Provide your credentials below - React Hook Form</p>
 
       <Controller
-        render={({field}) => <InputMUI className='auth-box__input min-w-530 mb-55' {...field} />}
         name='email'
-        type='email'
-        label='Email'
         control={control}
-        defaultValue=''
-        rules={{ required: true }}
-        // validate={composeValidators(required, email)}
+        render={({field}) => (
+          <InputMUI className='auth-box__input mb-55' type='email' label='Email' fullWidth inputRef={field} />
+        )}
       />
 
       <div className='auth-box__res-pass-wrap'>
@@ -57,20 +80,16 @@ const SignIn = ({history}) => {
           Forgot password?
         </Link>
         <Controller
-          render={({field}) => <InputMUI className='auth-box__input mb-30 min-w-530' {...field} />}
           name='password'
-          type='password'
-          label='Password'
           control={control}
-          defaultValue=''
-          rules={{ required: true }}
-          // validate={composeValidators(required, minLength8)}
+          render={({field}) => (
+            <InputMUI className='auth-box__input mb-30' type='password' label='Password' fullWidth inputRef={field} />
+          )}
         />
       </div>
 
       <div className='auth-box__btn-wrap mt-65 mx-auto'>
-        {/*<ButtonMUI disabled={submitting || pristine || invalid} loading={buttonLoading} formAction>*/}
-        <ButtonMUI loading={buttonLoading} formAction>
+        <ButtonMUI disabled={buttonLoading} loading={buttonLoading} formAction>
           Sign in
         </ButtonMUI>
       </div>

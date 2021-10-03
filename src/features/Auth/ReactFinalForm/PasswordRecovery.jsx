@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import {Form, Field} from 'react-final-form';
-import {FORM_ERROR} from 'final-form';
+import {Field, Form} from 'react-final-form';
 import {Link} from 'react-router-dom';
 import ButtonMUI from '../../../shared/ButtonMUI';
-import InputMUI from '../../../shared/InputMUI/InputMUI';
+import {InputMUIFinalForm} from '../../../shared/InputMUI';
 import {useToggle} from '../../../helpers/hooks';
-import {email, required, composeValidators} from '../../../helpers/formValidation';
+import {composeValidators, email, required} from '../../../helpers/formValidation';
 import {useDispatch, useSelector} from 'react-redux';
 import {postPassRecovery} from '../authActions';
 import SnackbarMUI from '../../../shared/SnackbarMUI/SnackbarMUI';
@@ -54,7 +53,7 @@ const PasswordRecovery = () => {
           {!sent ? (
             <>
               <Field
-                component={InputMUI}
+                component={InputMUIFinalForm}
                 className='auth-box__input mt-85 min-w-530'
                 name='email'
                 type='email'

@@ -110,3 +110,37 @@
     height: 24px;
   }
 }
+
+// InputMUI
+.input-mui {
+  &__label {
+    font-family: inherit;
+
+    &.input-mui__label--focused {
+      color: var(--info);
+    }
+  }
+
+  &__input {
+    font-family: inherit;
+
+    &.input-mui__input--focused {
+      .MuiOutlinedInput-notchedOutline {
+        border-width: 1px;
+        border-color: var(--info);
+      }
+    }
+  }
+
+  .MuiFilledInput-root {
+    &.MuiInput-underline:hover:before {
+      border-color: var(--info);
+    }
+  }
+
+  .MuiFilledInput-underline:after,
+  .MuiInput-underline:after,
+  .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom: 1px solid var(--info);
+  }
+}

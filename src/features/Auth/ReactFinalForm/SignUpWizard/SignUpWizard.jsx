@@ -1,12 +1,12 @@
 import React, {Component, Children} from 'react';
 import PropTypes from 'prop-types';
 import {Form} from 'react-final-form';
-import {ReactComponent as ArrowBlueIcon} from '../../../assets/icons/arrow-blue.svg';
-import ButtonMUI from '../../../shared/ButtonMUI';
+import {ReactComponent as ArrowBlueIcon} from '../../../../assets/icons/arrow-blue.svg';
+import ButtonMUI from '../../../../shared/ButtonMUI';
 import {Link} from 'react-router-dom';
-import {authPath} from '../../../routes/paths';
+import {authPath} from '../../../../routes/paths';
 
-export default class SignUpWrap extends Component {
+export default class SignUpWizard extends Component {
   static Page = ({children}) => children;
 
   constructor(props) {
@@ -103,6 +103,6 @@ export default class SignUpWrap extends Component {
   }
 }
 
-SignUpWrap.propTypes = {
+SignUpWizard.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };

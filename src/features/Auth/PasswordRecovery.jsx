@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import {Field, reduxForm, reset, SubmissionError} from 'redux-form';
 import {Link} from 'react-router-dom';
-import InputMUI from '../../../shared/InputMUI/InputMUI';
-import {useToggle} from '../../../helpers/hooks';
-import DefaultButton from '../../../shared/_DefaultButton/DefaultButton';
-import {email, required} from '../../../helpers/formValidation';
+import {InputMUIReduxForm} from '../../shared/InputMUI';
+import {useToggle} from '../../helpers/hooks';
+import ButtonMUI from '../../shared/ButtonMUI';
+import {email, required} from '../../helpers/formValidation';
 import {useDispatch, useSelector} from 'react-redux';
-import {postPassRecovery} from '../authActions';
-import SnackbarMUI from '../../../shared/SnackbarMUI/SnackbarMUI';
+import {postPassRecovery} from './authActions';
+import SnackbarMUI from '../../shared/SnackbarMUI/SnackbarMUI';
+import {authPath} from '../../routes/paths';
 
-import {ReactComponent as ArrowBlue} from '../../../assets/icons/arrow-blue.svg';
-import {ReactComponent as EnvelopeIcon} from '../../../assets/icons/envelope.svg';
-import {authPath} from '../../../routes/paths';
+import {ReactComponent as ArrowBlue} from '../../assets/icons/arrow-blue.svg';
+import {ReactComponent as EnvelopeIcon} from '../../assets/icons/envelope.svg';
 
 const PasswordRecovery = ({handleSubmit, pristine, submitting, invalid}) => {
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ const PasswordRecovery = ({handleSubmit, pristine, submitting, invalid}) => {
       {!sent ? (
         <>
           <Field
-            component={InputMUI}
+            component={InputMUIReduxForm}
             className='auth-box__input mt-85 min-w-530'
             name='email'
             type='email'
@@ -58,9 +58,9 @@ const PasswordRecovery = ({handleSubmit, pristine, submitting, invalid}) => {
           />
 
           <div className='auth-box__btn-wrap mt-65 mx-auto'>
-            <DefaultButton disabled={submitting || pristine || invalid} loading={loading} formAction>
+            <ButtonMUI disabled={submitting || pristine || invalid} loading={loading} formAction>
               Next
-            </DefaultButton>
+            </ButtonMUI>
           </div>
         </>
       ) : (
