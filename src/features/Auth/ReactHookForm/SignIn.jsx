@@ -3,14 +3,14 @@ import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {InputMUI} from '../../../shared/InputMUI';
 import {useToggle} from '../../../helpers/hooks';
-import SnackbarMUI from '../../../shared/SnackbarMUI';
-import EmailVerification from '../EmailVerification';
 import {authPath, rootMainPath} from '../../../routes/paths';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 
 import {Controller, useForm} from 'react-hook-form';
 import ButtonMUI from '../../../shared/ButtonMUI';
+import SnackbarMUI from '../../../shared/SnackbarMUI';
+import EmailVerification from '../EmailVerification';
 
 const SignIn = ({history}) => {
   const dispatch = useDispatch();
@@ -70,8 +70,15 @@ const SignIn = ({history}) => {
       <Controller
         name='email'
         control={control}
-        render={({field}) => (
-          <InputMUI className='auth-box__input mb-55' type='email' label='Email' fullWidth inputRef={field} />
+        render={({field: {onChange, value}}) => (
+          <InputMUI
+            className='auth-box__input mb-55'
+            type='email'
+            label='Email'
+            fullWidth
+            onChange={onChange}
+            value={value}
+          />
         )}
       />
 
@@ -82,8 +89,15 @@ const SignIn = ({history}) => {
         <Controller
           name='password'
           control={control}
-          render={({field}) => (
-            <InputMUI className='auth-box__input mb-30' type='password' label='Password' fullWidth inputRef={field} />
+          render={({field: {onChange, value}}) => (
+            <InputMUI
+              className='auth-box__input mb-30'
+              type='password'
+              label='Password'
+              fullWidth
+              onChange={onChange}
+              value={value}
+            />
           )}
         />
       </div>
