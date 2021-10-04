@@ -1,9 +1,9 @@
 import React from 'react';
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 // import {SignIn, SignUp, PasswordRecovery, PasswordConfirm} from '../features/Auth';
-import {SignUpSteps, PasswordRecovery, PasswordConfirm} from '../features/Auth/ReactFinalForm';
-import {SignIn} from '../features/Auth/ReactHookForm';
-import {rootMainPath, rootAuthPath, authPath} from './paths';
+import {PasswordConfirm, SignUpSteps} from '../features/Auth/ReactFinalForm';
+import {PasswordRecovery, SignIn, SignUp} from '../features/Auth/ReactHookForm';
+import {authPath, rootAuthPath, rootMainPath} from './paths';
 import NotFound from '../shared/NotFound';
 
 const AuthRoutes = () => {
@@ -13,8 +13,8 @@ const AuthRoutes = () => {
     <Switch>
       <Redirect from={rootAuthPath} exact to={authPath.signIn} />
       <Route path={authPath.signIn} exact component={SignIn} />
-      <Route path={authPath.signUp} exact component={SignUpSteps} />
-      <Route path={authPath.signUpAdmin} exact component={SignUpSteps} />
+      <Route path={authPath.signUp} exact component={SignUp} />
+      <Route path={authPath.signUpWizard} exact component={SignUpSteps} />
       <Route path={authPath.passRecovery} exact component={PasswordRecovery} />
       <Route path={authPath.passConfirm} exact component={PasswordConfirm} />
       <Route path='*' component={NotFound} />

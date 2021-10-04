@@ -1,38 +1,42 @@
-import React, {useEffect, useMemo} from 'react';
-import {Link} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
-import {InputMUI} from '../../../shared/InputMUI';
-import {useToggle} from '../../../helpers/hooks';
+import React, {useEffect} from 'react';
+import {Link, useHistory} from 'react-router-dom';
 import {authPath, rootMainPath} from '../../../routes/paths';
+import {useDispatch, useSelector} from 'react-redux';
+import {postSignIn} from '../authActions';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
-
 import {Controller, useForm} from 'react-hook-form';
+import _ from 'lodash';
+import {useToggle} from '../../../helpers/hooks';
+import {InputMUI} from '../../../shared/InputMUI';
 import ButtonMUI from '../../../shared/ButtonMUI';
+import {ReCaptchaV2} from '../../../shared/ReCaptchaV2';
 import SnackbarMUI from '../../../shared/SnackbarMUI';
 import EmailVerification from '../EmailVerification';
-import {postSignIn} from '../authActions';
-import {ReCaptchaV2} from '../../../shared/ReCaptchaV2';
 
-const SignIn = ({history}) => {
+const SignIn = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const {buttonLoading} = useSelector(({app}) => app);
   const {signInError} = useSelector(({auth}) => auth);
 
-  const schema = useMemo(
-    () =>
-      yup.object().shape({
-        email: yup.string().required('No email provided').email('Incorrect email'),
-        password: yup.string().required('No password provided'),
-      }),
-    [],
-  );
+  const [error, toggleError] = useToggle(false);
+
+  useEffect(() => {
+    localStorage.getItem('token') && history.push(rootMainPath);
+  }, []);
+
+  const schema = yup.object({
+    email: yup.string().required('Required').email('Incorrect email'),
+    password: yup.string().required('Required').min(8, 'Min 8 characters'),
+    recaptcha: yup.string().required()
+  });
 
   const {
     control,
     handleSubmit,
-    // setError,
-    // formState: {errors},
+    setError,
+    formState: {errors, isValid}
   } = useForm({
     mode: 'onTouched',
     reValidateMode: 'onChange',
@@ -41,46 +45,39 @@ const SignIn = ({history}) => {
     defaultValues: {
       email: '',
       password: '',
-      recaptcha: '',
-    },
+      recaptcha: ''
+    }
   });
 
-  const [error, toggleError] = useToggle(false);
+  const onSubmit = async (data) => {
+    const res = await dispatch(postSignIn(data));
 
-  useEffect(() => {
-    localStorage.getItem('token') && history.push(rootMainPath);
-  }, []);
-
-  const submitForm = (data) => {
-    // alert(JSON.stringify(data));
-
-    return dispatch(postSignIn(data)).then((res) => {
-      if (res.payload && res.payload.status && res.payload.status === 200) {
-        localStorage.setItem('token', res.payload.data.token);
-        history.push(rootMainPath);
-      } else {
-        toggleError();
-        // throw new SubmissionError({...res.error.response.data, _error: res.error.response.data.detail});
-      }
-    });
+    if (res?.payload) {
+      localStorage.setItem('token', res.payload.data.token);
+      history.push(rootMainPath);
+    }
+    if (res?.error) {
+      setError('email', {type: 'manual', message: 'The user does not exist'});
+      toggleError();
+    }
   };
 
   return (
-    <form className='auth-box min-w-530' onSubmit={handleSubmit(submitForm)}>
+    <form className='auth-box min-w-530' onSubmit={handleSubmit(onSubmit)}>
       <h1 className='h1 mb-15'>Sign in</h1>
-      <p className='mb-85'>Provide your credentials below - React Hook Form</p>
+      <p className='mb-85'>React Hook Form example</p>
 
       <Controller
         name='email'
         control={control}
-        render={({field: {onChange, value}}) => (
+        render={({field}) => (
           <InputMUI
             className='auth-box__input mb-55'
             type='email'
             label='Email'
             fullWidth
-            onChange={onChange}
-            value={value}
+            error={errors.email?.message}
+            {..._.omit(field, 'ref')}
           />
         )}
       />
@@ -92,14 +89,14 @@ const SignIn = ({history}) => {
         <Controller
           name='password'
           control={control}
-          render={({field: {onChange, value}}) => (
+          render={({field}) => (
             <InputMUI
               className='auth-box__input mb-30'
               type='password'
               label='Password'
               fullWidth
-              onChange={onChange}
-              value={value}
+              error={errors.password?.message}
+              {..._.omit(field, 'ref')}
             />
           )}
         />
@@ -108,14 +105,14 @@ const SignIn = ({history}) => {
       <Controller
         name='recaptcha'
         control={control}
-        render={({field: {onChange}}) => <ReCaptchaV2 center onChange={onChange} />}
+        render={({field: {onChange}}) => (
+          <ReCaptchaV2 siteKey='6LcPyr8bAAAAAOzukES36-GsPCVHFjyaZyxLJ6sO' center onChange={onChange} />
+        )}
       />
 
-      <div className='auth-box__btn-wrap mt-65 mx-auto'>
-        <ButtonMUI disabled={buttonLoading} loading={buttonLoading} formAction>
-          Sign in
-        </ButtonMUI>
-      </div>
+      <ButtonMUI className='flex mt-65 mx-auto' disabled={!isValid || buttonLoading} loading={buttonLoading} formAction>
+        Sign in
+      </ButtonMUI>
 
       <div className='auth-box__footer mt-105'>
         <span className='auth-box__text mr-15'>Don’t have account yet?</span>

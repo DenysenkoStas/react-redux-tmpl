@@ -132,6 +132,16 @@
     }
   }
 
+  &__helper-text {
+    position: absolute;
+    bottom: -20px;
+    font-family: inherit;
+  }
+
+  &__error-icon {
+    cursor: pointer;
+  }
+
   .MuiFilledInput-root {
     &.MuiInput-underline:hover:before {
       border-color: var(--info);

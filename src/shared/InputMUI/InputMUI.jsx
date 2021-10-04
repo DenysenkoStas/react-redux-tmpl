@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {TextField} from '@material-ui/core';
+import {InputAdornment, TextField} from '@material-ui/core';
+import TooltipMUI from '../TooltipMUI';
 
 import './InputMUI.scss';
+
+import {ReactComponent as ErrorIcon} from './icons/error.svg';
 
 const InputMUI = ({
   autoComplete = '',
@@ -11,7 +14,7 @@ const InputMUI = ({
   color = 'primary',
   defaultValue,
   disabled = false,
-  error = false,
+  error,
   fullWidth = false,
   helperText,
   id = '',
@@ -34,6 +37,7 @@ const InputMUI = ({
 
   shrink,
   readOnly = false,
+  endAdornment = false,
   ...props
 }) => {
   return (
@@ -47,7 +51,7 @@ const InputMUI = ({
       color={color}
       defaultValue={defaultValue}
       disabled={disabled}
-      error={error}
+      error={!!error}
       fullWidth={fullWidth}
       helperText={helperText}
       id={id}
@@ -75,8 +79,25 @@ const InputMUI = ({
           error: 'input-mui__input-error',
         },
         readOnly: readOnly,
+        endAdornment: (
+          <InputAdornment position='end'>
+            {error && !helperText ? (
+              <TooltipMUI title={error} position='left' errorColor>
+                <ErrorIcon className='input-mui__error-icon' width='20px' height='20px' />
+              </TooltipMUI>
+            ) : endAdornment ? (
+              endAdornment
+            ) : (
+              ''
+            )}
+          </InputAdornment>
+        ),
       }}
-      // label
+      FormHelperTextProps={{
+        classes: {
+          root: `input-mui__helper-text${error ? ' input-mui__helper-text--error ' : ''}`,
+        },
+      }}
       InputLabelProps={{
         classes: {
           root: 'input-mui__label',
@@ -86,12 +107,6 @@ const InputMUI = ({
           disabled: 'input-mui__label--disabled',
         },
         shrink: shrink,
-      }}
-      // helper
-      FormHelperTextProps={{
-        classes: {
-          root: `input-mui__helper-text${error ? ' input-mui__helper-text--error' : ''}`,
-        },
       }}
     />
   );
@@ -104,7 +119,8 @@ InputMUI.propTypes = {
   color: PropTypes.oneOf(['primary', 'secondary']),
   defaultValue: PropTypes.any,
   disabled: PropTypes.bool,
-  error: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  endAdornment: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   fullWidth: PropTypes.bool,
   helperText: PropTypes.node,
   id: PropTypes.string,

@@ -4,9 +4,19 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 import './TooltipMUI.scss';
 
-const TooltipMUI = ({className = '', title, children, enterDelay, leaveDelay, position = 'top'}) => {
+const TooltipMUI = ({
+  arrow = false,
+  children,
+  className = '',
+  title,
+  enterDelay,
+  errorColor = false,
+  leaveDelay,
+  position = 'top'
+}) => {
   return (
     <Tooltip
+      arrow={arrow}
       className={className}
       title={title}
       placement={position}
@@ -15,7 +25,7 @@ const TooltipMUI = ({className = '', title, children, enterDelay, leaveDelay, po
       disableTouchListener
       disableFocusListener
       classes={{
-        tooltip: 'tooltip-mui',
+        tooltip: `tooltip-mui${errorColor ? ' tooltip-mui--error-color' : ''}`
       }}
     >
       {children}
@@ -24,12 +34,14 @@ const TooltipMUI = ({className = '', title, children, enterDelay, leaveDelay, po
 };
 
 TooltipMUI.propTypes = {
+  arrow: PropTypes.bool,
   children: PropTypes.element.isRequired,
   className: PropTypes.string,
   enterDelay: PropTypes.number,
+  errorColor: PropTypes.bool,
   leaveDelay: PropTypes.number,
   position: PropTypes.string,
-  title: PropTypes.node.isRequired,
+  title: PropTypes.node.isRequired
 };
 
 export default TooltipMUI;

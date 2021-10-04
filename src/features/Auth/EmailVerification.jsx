@@ -44,7 +44,7 @@ const EmailVerification = () => {
           <p className='mb-30'>You will soon receive a confirmation with log in details.</p>
         </>
       )}
-      <ButtonMUI className='small-btn' variant='outlined' onClick={deleteQuery}>
+      <ButtonMUI variant='outlined' size='small' onClick={deleteQuery}>
         Ok
       </ButtonMUI>
     </DialogMUI>

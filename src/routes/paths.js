@@ -24,7 +24,7 @@ export const rootMainPath = '/main';
 export const authPath = {
   signIn: `${rootAuthPath}/sign-in`,
   signUp: `${rootAuthPath}/sign-up`,
-  signUpAdmin: `${rootAuthPath}/sign-up-admin`,
+  signUpWizard: `${rootAuthPath}/sign-up-wizard`,
   passRecovery: `${rootAuthPath}/password-recovery`,
   passConfirm: `${rootAuthPath}/password-confirm`,
 };
