@@ -11,7 +11,7 @@
     overflow: auto;
     padding: 25px 30px;
     max-height: 850px;
-    background-color: #ffffff;
+    background-color: var(--white);
 
     &::-webkit-scrollbar {
       width: 10px;

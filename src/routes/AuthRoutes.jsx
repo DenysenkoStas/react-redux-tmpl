@@ -1,9 +1,8 @@
 import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
-// import {SignIn, SignUp, PasswordRecovery, PasswordConfirm} from '../features/Auth';
-import {PasswordConfirm, SignUpSteps} from '../features/Auth/ReactFinalForm';
-import {PasswordRecovery, SignIn, SignUp} from '../features/Auth/ReactHookForm';
 import {authPath, rootAuthPath, rootMainPath} from './paths';
+import {SignUpWizard} from '../features/Auth';
+import {PasswordRecovery, SignIn, SignUp, PasswordConfirm} from '../features/Auth/ReactHookForm';
 import NotFound from '../shared/NotFound';
 
 const AuthRoutes = () => {
@@ -14,7 +13,7 @@ const AuthRoutes = () => {
       <Redirect from={rootAuthPath} exact to={authPath.signIn} />
       <Route path={authPath.signIn} exact component={SignIn} />
       <Route path={authPath.signUp} exact component={SignUp} />
-      <Route path={authPath.signUpWizard} exact component={SignUpSteps} />
+      <Route path={authPath.signUpWizard} exact component={SignUpWizard} />
       <Route path={authPath.passRecovery} exact component={PasswordRecovery} />
       <Route path={authPath.passConfirm} exact component={PasswordConfirm} />
       <Route path='*' component={NotFound} />

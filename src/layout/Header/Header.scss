@@ -1,6 +1,6 @@
 .header {
   z-index: 1;
-  background-color: #ffffff;
+  background-color: var(--white);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 
   &__container {
@@ -44,7 +44,7 @@
       border-color: var(--info);
 
       path {
-        fill: #ffffff;
+        fill: var(--white);
       }
     }
 

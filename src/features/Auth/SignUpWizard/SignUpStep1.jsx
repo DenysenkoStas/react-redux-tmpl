@@ -11,17 +11,17 @@ const SignUpStep1 = ({handleSubmit, pristine, invalid, userRole}) => {
     <form onSubmit={handleSubmit}>
       <Field
         component={InputMUIReduxForm}
-        className='auth-box__input min-w-530 mb-55'
+        className='auth-box__input w-100'
         name='email'
         type='email'
         label='Email'
         validate={[required, email]}
       />
       {userRole.role === 'user' ? (
-        <div className='auth-box__input-group mb-30'>
+        <div className='auth-box__input-group'>
           <Field
             component={InputMUIReduxForm}
-            className='auth-box__input w-48'
+            className='auth-box__input'
             name='first_name'
             type='text'
             label='First name'
@@ -29,7 +29,7 @@ const SignUpStep1 = ({handleSubmit, pristine, invalid, userRole}) => {
           />
           <Field
             component={InputMUIReduxForm}
-            className='auth-box__input w-48'
+            className='auth-box__input'
             name='last_name'
             type='text'
             label='Last name'
@@ -39,7 +39,7 @@ const SignUpStep1 = ({handleSubmit, pristine, invalid, userRole}) => {
       ) : (
         <Field
           component={InputMUIReduxForm}
-          className='auth-box__input min-w-530 mb-30'
+          className='auth-box__input w-100'
           name='name'
           type='text'
           label='Name'
@@ -47,13 +47,11 @@ const SignUpStep1 = ({handleSubmit, pristine, invalid, userRole}) => {
         />
       )}
 
-      <img className='auth-box__captcha mx-auto' src={captcha} alt='captcha' />
+      <img className='mx-auto' src={captcha} alt='captcha' />
 
-      <div className='auth-box__btn-wrap mt-65 mb-105 mx-auto'>
-        <ButtonMUI disabled={pristine || invalid} formAction>
-          Next
-        </ButtonMUI>
-      </div>
+      <ButtonMUI className='auth-box__btn' disabled={pristine || invalid} formAction>
+        Next
+      </ButtonMUI>
     </form>
   );
 };

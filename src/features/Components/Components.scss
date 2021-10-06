@@ -4,7 +4,7 @@
   &__nav {
     padding: 20px 0;
     width: 20%;
-    background-color: #ffffff;
+    background-color: var(--white);
   }
 
   &__nav-link {
@@ -14,7 +14,7 @@
 
     &.active,
     &:hover {
-      color: #ffffff;
+      color: var(--white);
       background-color: var(--info);
     }
   }

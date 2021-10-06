@@ -2,57 +2,77 @@
   display: flex;
   height: 100vh;
 
-  &__bg {
-    background-color: var(--info);
-    background-image: url('../../assets/images/auth-bg.jpg');
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
   &__content {
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
+    flex: 1;
+    background-color: var(--white);
+  }
+}
+
+.auth-box {
+  margin: auto;
+  padding: 24px;
+  width: 100%;
+  max-width: 530px;
+
+  &__title {
+    margin-bottom: 16px;
   }
 
-  .auth-box {
-    margin: auto;
+  &__desc {
+    margin-bottom: 72px;
+  }
 
-    &__res-pass-wrap {
-      position: relative;
-    }
+  &__input {
+    margin-bottom: 48px;
+  }
 
-    &__res-pass-link {
-      position: absolute;
-      top: -20px;
-      right: 0;
-      font-size: 10px;
-      line-height: 13px;
-      font-weight: 600;
-    }
+  &__res-pass-wrap {
+    position: relative;
+  }
 
-    &__input-group {
-      display: flex;
-      justify-content: space-between;
-    }
+  &__res-pass-link {
+    position: absolute;
+    top: -18px;
+    right: 0;
+    font-size: 10px;
+    line-height: 13px;
+    font-weight: 600;
+  }
 
-    &__rounded-wrap {
-      background: var(--light);
-      border-radius: 10px;
-    }
+  &__input-group {
+    display: flex;
+    gap: 24px;
+  }
 
-    &__btn-wrap {
-      position: relative;
-      width: fit-content;
-    }
+  &__rounded-wrap {
+    margin-top: 64px;
+    padding-top: 24px;
+    padding-bottom: 32px;
+    text-align: center;
+    background: var(--light);
+    border-radius: 8px;
+  }
 
-    &__footer {
-      text-align: center;
-    }
+  &__btn {
+    display: flex;
+    margin-top: 64px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+  }
 
-    &__link {
-      font-weight: 800;
-    }
+  &__footer {
+    margin-top: 104px;
+    text-align: center;
+  }
+
+  &__footer-text {
+    margin-right: 16px;
+  }
+
+  &__link {
+    font-weight: 700;
   }
 }

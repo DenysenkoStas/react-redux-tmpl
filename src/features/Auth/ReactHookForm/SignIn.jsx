@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
-import {authPath, rootMainPath} from '../../../routes/paths';
 import {useDispatch, useSelector} from 'react-redux';
-import {postSignIn} from '../authActions';
+import {Controller, useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {Controller, useForm} from 'react-hook-form';
-import _ from 'lodash';
+import {authPath, rootMainPath} from '../../../routes/paths';
+import {postSignIn} from '../authActions';
 import {useToggle} from '../../../helpers/hooks';
 import {InputMUI} from '../../../shared/InputMUI';
 import ButtonMUI from '../../../shared/ButtonMUI';
@@ -27,8 +26,8 @@ const SignIn = () => {
   }, []);
 
   const schema = yup.object({
-    email: yup.string().required('Required').email('Incorrect email'),
-    password: yup.string().required('Required').min(8, 'Min 8 characters'),
+    email: yup.string().email('Enter a valid email').required('Field is required'),
+    password: yup.string().min(8, 'Min 8 characters').required('Field is required'),
     recaptcha: yup.string().required()
   });
 
@@ -41,7 +40,6 @@ const SignIn = () => {
     mode: 'onTouched',
     reValidateMode: 'onChange',
     resolver: yupResolver(schema),
-    shouldFocusError: true,
     defaultValues: {
       email: '',
       password: '',
@@ -51,39 +49,41 @@ const SignIn = () => {
 
   const onSubmit = async (data) => {
     const res = await dispatch(postSignIn(data));
+    const errors = res.error?.response.data;
 
     if (res?.payload) {
       localStorage.setItem('token', res.payload.data.token);
       history.push(rootMainPath);
     }
     if (res?.error) {
-      setError('email', {type: 'manual', message: 'The user does not exist'});
+      errors.email && setError('email', {type: 'manual', message: errors.email});
+      errors.password && setError('password', {type: 'manual', message: errors.password});
       toggleError();
     }
   };
 
   return (
-    <form className='auth-box min-w-530' onSubmit={handleSubmit(onSubmit)}>
-      <h1 className='h1 mb-15'>Sign in</h1>
-      <p className='mb-85'>React Hook Form example</p>
+    <form className='auth-box' onSubmit={handleSubmit(onSubmit)}>
+      <h1 className='auth-box__title'>Sign in</h1>
+      <p className='auth-box__desc'>Provide your credentials below</p>
 
       <Controller
         name='email'
         control={control}
         render={({field}) => (
           <InputMUI
-            className='auth-box__input mb-55'
+            className='auth-box__input'
             type='email'
             label='Email'
             fullWidth
             error={errors.email?.message}
-            {..._.omit(field, 'ref')}
+            inputProps={field}
           />
         )}
       />
 
       <div className='auth-box__res-pass-wrap'>
-        <Link to={authPath.passRecovery} className='auth-box__res-pass-link'>
+        <Link to={authPath.passRecovery} className='auth-box__res-pass-link good-hover'>
           Forgot password?
         </Link>
         <Controller
@@ -91,12 +91,12 @@ const SignIn = () => {
           control={control}
           render={({field}) => (
             <InputMUI
-              className='auth-box__input mb-30'
+              className='auth-box__input'
               type='password'
               label='Password'
               fullWidth
               error={errors.password?.message}
-              {..._.omit(field, 'ref')}
+              inputProps={field}
             />
           )}
         />
@@ -110,12 +110,12 @@ const SignIn = () => {
         )}
       />
 
-      <ButtonMUI className='flex mt-65 mx-auto' disabled={!isValid || buttonLoading} loading={buttonLoading} formAction>
+      <ButtonMUI className='auth-box__btn' disabled={!isValid || buttonLoading} loading={buttonLoading} formAction>
         Sign in
       </ButtonMUI>
 
-      <div className='auth-box__footer mt-105'>
-        <span className='auth-box__text mr-15'>Don’t have account yet?</span>
+      <div className='auth-box__footer'>
+        <span className='auth-box__footer-text'>Don’t have account yet?</span>
         <Link className='auth-box__link' to={authPath.signUp}>
           SIGN UP
         </Link>

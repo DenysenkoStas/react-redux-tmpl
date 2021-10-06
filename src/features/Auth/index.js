@@ -1,5 +1,5 @@
 import SignIn from './SignIn';
-import SignUpWizard from './SignUpWizard/SignUpWizard';
+import SignUpWizard from './SignUpWizard';
 import PasswordRecovery from './PasswordRecovery';
 import PasswordConfirm from './PasswordConfirm';
 

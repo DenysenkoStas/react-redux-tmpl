@@ -9,7 +9,7 @@ const SignUpStep3 = ({handleSubmit, loading, pristine, submitting, invalid}) => 
     <form onSubmit={handleSubmit}>
       <Field
         component={InputMUIReduxForm}
-        className='auth-box__input min-w-530 mb-55'
+        className='auth-box__input w-100'
         name='password'
         type='password'
         label='Password'
@@ -17,18 +17,16 @@ const SignUpStep3 = ({handleSubmit, loading, pristine, submitting, invalid}) => 
       />
       <Field
         component={InputMUIReduxForm}
-        className='auth-box__input min-w-530'
+        className='auth-box__input w-100'
         name='repeat_password'
         type='password'
         label='Repeat Password'
         validate={[required, passwordMatch]}
       />
 
-      <div className='auth-box__btn-wrap mt-65 mb-185 mx-auto'>
-        <ButtonMUI disabled={submitting || pristine || invalid} loading={loading} formAction>
-          Next
-        </ButtonMUI>
-      </div>
+      <ButtonMUI className='auth-box__btn' disabled={submitting || pristine || invalid} loading={loading} formAction>
+        Next
+      </ButtonMUI>
     </form>
   );
 };

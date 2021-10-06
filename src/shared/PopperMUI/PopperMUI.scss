@@ -1,5 +1,5 @@
 .popper-wrapper {
-  background-color: #ffffff;
+  background-color: var(--white);
   border-radius: 6px;
   color: var(--primaryBackgroundColor);
   font-family: 'Inter', sans-serif;
@@ -17,7 +17,7 @@
     left: 20px;
     top: 0;
     z-index: -99;
-    background-color: #ffffff;
+    background-color: var(--white);
     width: 16px;
     height: 16px;
     margin-top: -7px;

@@ -8,7 +8,7 @@ import './InputMUI.scss';
 import {ReactComponent as ErrorIcon} from './icons/error.svg';
 
 const InputMUI = ({
-  autoComplete = '',
+  autoComplete,
   autoFocus = false,
   className = '',
   color = 'primary',
@@ -17,7 +17,7 @@ const InputMUI = ({
   error,
   fullWidth = false,
   helperText,
-  id = '',
+  id,
   inputProps = {},
   inputRef,
   label,
@@ -27,7 +27,7 @@ const InputMUI = ({
   multiline = false,
   name = '',
   onChange,
-  placeholder = '',
+  placeholder,
   required = false,
   select = false,
   size = 'medium',
@@ -46,7 +46,7 @@ const InputMUI = ({
       autoFocus={autoFocus}
       className={className}
       classes={{
-        root: 'input-mui',
+        root: 'input-mui'
       }}
       color={color}
       defaultValue={defaultValue}
@@ -69,6 +69,7 @@ const InputMUI = ({
       select={select}
       size={size}
       type={type}
+      value={value}
       variant={variant}
       {...props}
       InputProps={{
@@ -76,7 +77,7 @@ const InputMUI = ({
           root: 'input-mui__input',
           focused: 'input-mui__input--focused',
           disabled: 'input-mui__input--disabled',
-          error: 'input-mui__input-error',
+          error: 'input-mui__input-error'
         },
         readOnly: readOnly,
         endAdornment: (
@@ -91,12 +92,12 @@ const InputMUI = ({
               ''
             )}
           </InputAdornment>
-        ),
+        )
       }}
       FormHelperTextProps={{
         classes: {
-          root: `input-mui__helper-text${error ? ' input-mui__helper-text--error ' : ''}`,
-        },
+          root: `input-mui__helper-text${error ? ' input-mui__helper-text--error ' : ''}`
+        }
       }}
       InputLabelProps={{
         classes: {
@@ -104,9 +105,9 @@ const InputMUI = ({
           focused: 'input-mui__label--focused',
           shrink: 'input-mui__label--active',
           error: 'input-mui__label--error',
-          disabled: 'input-mui__label--disabled',
+          disabled: 'input-mui__label--disabled'
         },
-        shrink: shrink,
+        shrink: shrink
       }}
     />
   );

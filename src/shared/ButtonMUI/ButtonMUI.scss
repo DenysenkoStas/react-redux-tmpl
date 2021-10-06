@@ -19,7 +19,7 @@
 
   // variant='contained'
   &--contained {
-    color: #ffffff;
+    color: var(--white);
     background-color: var(--info);
 
     &:hover {

@@ -60,23 +60,23 @@ const SignUpWizard = ({match}) => {
   };
 
   return (
-    <div className='auth-box max-w-530'>
+    <div className='auth-box'>
       {(page === 2 || page === 3) && (
-        <button type='button' className='backlink mb-10' onClick={previousPage}>
+        <button type='button' className='backlink mb-8' onClick={previousPage}>
           <ArrowBlueIcon />
           <span>{page === 2 ? 'Step 1' : 'Step 2'}</span>
         </button>
       )}
 
-      <h1 className='h1 mb-15'>Sign up</h1>
-      <p className='mb-85'>{descText}</p>
+      <h1 className='auth-box__title'>Sign up</h1>
+      <p className='auth-box__desc'>{descText}</p>
 
       {page === 1 && <SignUpStep1 userRole={userRole} onSubmit={nextPage} />}
       {page === 2 && <SignUpStep2 onSubmit={nextPage} />}
       {page === 3 && <SignUpStep3 onSubmit={submitForm} loading={loading} />}
 
       <div className='auth-box__footer'>
-        <span className='auth-box__text mr-15'>Already a member?</span>
+        <span className='auth-box__footer-text'>Already a member?</span>
         <Link className='auth-box__link' to={authPath.signIn}>
           SIGN IN
         </Link>

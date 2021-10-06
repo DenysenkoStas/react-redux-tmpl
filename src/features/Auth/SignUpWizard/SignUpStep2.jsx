@@ -9,16 +9,16 @@ const SignUpStep2 = ({handleSubmit, pristine, invalid}) => {
     <form onSubmit={handleSubmit}>
       <Field
         component={InputMUIReduxForm}
-        className='auth-box__input min-w-530 mb-55'
+        className='auth-box__input w-100'
         name='address'
         type='text'
         label='Address'
         validate={[required]}
       />
-      <div className='auth-box__input-group mb-55'>
+      <div className='auth-box__input-group'>
         <Field
           component={InputMUIReduxForm}
-          className='auth-box__input w-48'
+          className='auth-box__input'
           name='city'
           type='text'
           label='City'
@@ -26,7 +26,7 @@ const SignUpStep2 = ({handleSubmit, pristine, invalid}) => {
         />
         <Field
           component={InputMUIReduxForm}
-          className='auth-box__input w-48'
+          className='auth-box__input'
           name='state'
           type='text'
           label='State'
@@ -36,7 +36,7 @@ const SignUpStep2 = ({handleSubmit, pristine, invalid}) => {
       <div className='auth-box__input-group'>
         <Field
           component={InputMUIReduxForm}
-          className='auth-box__input w-48'
+          className='auth-box__input'
           name='postcode'
           type='number'
           label='Post code'
@@ -44,7 +44,7 @@ const SignUpStep2 = ({handleSubmit, pristine, invalid}) => {
         />
         <Field
           component={InputMUIReduxForm}
-          className='auth-box__input w-48'
+          className='auth-box__input'
           name='country'
           type='text'
           label='Country'
@@ -52,11 +52,9 @@ const SignUpStep2 = ({handleSubmit, pristine, invalid}) => {
         />
       </div>
 
-      <div className='auth-box__btn-wrap mt-65 mb-85 mx-auto'>
-        <ButtonMUI disabled={pristine || invalid} formAction>
-          Next
-        </ButtonMUI>
-      </div>
+      <ButtonMUI className='auth-box__btn' disabled={pristine || invalid} formAction>
+        Next
+      </ButtonMUI>
     </form>
   );
 };
