@@ -14,7 +14,7 @@ const CheckboxMUI = ({
   color = 'default',
   disabled = false,
   disableRipple = false,
-  defaultChecked = false,
+  defaultChecked,
   icon = <CheckBoxOutlineBlankIcon />,
   id,
   indeterminate = false,
@@ -37,7 +37,7 @@ const CheckboxMUI = ({
         disabled: 'checkbox-mui--disabled',
         indeterminate: 'checkbox-mui--indeterminate',
         colorPrimary: 'checkbox-mui-color--primary',
-        colorSecondary: 'checkbox-mui-color--secondary',
+        colorSecondary: 'checkbox-mui-color--secondary'
       }}
       checked={checked}
       checkedIcon={checkedIcon}

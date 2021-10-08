@@ -20,14 +20,14 @@ const reactComponentGenerator = () => ({
     {
       type: 'directory',
       name: 'directory',
-      message: 'Select directory',
+      message: 'AsyncSelect directory',
       basePath: './src/features',
       when: (answers) => answers.base === 'features',
     },
     {
       type: 'directory',
       name: 'directory',
-      message: 'Select directory',
+      message: 'AsyncSelect directory',
       basePath: './src/shared',
       when: (answers) => answers.base === 'shared',
     },

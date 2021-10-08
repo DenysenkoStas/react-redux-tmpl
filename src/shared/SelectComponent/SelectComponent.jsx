@@ -22,7 +22,7 @@ const SelectComponent = ({
   id,
   input,
   menuIsOpen,
-  className,
+  className = '',
   reduxForm = false,
   value,
   onKeyDown,
@@ -35,7 +35,7 @@ const SelectComponent = ({
   isClearable,
   isSearchable = false,
   withSearchIcon,
-  disabled,
+  disabled
 }) => (
   <Select
     {...input}
@@ -43,7 +43,7 @@ const SelectComponent = ({
     menuIsOpen={menuIsOpen}
     className={`select-component${isSearchable ? ' select-component--searchable' : ''}${
       withSearchIcon ? ' select-component--search-icon' : ''
-    }${className ? ` ${className}` : ''}`}
+    }${className && ` ${className}`}`}
     classNamePrefix='select'
     isDisabled={disabled}
     isLoading={loading}
@@ -78,7 +78,7 @@ SelectComponent.propTypes = {
   placeholder: PropTypes.string,
   reduxForm: PropTypes.bool,
   value: PropTypes.string,
-  withSearchIcon: PropTypes.bool,
+  withSearchIcon: PropTypes.bool
 };
 
 export default SelectComponent;

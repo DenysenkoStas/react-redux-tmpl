@@ -8,6 +8,8 @@ import LoaderMUIExample from '../features/Components/Examples/LoaderMUIExample';
 import NotFoundExample from '../features/Components/Examples/NotFoundExample';
 import PaginationExample from '../features/Components/Examples/PaginationExample';
 import PopperMUIExample from '../features/Components/Examples/PopperMUIExample';
+import MultiSelectMUIExample from '../features/Components/Examples/MultiSelectMUIExample';
+import ReactHookFormExample from '../features/Components/Examples/ReactHookFormExample';
 import ReCaptchaV2Example from '../features/Components/Examples/ReCaptchaV2Example';
 import SelectComponentExample from '../features/Components/Examples/SelectComponentExample';
 import SkeletonMUIExample from '../features/Components/Examples/SkeletonMUIExample';
@@ -49,6 +51,8 @@ export const componentsPath = [
   {path: `${mainPath.components}/not-found`, name: 'NotFound', component: NotFoundExample},
   {path: `${mainPath.components}/pagination`, name: 'Pagination', component: PaginationExample},
   {path: `${mainPath.components}/popper-mui`, name: 'PopperMUI', component: PopperMUIExample},
+  {path: `${mainPath.components}/multi-select-mui`, name: 'MultiSelectMUI', component: MultiSelectMUIExample},
+  {path: `${mainPath.components}/react-hook-form`, name: 'React Hook Form', component: ReactHookFormExample},
   {path: `${mainPath.components}/re-captcha-v2`, name: 'ReCaptchaV2', component: ReCaptchaV2Example},
   {path: `${mainPath.components}/select-component`, name: 'SelectComponent', component: SelectComponentExample},
   {path: `${mainPath.components}/skeleton-mui`, name: 'SkeletonMUI', component: SkeletonMUIExample},
@@ -56,5 +60,5 @@ export const componentsPath = [
   {path: `${mainPath.components}/switch-mui`, name: 'SwitchMUI', component: SwitchMUIExample},
   {path: `${mainPath.components}/tabs`, name: 'Tabs', component: TabsExample},
   {path: `${mainPath.components}/tooltip-mui`, name: 'TooltipMUI', component: TooltipMUIExample},
-  {path: `${mainPath.components}/transitioned-block`, name: 'TransitionedBlock', component: TransitionedBlockExample},
+  {path: `${mainPath.components}/transitioned-block`, name: 'TransitionedBlock', component: TransitionedBlockExample}
 ];
