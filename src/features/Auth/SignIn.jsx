@@ -1,19 +1,20 @@
 import React, {useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
+import {Controller, useForm} from 'react-hook-form';
+import * as yup from 'yup';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {authPath, rootMainPath} from '../../routes/paths';
 import {postSignIn} from './authActions';
-import {Field, reduxForm, SubmissionError} from 'redux-form';
-import {InputMUIReduxForm} from '../../shared/InputMUI';
+import {useToggle} from '../../helpers/hooks';
+import InputMUI from '../../shared/InputMUI';
 import ButtonMUI from '../../shared/ButtonMUI';
-import {email, minLength8, required} from '../../helpers/formValidation';
+import {ReCaptchaV2} from '../../shared/ReCaptchaV2';
 import SnackbarMUI from '../../shared/SnackbarMUI';
 import EmailVerification from './EmailVerification';
-import {useToggle} from '../../helpers/hooks';
 
-import captcha from '../../assets/images/captcha.png';
-import {authPath, rootMainPath} from '../../routes/paths';
-
-const SignIn = ({history, handleSubmit, submitting, pristine, invalid}) => {
+const SignIn = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const {buttonLoading} = useSelector(({app}) => app);
   const {signInError} = useSelector(({auth}) => auth);
@@ -24,55 +25,104 @@ const SignIn = ({history, handleSubmit, submitting, pristine, invalid}) => {
     localStorage.getItem('token') && history.push(rootMainPath);
   }, []);
 
-  const submitForm = (data) => {
-    return dispatch(postSignIn(data)).then((res) => {
-      if (res.payload && res.payload.status && res.payload.status === 200) {
-        localStorage.setItem('token', res.payload.data.token);
-        history.push(rootMainPath);
-      } else {
-        toggleError();
-        throw new SubmissionError({...res.error.response.data, _error: res.error.response.data.detail});
-      }
-    });
+  const schema = yup.object({
+    email: yup.string().email('Enter a valid email').required('Field is required'),
+    password: yup.string().min(8, 'Min 8 characters').required('Field is required'),
+    recaptcha: yup.string().required()
+  });
+
+  const {
+    control,
+    handleSubmit,
+    setError,
+    formState: {errors, isValid}
+  } = useForm({
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
+    resolver: yupResolver(schema),
+    defaultValues: {
+      email: '',
+      password: '',
+      recaptcha: ''
+    }
+  });
+
+  const onSubmit = async (data) => {
+    const res = await dispatch(postSignIn(data));
+    const errors = res.error?.response.data;
+
+    /* test login */
+    if (await (data.email === 'admin@owlab.com' && data.password === 'Qwerty123!')) {
+      localStorage.setItem('token', 'test');
+      history.push(rootMainPath);
+    }
+    /* test login */
+
+    if (await res?.payload) {
+      localStorage.setItem('token', res.payload.data.token);
+      history.push(rootMainPath);
+    }
+    if (await res?.error) {
+      errors.email && setError('email', {type: 'manual', message: errors.email});
+      errors.password && setError('password', {type: 'manual', message: errors.password});
+      toggleError();
+    }
   };
 
   return (
-    <form className='auth-box max-w-530' onSubmit={handleSubmit(submitForm)}>
-      <h1 className='h1 mb-15'>Sign in</h1>
-      <p className='mb-85'>Provide your credentials below</p>
+    <form className='auth-box' onSubmit={handleSubmit(onSubmit)}>
+      <h1 className='auth-box__title'>Sign in</h1>
+      <p className='auth-box__desc'>Provide your credentials below</p>
 
-      <Field
-        component={InputMUIReduxForm}
-        className='auth-box__input min-w-530 mb-55'
+      <Controller
         name='email'
-        type='email'
-        label='Email'
-        validate={[required, email]}
+        control={control}
+        render={({field}) => (
+          <InputMUI
+            className='auth-box__input'
+            type='email'
+            label='Email'
+            fullWidth
+            error={errors.email?.message}
+            inputProps={field}
+          />
+        )}
       />
+
       <div className='auth-box__res-pass-wrap'>
-        <Link to={authPath.passRecovery} className='auth-box__res-pass-link'>
+        <Link to={authPath.passRecovery} className='auth-box__res-pass-link good-hover'>
           Forgot password?
         </Link>
-        <Field
-          component={InputMUIReduxForm}
-          className='auth-box__input mb-30 min-w-530'
+        <Controller
           name='password'
-          type='password'
-          label='Password'
-          validate={[required, minLength8]}
+          control={control}
+          render={({field}) => (
+            <InputMUI
+              className='auth-box__input'
+              type='password'
+              label='Password'
+              fullWidth
+              error={errors.password?.message}
+              inputProps={field}
+            />
+          )}
         />
       </div>
 
-      <img className='auth-box__captcha mx-auto' src={captcha} alt='captcha' />
+      <Controller
+        name='recaptcha'
+        control={control}
+        render={({field: {onChange}}) => (
+          <ReCaptchaV2 siteKey='6LcPyr8bAAAAAOzukES36-GsPCVHFjyaZyxLJ6sO' center onChange={onChange} />
+        )}
+      />
 
-      <div className='auth-box__btn-wrap mt-65 mx-auto'>
-        <ButtonMUI disabled={submitting || pristine || invalid} loading={buttonLoading} formAction>
-          Sign in
-        </ButtonMUI>
-      </div>
+      <ButtonMUI className='auth-box__btn' disabled={!isValid || buttonLoading} loading={buttonLoading} formAction>
+        Sign in
+      </ButtonMUI>
 
-      <div className='auth-box__footer mt-105'>
-        <span className='auth-box__text mr-15'>Don’t have account yet?</span>
+      <div className='auth-box__footer'>
+        <span className='auth-box__footer-text'>Don’t have account yet?</span>
         <Link className='auth-box__link' to={authPath.signUp}>
           SIGN UP
         </Link>
@@ -85,6 +135,4 @@ const SignIn = ({history, handleSubmit, submitting, pristine, invalid}) => {
   );
 };
 
-export default reduxForm({
-  form: 'SignIn',
-})(SignIn);
+export default SignIn;

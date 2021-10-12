@@ -12,6 +12,7 @@ const DatePickerMUI = ({
   views = ['year', 'month', 'date'],
   variant = 'inline',
   orientation,
+  clearable
 }) => {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -20,7 +21,7 @@ const DatePickerMUI = ({
         value={value}
         onChange={onChange}
         autoOk
-        clearable
+        clearable={clearable}
         format={format}
         views={views}
         variant={variant}

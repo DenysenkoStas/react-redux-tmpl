@@ -1,5 +1,4 @@
 @import 'reset';
-@import 'vars';
 @import 'mixins';
 @import '../fonts/Inter/stylesheet';
 @import '../fonts/Montserrat/stylesheet';
@@ -12,27 +11,7 @@ body {
   font-weight: 500;
   color: var(--primary);
   background-color: var(--light);
-
-  &::-webkit-scrollbar {
-    width: 15px;
-    height: 15px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: var(--light);
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--primary);
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-
-    &:window-inactive {
-      background-color: var(--secondary);
-    }
-  }
+  @include scrollbar(15px, var(--primary), var(--light), 5px, 2px);
 }
 
 a {
@@ -188,16 +167,14 @@ h3,
 }
 
 // React Toastify
-.Toastify__toast--error {
-  background: var(--error) !important;
-  padding: 6px 16px !important;
-  font-size: 0.875rem !important;
-  height: 48px !important;
-  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14),
-    0px 1px 18px 0px rgba(0, 0, 0, 0.12) !important;
-  border-radius: 4px !important;
-}
+.Toastify__toast {
+  font-family: inherit;
 
-.Toastify__toast-container {
-  width: 450px !important;
+  &--error {
+    background-color: var(--error);
+  }
+
+  &--success {
+    background-color: var(--success);
+  }
 }

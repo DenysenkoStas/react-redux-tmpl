@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import DialogMUI from '../../../shared/DialogMUI';
-import ButtonMUI from '../../../shared/ButtonMUI';
-import {authPath} from '../../../routes/paths';
+import DialogMUI from '../../shared/DialogMUI';
+import ButtonMUI from '../../shared/ButtonMUI';
+import {authPath} from '../../routes/paths';
 
 const SuccessAuthDialog = ({open, onClose}) => {
   return (

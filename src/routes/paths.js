@@ -19,6 +19,7 @@ import TabsExample from '../features/Components/Examples/TabsExample';
 import TooltipMUIExample from '../features/Components/Examples/TooltipMUIExample';
 import TransitionedBlockExample from '../features/Components/Examples/TransitionedBlockExample';
 import DatePickerMUIExample from '../features/Components/Examples/DatePickerMUIExample';
+import ErrorBoundaryExample from '../features/Components/Examples/ErrorBoundaryExample';
 
 export const rootAuthPath = '/auth';
 export const rootMainPath = '/main';
@@ -45,6 +46,7 @@ export const componentsPath = [
   {path: `${mainPath.components}/checkbox-mui`, name: 'CheckboxMUI', component: CheckboxMUIExample},
   {path: `${mainPath.components}/date-picker-mui`, name: 'DatePickerMUI', component: DatePickerMUIExample},
   {path: `${mainPath.components}/dialog-mui`, name: 'DialogMUI', component: DialogMUIExample},
+  {path: `${mainPath.components}/error-boundary`, name: 'ErrorBoundaryExample', component: ErrorBoundaryExample},
   {path: `${mainPath.components}/icon-button-mui`, name: 'IconButtonMUI', component: IconButtonMUIExample},
   {path: `${mainPath.components}/input-mui`, name: 'InputMUI', component: InputMUIExample},
   {path: `${mainPath.components}/loader-mui`, name: 'LoaderMUI', component: LoaderMUIExample},

@@ -4,14 +4,14 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Controller, useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {authPath} from '../../../routes/paths';
-import {postSignUp} from '../authActions';
-import {useToggle} from '../../../helpers/hooks';
-import {InputMUI} from '../../../shared/InputMUI';
-import ButtonMUI from '../../../shared/ButtonMUI';
-import {ReCaptchaV2} from '../../../shared/ReCaptchaV2';
-import SnackbarMUI from '../../../shared/SnackbarMUI';
-import SignUpSuccessDialog from '../SignUpWizard/SignUpSuccessDialog';
+import {authPath} from '../../routes/paths';
+import {postSignUp} from './authActions';
+import {useToggle} from '../../helpers/hooks';
+import InputMUI from '../../shared/InputMUI';
+import ButtonMUI from '../../shared/ButtonMUI';
+import {ReCaptchaV2} from '../../shared/ReCaptchaV2';
+import SnackbarMUI from '../../shared/SnackbarMUI';
+import SignUpSuccessDialog from './SignUpSuccessDialog';
 
 const SignUp = () => {
   const dispatch = useDispatch();

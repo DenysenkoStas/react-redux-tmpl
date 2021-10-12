@@ -1,5 +1,7 @@
 .dashboard {
-  &__inner {
+  display: block;
+
+  &Inner {
     display: flex;
     gap: 24px;
   }

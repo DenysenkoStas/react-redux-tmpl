@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux';
 import {connectRouter} from 'connected-react-router';
-import {reducer as formReducer} from 'redux-form';
 import authReducer from '../features/Auth/authReducer';
 import {APP} from './appActionTypes';
 
@@ -10,7 +9,7 @@ const INITIAL_STATE = {
   errorSnack: false,
   errorSnackText: '',
   successSnack: '',
-  successSnackText: '',
+  successSnackText: ''
 };
 
 const appReducer = (state = INITIAL_STATE, action) => {
@@ -35,7 +34,6 @@ const appReducer = (state = INITIAL_STATE, action) => {
 const rootReducer = (history) =>
   combineReducers({
     router: connectRouter(history),
-    form: formReducer,
     auth: authReducer,
     app: appReducer,
   });

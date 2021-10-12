@@ -196,3 +196,29 @@ $xxl: var(--xxl);
     @warn 'A breakpoint named "#{$point}" is not available in the breakpoint map';
   }
 }
+
+//Custom scrollbar
+@mixin scrollbar($size, $thumb-color, $track-color, $thumb-radius: 0, $track-radius: 0) {
+  // for Google Chrome
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb-color;
+    border-radius: $thumb-radius;
+    -webkit-border-radius: $thumb-radius;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $track-color;
+    border-radius: $track-radius;
+    -webkit-border-radius: $track-radius;
+  }
+  // for Internet Explorer
+  & {
+    scrollbar-face-color: $thumb-color;
+    scrollbar-track-color: $track-color;
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {InputMUI} from '../../../shared/InputMUI';
+import InputMUI from '../../../shared/InputMUI';
 
 const InputMUIExample = () => {
   return (

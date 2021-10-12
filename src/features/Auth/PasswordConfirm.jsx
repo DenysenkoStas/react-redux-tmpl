@@ -1,17 +1,20 @@
 import React, {useEffect, useState} from 'react';
+import {Link, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {postPassConfirm} from './authActions';
-import {Field, reduxForm, SubmissionError} from 'redux-form';
-import {minLength8, passwordMatch, required} from '../../helpers/formValidation';
-import {InputMUIReduxForm} from '../../shared/InputMUI';
-import {useQueryParams, useToggle} from '../../helpers/hooks';
-import SnackbarMUI from '../../shared/SnackbarMUI/SnackbarMUI';
-import ButtonMUI from '../../shared/ButtonMUI';
+import {Controller, useForm} from 'react-hook-form';
+import * as yup from 'yup';
+import {yupResolver} from '@hookform/resolvers/yup';
 import {authPath} from '../../routes/paths';
+import {postPassConfirm} from './authActions';
+import {useQueryParams, useToggle} from '../../helpers/hooks';
+import InputMUI from '../../shared/InputMUI';
+import ButtonMUI from '../../shared/ButtonMUI';
+import SnackbarMUI from '../../shared/SnackbarMUI/SnackbarMUI';
 
 import {ReactComponent as LockIcon} from '../../assets/icons/lock.svg';
 
-const PasswordConfirm = ({history, handleSubmit, pristine, submitting, invalid}) => {
+const PasswordConfirm = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const queryParams = useQueryParams();
   const {loading} = useSelector(({app}) => app);
@@ -28,69 +31,106 @@ const PasswordConfirm = ({history, handleSubmit, pristine, submitting, invalid})
     if (queryParams.has('security_token')) {
       setToken({security_token: queryParams.get('security_token')});
     } else {
-      history.push('/auth/sign-in');
+      history.push(authPath.signIn);
     }
   }, []);
 
   const [sent, setSent] = useState(false);
   const [error, toggleError] = useToggle(false);
 
-  const submitForm = (data) => {
-    return dispatch(postPassConfirm({...data, ...token})).then((res) => {
-      if (res.payload && res.payload.status && res.payload.status === 200) {
-        setSent(true);
-        deleteQuery();
-      } else {
-        toggleError();
-        throw new SubmissionError({...res.error.response.data, _error: res.error.response.data.detail});
-      }
-    });
+  const schema = yup.object({
+    password: yup.string().min(8, 'Min 8 characters').required('Field is required'),
+    confirm_password: yup
+      .string()
+      .min(8, 'Min 8 characters')
+      .oneOf([yup.ref('password'), null], 'Passwords must match')
+      .required('Required')
+  });
+
+  const {
+    control,
+    handleSubmit,
+    setError,
+    formState: {errors, isValid}
+  } = useForm({
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
+    resolver: yupResolver(schema),
+    shouldFocusError: true,
+    defaultValues: {
+      password: '',
+      confirm_password: ''
+    }
+  });
+
+  const onSubmit = async (data) => {
+    const res = await dispatch(postPassConfirm({...data, ...token}));
+    const errors = res.error?.response.data;
+
+    if (res?.payload) {
+      setSent(true);
+      deleteQuery();
+    }
+    if (res?.error) {
+      errors.password && setError('password', {type: 'manual', message: errors.password});
+      errors.confirm_password && setError('confirm_password', {type: 'manual', message: errors.confirm_password});
+      toggleError();
+    }
   };
 
   return (
-    <form className='auth-box max-w-530' onSubmit={handleSubmit(submitForm)}>
-      <h1 className='h1 mb-15'>Reset password</h1>
-      <p className='mb-5'>
+    <form className='auth-box' onSubmit={handleSubmit(onSubmit)}>
+      <h1 className='auth-box__title'>Reset password</h1>
+      <p className='auth-box__desc'>
         {!sent ? 'Enter and confirm your new password' : 'Your new password have been set successfully.'}
       </p>
       {sent && <p>Now you can sign in.</p>}
 
       {!sent ? (
         <>
-          <Field
-            component={InputMUIReduxForm}
-            className='auth-box__input mt-85 mb-55 min-w-530'
+          <Controller
             name='password'
-            type='password'
-            label='New password'
-            validate={[required, minLength8]}
-          />
-          <Field
-            component={InputMUIReduxForm}
-            className='auth-box__input min-w-530'
-            name='confirm_password'
-            type='password'
-            label='Confirm password'
-            validate={[required, minLength8, passwordMatch]}
+            control={control}
+            render={({field}) => (
+              <InputMUI
+                className='auth-box__input'
+                type='password'
+                label='New password'
+                fullWidth
+                error={errors.password?.message}
+                inputProps={field}
+              />
+            )}
           />
 
-          <div className='auth-box__btn-wrap mt-65 mx-auto'>
-            <ButtonMUI disabled={submitting || pristine || invalid} loading={loading} formAction>
-              Next
-            </ButtonMUI>
-          </div>
+          <Controller
+            name='confirm_password'
+            control={control}
+            render={({field}) => (
+              <InputMUI
+                className='auth-box__input'
+                type='password'
+                label='Repeat Password'
+                fullWidth
+                error={errors.confirm_password?.message}
+                inputProps={field}
+              />
+            )}
+          />
+
+          <ButtonMUI className='auth-box__btn' disabled={!isValid || loading} loading={loading} formAction>
+            Next
+          </ButtonMUI>
         </>
       ) : (
         <>
-          <div className='auth-box__rounded-wrap mt-40 pt-25 pb-30 min-w-530 t-center'>
+          <div className='auth-box__rounded-wrap mt-40'>
             <LockIcon />
           </div>
 
-          <div className='auth-box__btn-wrap mt-65 mx-auto'>
-            <ButtonMUI type='link' to={authPath.signIn}>
-              Sign in
-            </ButtonMUI>
-          </div>
+          <ButtonMUI className='auth-box__btn' component={Link} to={authPath.signIn}>
+            Sign in
+          </ButtonMUI>
         </>
       )}
 
@@ -99,6 +139,4 @@ const PasswordConfirm = ({history, handleSubmit, pristine, submitting, invalid})
   );
 };
 
-export default reduxForm({
-  form: 'PasswordConfirm',
-})(PasswordConfirm);
+export default PasswordConfirm;

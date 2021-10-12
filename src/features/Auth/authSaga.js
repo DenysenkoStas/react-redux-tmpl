@@ -1,8 +1,9 @@
 import {takeEvery} from 'redux-saga/effects';
-import {disableLoader, enableLoader, openErrorSnack, disableButtonLoader, enableButtonLoader} from '../../app/rootSaga';
+import {disableButtonLoader, disableLoader, enableButtonLoader, enableLoader, openErrorSnack} from '../../app/rootSaga';
 
 export function* handleProfileSnacks() {
   yield takeEvery('USER_INFO_FAIL', openErrorSnack);
+  yield takeEvery('SIGN_IN_FAIL', () => openErrorSnack());
 }
 
 export function* handleAuthLoaders() {
