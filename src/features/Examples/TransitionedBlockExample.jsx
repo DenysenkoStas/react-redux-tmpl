@@ -1,7 +1,7 @@
 import React from 'react';
-import ButtonMUI from '../../../shared/ButtonMUI';
-import TransitionedBlock from '../../../shared/TransitionedBlock';
-import SelectComponent from '../../../shared/SelectComponent';
+import ButtonMUI from '../../shared/ButtonMUI';
+import TransitionedBlock from '../../shared/TransitionedBlock';
+import SelectComponent from '../../shared/SelectComponent';
 
 const TransitionedBlockExample = () => {
   const options = [

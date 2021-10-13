@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import ButtonMUI from '../../../shared/ButtonMUI';
+import ButtonMUI from '../../shared/ButtonMUI';
 
-import {ReactComponent as FolderIcon} from '../../../assets/icons/folder-white.svg';
+import {ReactComponent as FolderIcon} from '../../assets/icons/folder-white.svg';
 import {ButtonGroup} from '@material-ui/core';
 
 const ButtonMUIExample = () => {

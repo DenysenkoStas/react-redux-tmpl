@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import SkeletonMUI from '../../../shared/SkeletonMUI';
+import SkeletonMUI from '../../shared/SkeletonMUI';
 
-import {ReactComponent as LogoIcon} from '../../../assets/images/logo.svg';
+import {ReactComponent as LogoIcon} from '../../assets/images/logo.svg';
 
 const SkeletonMUIExample = () => {
   const [loading, setLoading] = useState(true);

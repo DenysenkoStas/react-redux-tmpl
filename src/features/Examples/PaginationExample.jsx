@@ -1,5 +1,5 @@
 import React from 'react';
-import Pagination from '../../../shared/Pagination';
+import Pagination from '../../shared/Pagination';
 
 const PaginationExample = () => {
   return (

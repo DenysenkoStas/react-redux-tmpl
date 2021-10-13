@@ -1,7 +1,7 @@
 import React from 'react';
-import NotFound from '../../../shared/NotFound';
+import NotFound from '../../shared/NotFound';
 
-import {ReactComponent as LogoIcon} from '../../../assets/images/logo.svg';
+import {ReactComponent as LogoIcon} from '../../assets/images/logo.svg';
 
 const NotFoundExample = () => {
   return (

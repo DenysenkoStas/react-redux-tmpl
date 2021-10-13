@@ -1,5 +1,5 @@
 import React from 'react';
-import AccordionMUI from '../../../shared/AccordionMUI';
+import AccordionMUI from '../../shared/AccordionMUI';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 const AccordionMUIExample = () => {

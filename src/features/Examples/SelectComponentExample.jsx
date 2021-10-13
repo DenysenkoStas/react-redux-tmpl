@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectComponent from '../../../shared/SelectComponent';
+import SelectComponent from '../../shared/SelectComponent';
 
 const SelectComponentExample = () => {
   const options = [

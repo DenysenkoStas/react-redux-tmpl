@@ -1,7 +1,7 @@
 import React from 'react';
-import LoaderMUI from '../../../shared/LoaderMUI';
-import ButtonMUI from '../../../shared/ButtonMUI';
-import {useToggle} from '../../../helpers/hooks';
+import LoaderMUI from '../../shared/LoaderMUI';
+import ButtonMUI from '../../shared/ButtonMUI';
+import {useToggle} from '../../helpers/hooks';
 
 const LoaderMUIExample = () => {
   const [primary, togglePrimary] = useToggle(false);

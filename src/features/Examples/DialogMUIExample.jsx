@@ -1,7 +1,7 @@
 import React from 'react';
-import ButtonMUI from '../../../shared/ButtonMUI';
-import DialogMUI from '../../../shared/DialogMUI';
-import {useToggle} from '../../../helpers/hooks';
+import ButtonMUI from '../../shared/ButtonMUI';
+import DialogMUI from '../../shared/DialogMUI';
+import {useToggle} from '../../helpers/hooks';
 
 const DialogMUIExample = () => {
   const [dialog, toggleDialog] = useToggle();

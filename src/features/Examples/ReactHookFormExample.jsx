@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import SelectComponent from '../../../shared/SelectComponent';
-import MultiSelectMUI from '../../../shared/MultiSelectMUI';
-import ButtonMUI from '../../../shared/ButtonMUI';
+import SelectComponent from '../../shared/SelectComponent';
+import MultiSelectMUI from '../../shared/MultiSelectMUI';
+import ButtonMUI from '../../shared/ButtonMUI';
 
 const ReactHookFormExample = () => {
   // for SelectComponent

@@ -29,9 +29,9 @@ const Header = () => {
             <PlusIcon className='header__icon' />
             Dashboard
           </NavLink>
-          <NavLink className='header__nav-link' to={mainPath.components} strict>
+          <NavLink className='header__nav-link' to={mainPath.examples} strict>
             <BoxIcon className='header__icon' />
-            Components
+            Examples
           </NavLink>
           <NavLink className='header__nav-link' to={mainPath.navLink}>
             <FolderIcon className='header__icon' />

@@ -1,8 +1,10 @@
 .dashboard {
-  display: block;
+  padding-top: 24px;
+  padding-bottom: 24px;
 
   &Inner {
     display: flex;
+    flex-direction: column;
     gap: 24px;
   }
 }

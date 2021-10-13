@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckboxMUI from '../../../shared/CheckboxMUI';
+import CheckboxMUI from '../../shared/CheckboxMUI';
 import AlarmOnIcon from '@material-ui/icons/AlarmOn';
 import AlarmOffIcon from '@material-ui/icons/AlarmOff';
 

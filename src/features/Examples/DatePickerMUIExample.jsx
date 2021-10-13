@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import DatePickerMUI from '../../../shared/DatePickerMUI';
+import DatePickerMUI from '../../shared/DatePickerMUI';
 
 const DatePickerMUIExample = () => {
   const [selectedDate, handleDateChange] = useState(new Date());

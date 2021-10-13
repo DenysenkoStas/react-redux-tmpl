@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReCaptchaV2} from '../../../shared/ReCaptchaV2';
+import {ReCaptchaV2} from '../../shared/ReCaptchaV2';
 
 const ReCaptchaV2Example = () => {
   return (

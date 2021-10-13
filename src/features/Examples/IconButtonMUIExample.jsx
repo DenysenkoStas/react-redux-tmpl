@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButtonMUI from '../../../shared/IconButtonMUI';
+import IconButtonMUI from '../../shared/IconButtonMUI';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import EditIcon from '@material-ui/icons/Edit';
 import CancelIcon from '@material-ui/icons/Cancel';

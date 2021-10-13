@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import SnackbarMUI from '../../../shared/SnackbarMUI';
-import ButtonMUI from '../../../shared/ButtonMUI';
+import SnackbarMUI from '../../shared/SnackbarMUI';
+import ButtonMUI from '../../shared/ButtonMUI';
 
 const SnackbarMUIExample = () => {
   const [error, setError] = useState(false);

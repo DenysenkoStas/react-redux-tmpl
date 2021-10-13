@@ -1,6 +1,5 @@
 import React from 'react';
-import ButtonMUI from '../../../shared/ButtonMUI';
-import TooltipMUI from '../../../shared/TooltipMUI';
+import {ButtonMUI, TooltipMUI} from '../../shared';
 
 const TooltipMUIExample = () => {
   return (

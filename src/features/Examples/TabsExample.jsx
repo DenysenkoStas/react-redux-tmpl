@@ -1,4 +1,4 @@
-import {Tabs, TabItem} from '../../../shared/Tabs';
+import {Tabs, TabItem} from '../../shared/Tabs';
 
 const TabsExample = () => {
   return (

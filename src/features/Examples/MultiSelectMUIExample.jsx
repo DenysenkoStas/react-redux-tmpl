@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import MultiSelectMUI from '../../../shared/MultiSelectMUI';
+import MultiSelectMUI from '../../shared/MultiSelectMUI';
 
 const MultiSelectMUIExample = () => {
   const [item, setItem] = useState([]);
