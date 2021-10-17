@@ -37,7 +37,7 @@ const Dashboard = () => {
             <tbody>
               {data &&
                 data.map(({id, name, email, referrals, profit}) => (
-                  <tr>
+                  <tr key={id}>
                     <td className='bold'>{id}</td>
                     <td>{name}</td>
                     <td>{email}</td>
