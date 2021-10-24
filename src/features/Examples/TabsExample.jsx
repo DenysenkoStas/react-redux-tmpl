@@ -11,7 +11,7 @@ const TabsExample = () => {
           <b>Props:</b> children, className, defaultIndex, onTabClick
         </p>
 
-        <Tabs className='mt-10' defaultIndex='1' onTabClick={console.log}>
+        <Tabs className='mt-25' defaultIndex='1' onTabClick={console.log}>
           <TabItem label='First tab' index='1'>
             Donec sollicitudin molestie malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
             ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit

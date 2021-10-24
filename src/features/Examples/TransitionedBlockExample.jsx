@@ -14,14 +14,20 @@ const TransitionedBlockExample = () => {
     <>
       <h2 className='mb-15'>TransitionedBlock</h2>
 
-      <section className='card-wrap flex gap-25'>
-        <TransitionedBlock>
-          <ButtonMUI>Button</ButtonMUI>
-        </TransitionedBlock>
+      <section className='card-wrap'>
+        <p>
+          <b>Props:</b> children, className, tag
+        </p>
 
-        <TransitionedBlock>
-          <SelectComponent options={options} />
-        </TransitionedBlock>
+        <div className='flex gap-25 mt-25'>
+          <TransitionedBlock>
+            <ButtonMUI>Button</ButtonMUI>
+          </TransitionedBlock>
+
+          <TransitionedBlock>
+            <SelectComponent options={options} />
+          </TransitionedBlock>
+        </div>
       </section>
     </>
   );
