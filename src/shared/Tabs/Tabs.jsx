@@ -1,10 +1,11 @@
 import {useState} from 'react';
+import PropTypes from 'prop-types';
 
 import './Tabs.scss';
 
 export const TabItem = (props) => <div {...props} />;
 
-export const Tabs = ({className = '', defaultIndex = 0, onTabClick, children}) => {
+export const Tabs = ({children, className = '', defaultIndex = 0, onTabClick}) => {
   const [bindIndex, setBindIndex] = useState(defaultIndex);
 
   const changeTab = (newIndex) => {
@@ -36,4 +37,11 @@ export const Tabs = ({className = '', defaultIndex = 0, onTabClick, children}) =
       </div>
     </div>
   );
+};
+
+Tabs.propTypes = {
+  children: PropTypes.any.isRequired,
+  className: PropTypes.string,
+  defaultIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onTabClick: PropTypes.func
 };
