@@ -30,13 +30,9 @@ export const Tabs = ({className = '', defaultIndex = 0, onTabClick, children}) =
         ))}
       </div>
       <div className='tabs__panel'>
-        {items.map(({props}) => (
-          <div
-            {...props}
-            key={`tab-item-${props.index}`}
-            className={`tabs__item${bindIndex === props.index ? ' tabs__item--active' : ''}`}
-          />
-        ))}
+        {items.map(({props}) =>
+          bindIndex === props.index ? <div {...props} key={`tab-item-${props.index}`} className='tabs__item' /> : null
+        )}
       </div>
     </div>
   );
