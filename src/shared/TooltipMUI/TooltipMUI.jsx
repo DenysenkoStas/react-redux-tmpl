@@ -8,24 +8,45 @@ const TooltipMUI = ({
   arrow = false,
   children,
   className = '',
-  title,
-  enterDelay,
+  disableFocusListener = false,
+  disableHoverListener = false,
+  disableTouchListener = false,
+  enterDelay = 100,
+  enterNextDelay = 0,
+  enterTouchDelay = 700,
   errorColor = false,
-  leaveDelay,
-  position = 'top'
+  id,
+  interactive = false,
+  leaveDelay = 0,
+  leaveTouchDelay = 1500,
+  onClose,
+  onOpen,
+  open,
+  placement = 'top',
+  title
 }) => {
   return (
     <Tooltip
       arrow={arrow}
       className={className}
-      title={title}
-      placement={position}
+      disableFocusListener={disableFocusListener}
+      disableHoverListener={disableHoverListener}
+      disableTouchListener={disableTouchListener}
       enterDelay={enterDelay}
+      enterNextDelay={enterNextDelay}
+      enterTouchDelay={enterTouchDelay}
+      id={id}
+      interactive={interactive}
       leaveDelay={leaveDelay}
-      disableTouchListener
-      disableFocusListener
+      leaveTouchDelay={leaveTouchDelay}
+      onClose={onClose}
+      onOpen={onOpen}
+      open={open}
+      placement={placement}
+      title={title}
       classes={{
-        tooltip: `tooltip-mui${errorColor ? ' tooltip-mui--error-color' : ''}`
+        tooltip: `tooltip-mui${errorColor ? ' tooltip-mui--error-color' : ''}`,
+        arrow: 'tooltip-mui__arrow'
       }}
     >
       {children}
@@ -37,10 +58,34 @@ TooltipMUI.propTypes = {
   arrow: PropTypes.bool,
   children: PropTypes.element.isRequired,
   className: PropTypes.string,
+  disableFocusListener: PropTypes.bool,
+  disableHoverListener: PropTypes.bool,
+  disableTouchListener: PropTypes.bool,
   enterDelay: PropTypes.number,
+  enterNextDelay: PropTypes.number,
+  enterTouchDelay: PropTypes.number,
   errorColor: PropTypes.bool,
+  id: PropTypes.string,
+  interactive: PropTypes.bool,
   leaveDelay: PropTypes.number,
-  position: PropTypes.string,
+  leaveTouchDelay: PropTypes.number,
+  onClose: PropTypes.func,
+  onOpen: PropTypes.func,
+  open: PropTypes.bool,
+  placement: PropTypes.oneOf([
+    'bottom-end',
+    'bottom-start',
+    'bottom',
+    'left-end',
+    'left-start',
+    'left',
+    'right-end',
+    'right-start',
+    'right',
+    'top-end',
+    'top-start',
+    'top'
+  ]),
   title: PropTypes.node.isRequired
 };
 

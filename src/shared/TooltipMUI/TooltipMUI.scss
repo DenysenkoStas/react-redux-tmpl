@@ -2,6 +2,13 @@
   font-family: inherit;
 
   &--error-color {
-      background-color: var(--error);
+    background-color: var(--error);
+
+    .tooltip-mui__arrow {
+      color: var(--error);
+    }
+  }
+
+  &__arrow {
   }
 }
