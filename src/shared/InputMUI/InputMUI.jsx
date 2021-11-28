@@ -11,7 +11,6 @@ const InputMUI = ({
   autoComplete,
   autoFocus = false,
   className = '',
-  color = 'primary',
   defaultValue,
   disabled = false,
   error,
@@ -22,7 +21,7 @@ const InputMUI = ({
   inputRef,
   label,
   margin = 'none',
-  maxRows = 10,
+  maxRows,
   minRows,
   multiline = false,
   name = '',
@@ -48,7 +47,6 @@ const InputMUI = ({
       classes={{
         root: 'input-mui'
       }}
-      color={color}
       defaultValue={defaultValue}
       disabled={disabled}
       error={!!error}
@@ -58,7 +56,6 @@ const InputMUI = ({
       inputProps={inputProps}
       inputRef={inputRef}
       label={label}
-      margin={margin}
       maxRows={maxRows}
       minRows={minRows}
       multiline={multiline}
@@ -74,14 +71,16 @@ const InputMUI = ({
       {...props}
       InputProps={{
         classes: {
-          root: 'input-mui__input',
-          focused: 'input-mui__input--focused',
-          disabled: 'input-mui__input--disabled',
-          error: 'input-mui__input-error'
+          root: 'input-mui__root',
+          focused: 'input-mui__root--focused',
+          disabled: 'input-mui__root--disabled',
+          error: 'input-mui__root-error',
+          multiline: 'input-mui__root--multiline',
+          input: 'input-mui__input'
         },
         readOnly: readOnly,
         endAdornment: (
-          <InputAdornment position='end'>
+          <InputAdornment className='input-mui__end-adornment' position='end'>
             {error && !helperText ? (
               <TooltipMUI title={error} position='left' errorColor>
                 <ErrorIcon className='input-mui__error-icon' width='20px' height='20px' />
@@ -103,7 +102,7 @@ const InputMUI = ({
         classes: {
           root: 'input-mui__label',
           focused: 'input-mui__label--focused',
-          shrink: 'input-mui__label--active',
+          shrink: 'input-mui__label--shrink',
           error: 'input-mui__label--error',
           disabled: 'input-mui__label--disabled'
         },
@@ -117,7 +116,6 @@ InputMUI.propTypes = {
   autoComplete: PropTypes.string,
   autoFocus: PropTypes.bool,
   className: PropTypes.string,
-  color: PropTypes.oneOf(['primary', 'secondary']),
   defaultValue: PropTypes.any,
   disabled: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
@@ -128,7 +126,6 @@ InputMUI.propTypes = {
   inputProps: PropTypes.object,
   inputRef: PropTypes.any,
   label: PropTypes.node,
-  margin: PropTypes.oneOf(['dense', 'none', 'normal']),
   maxRows: PropTypes.number,
   minRows: PropTypes.number,
   multiline: PropTypes.bool,
@@ -142,7 +139,7 @@ InputMUI.propTypes = {
   size: PropTypes.oneOf(['medium', 'small']),
   type: PropTypes.string,
   value: PropTypes.any,
-  variant: PropTypes.oneOf(['filled', 'outlined', 'standard']),
+  variant: PropTypes.oneOf(['filled', 'outlined', 'standard'])
 };
 
 export default InputMUI;
