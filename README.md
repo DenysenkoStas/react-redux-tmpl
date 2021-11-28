@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# React Redux Template
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Getting started
+
+1. Clone this repo.
+2. `yarn` to install all required dependencies.
+3. `yarn start` to start the local server.
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+**You can configure port in scripts section of package.json: add `-p <port>` to `yarn start` script.**
+
 ## Available Scripts
 
-In the project directory, you can run:
+- `yarn start`
+- `yarn start:prod`
+- `yarn build`
+- `yarn build:prod`
+- `yarn plop`
+- `prettier:check`
+- `prettier:write`
+- `yarn eject` **This is a one-way operation. Once you `eject`, you can’t go back!**
 
-### `yarn start`
+## Libraries
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [@date-io/dayjs: 1.x](https://yarnpkg.com/package/@date-io/dayjs)
+- [@hookform/resolvers: ^2.8.1](https://yarnpkg.com/package/@hookform/resolvers)
+- [@material-ui/core: ^4.12.2](https://yarnpkg.com/package/@material-ui/core)
+- [@material-ui/icons: ^4.11.2](https://yarnpkg.com/package/@material-ui/icons)
+- [@material-ui/lab: ^4.0.0-alpha.60](https://yarnpkg.com/package/@material-ui/lab)
+- [@material-ui/pickers: ^3.3.10](https://yarnpkg.com/package/@material-ui/pickers)
+- [@material-ui/styles: ^4.11.4](https://yarnpkg.com/package/@material-ui/styles)
+- [axios: ^0.21.1](https://yarnpkg.com/package/axios)
+- [connected-react-router: ^6.9.1](https://yarnpkg.com/package/connected-react-router)
+- [dayjs: ^1.10.7](https://yarnpkg.com/package/dayjs)
+- [env-cmd: ^10.1.0](https://yarnpkg.com/package/env-cmd)
+- [history: ^4.10.1](https://yarnpkg.com/package/history)
+- [inquirer-directory: ^2.2.0](https://yarnpkg.com/package/inquirer-directory)
+- [node-sass: ^4.14.1](https://yarnpkg.com/package/node-sass.js)
+- [plop: ^2.7.4](https://yarnpkg.com/package/plop)
+- [prettier: ^2.3.2](https://yarnpkg.com/package/prettier)
+- [prop-types: ^15.7.2](https://yarnpkg.com/package/prop-types)
+- [react: ^17.0.2](https://yarnpkg.com/package/react)
+- [react-addons-css-transition-group: ^15.6.2](https://yarnpkg.com/package/react-addons-css-transition-group)
+- [react-dom: ^17.0.2](https://yarnpkg.com/package/react-dom)
+- [react-google-recaptcha: ^2.1.0](https://yarnpkg.com/package/react-google-recaptcha)
+- [react-hook-form: ^7.15.4](https://yarnpkg.com/package/react-hook-form)
+- [react-paginate: ^7.1.3](https://yarnpkg.com/package/react-paginate)
+- [react-redux: ^7.2.4](https://yarnpkg.com/package/react-redux)
+- [react-router-dom: ^5.2.0](https://yarnpkg.com/package/react-router-dom)
+- [react-scripts: ^4.0.3](https://yarnpkg.com/package/react-scripts)
+- [react-select: ^4.3.1](https://github.com/JedWatson/react-select)
+- [react-toastify: ^7.0.4](https://yarnpkg.com/package/react-toastify)
+- [redux: ^4.1.0](https://yarnpkg.com/package/redux)
+- [redux-axios-middleware: ^4.0.1](https://yarnpkg.com/package/redux-axios-middleware)
+- [redux-saga: ^1.1.3](https://yarnpkg.com/package/redux-saga)
+- [yup: ^0.32.9](https://yarnpkg.com/package/yup)
