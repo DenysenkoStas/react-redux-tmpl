@@ -30,4 +30,20 @@
     height: calc(100vh - 156px);
     @include scrollbar(15px, var(--primary), var(--light), 5px, 2px);
   }
+
+  .demo-article {
+    border: 1px solid var(--gray);
+    border-radius: 4px;
+
+    &__title {
+      text-transform: capitalize;
+    }
+
+    &__text {
+      text-transform: capitalize;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
 }
