@@ -1,3 +1,5 @@
+@import 'src/assets/styles/mixins';
+
 .select-component {
   display: inline-flex;
   min-width: 200px;
@@ -8,7 +10,6 @@
       height: 50px;
       font-size: 14px;
       line-height: 20px;
-      font-weight: 600;
       color: var(--primary);
       background-color: var(--white);
       border: 1px solid rgba(32, 69, 105, 0.3);
@@ -17,7 +18,7 @@
 
       &--is-focused,
       &:hover {
-        border-color: rgba(32, 69, 105, 0.3);
+        border-color: var(--info);
         box-shadow: none;
       }
 
@@ -69,26 +70,7 @@
     &__menu-list {
       padding-top: 5px;
       padding-bottom: 5px;
-
-      &::-webkit-scrollbar {
-        width: 5px;
-        height: 5px;
-      }
-
-      &::-webkit-scrollbar-track {
-        -webkit-border-radius: 2px;
-        background: #f2f2f3;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        -webkit-border-radius: 5px;
-        border-radius: 5px;
-        background: rgba(74, 85, 104, 0.25);
-      }
-
-      &::-webkit-scrollbar-thumb:window-inactive {
-        background: rgba(74, 85, 104, 0.25);
-      }
+      @include scrollbar(5px, var(--primary), var(--light), 5px, 2px);
     }
 
     &__option {
@@ -101,23 +83,13 @@
       &--is-focused {
         font-weight: 800;
         color: var(--primary);
-        background: var(--light);
-
-        //&:after {
-        //  content: url('./icons/corner-down-left.svg');
-        //  position: absolute;
-        //  top: 50%;
-        //  right: 15px;
-        //  transform: translateY(-50%);
-        //  width: 24px;
-        //  height: 24px;
-        //}
+        background-color: var(--light);
       }
 
       &--is-selected {
         font-weight: 800;
         color: var(--primary);
-        background: var(--white);
+        background-color: var(--white);
 
         &:after {
           content: none;

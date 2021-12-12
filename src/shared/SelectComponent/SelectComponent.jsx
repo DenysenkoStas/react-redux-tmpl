@@ -19,23 +19,24 @@ export const DropdownIndicator = (props) => {
 };
 
 const SelectComponent = ({
+  className = '',
+  disabled,
   id,
   input,
-  menuIsOpen,
-  className = '',
-  reduxForm = false,
-  value,
-  onKeyDown,
-  options,
-  loading,
-  loadingMessage = 'Loading filters...',
-  onChange,
-  onBlur,
-  placeholder,
   isClearable,
   isSearchable = false,
-  withSearchIcon,
-  disabled
+  loading,
+  loadingMessage = 'Loading...',
+  menuIsOpen,
+  noOptionsMessage = 'No options',
+  onBlur,
+  onChange,
+  onKeyDown,
+  options,
+  placeholder,
+  reduxForm = false,
+  value,
+  withSearchIcon
 }) => (
   <Select
     {...input}
@@ -57,7 +58,7 @@ const SelectComponent = ({
     placeholder={placeholder}
     onKeyDown={onKeyDown}
     components={{DropdownIndicator}}
-    noOptionsMessage={() => 'No options'}
+    noOptionsMessage={() => noOptionsMessage}
   />
 );
 
@@ -71,6 +72,7 @@ SelectComponent.propTypes = {
   loading: PropTypes.bool,
   loadingMessage: PropTypes.string,
   menuIsOpen: PropTypes.bool,
+  noOptionsMessage: PropTypes.string,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   onKeyDown: PropTypes.func,
