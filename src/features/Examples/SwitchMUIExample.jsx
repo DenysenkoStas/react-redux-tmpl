@@ -1,7 +1,5 @@
 import React from 'react';
 import SwitchMUI from '../../shared/SwitchMUI';
-import AlarmOnIcon from '@material-ui/icons/AlarmOn';
-import AlarmOffIcon from '@material-ui/icons/AlarmOff';
 
 const SwitchMUIExample = () => {
   return (

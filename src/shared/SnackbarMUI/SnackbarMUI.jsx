@@ -22,7 +22,7 @@ SnackbarMUI.propTypes = {
   errors: PropTypes.object,
   onClose: PropTypes.func,
   open: PropTypes.bool,
-  severity: PropTypes.string
+  severity: PropTypes.oneOf(['error', 'warning', 'info', 'success'])
 };
 
 export default SnackbarMUI;

@@ -21,6 +21,7 @@ import TooltipMUIExample from './TooltipMUIExample';
 import TransitionedBlockExample from './TransitionedBlockExample';
 import DatePickerMUIExample from './DatePickerMUIExample';
 import ErrorBoundaryExample from './ErrorBoundaryExample';
+import RadioMUIExample from './RadioMUIExample';
 
 export default Examples;
 
@@ -34,6 +35,7 @@ export {
   LoaderMUIExample,
   NotFoundExample,
   PaginationExample,
+  RadioMUIExample,
   MultiSelectMUIExample,
   ReactHookFormExample,
   ReactToastifyExample,
