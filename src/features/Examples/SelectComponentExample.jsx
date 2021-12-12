@@ -20,7 +20,7 @@ const SelectComponentExample = () => {
         </p>
 
         <p className='mb-10 mt-25'>
-          disabled / isSearchable withSearchIcon / isClearable / loading loadingMessage='Loading message'
+          disabled / isSearchable withSearchIcon / isClearable / loading loadingMessage="Loading message"
         </p>
         <div className='flex gap-25'>
           <SelectComponent options={options} disabled />
@@ -29,7 +29,7 @@ const SelectComponentExample = () => {
           <SelectComponent options={noOptions} loading loadingMessage='Loading message' />
         </div>
 
-        <p className='mb-10 mt-25'>menuIsOpen / noOptionsMessage='No options message' / placeholder='Выберите...'</p>
+        <p className='mb-10 mt-25'>menuIsOpen / noOptionsMessage="No options message" / placeholder="Выберите..."</p>
         <div className='flex gap-25'>
           <SelectComponent options={options} menuIsOpen />
           <SelectComponent options={noOptions} noOptionsMessage='No options message' />

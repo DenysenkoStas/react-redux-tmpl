@@ -5,7 +5,7 @@ import {Alert} from '@material-ui/lab';
 
 import './SnackbarMUI.scss';
 
-const SnackbarMUI = ({open, onClose, autoHideDuration, severity = 'error', errors, children}) => {
+const SnackbarMUI = ({autoHideDuration, children, errors, onClose, open, severity = 'error'}) => {
   return (
     <Snackbar className='snackbar-mui' open={open} onClose={onClose} autoHideDuration={autoHideDuration}>
       <Alert className='alert-mui' onClose={onClose} severity={severity} variant='filled'>
@@ -22,7 +22,7 @@ SnackbarMUI.propTypes = {
   errors: PropTypes.object,
   onClose: PropTypes.func,
   open: PropTypes.bool,
-  severity: PropTypes.string,
+  severity: PropTypes.string
 };
 
 export default SnackbarMUI;

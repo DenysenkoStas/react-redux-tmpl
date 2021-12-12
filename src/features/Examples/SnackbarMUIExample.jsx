@@ -12,17 +12,24 @@ const SnackbarMUIExample = () => {
     <>
       <h2 className='mb-15'>SnackbarMUI</h2>
 
-      <section className='card-wrap flex gap-25'>
-        <ButtonMUI color='secondary' onClick={() => setError(true)}>
-          Open error snackbar
-        </ButtonMUI>
-        <ButtonMUI color='primary' onClick={() => setWarning(true)}>
-          Open warning snackbar
-        </ButtonMUI>
-        <ButtonMUI onClick={() => setInfo(true)}>Open info snackbar</ButtonMUI>
-        <ButtonMUI variant='outlined' onClick={() => setSuccess(true)}>
-          Open success snackbar
-        </ButtonMUI>
+      <section className='card-wrap'>
+        <p>
+          <b>Props:</b> autoHideDuration, children, errors, onClose, open, severity
+        </p>
+
+        <p className='mb-10 mt-25'>severity="error / warning / info / success"</p>
+        <div className='flex gap-25'>
+          <ButtonMUI color='secondary' onClick={() => setError(true)}>
+            Open error snackbar
+          </ButtonMUI>
+          <ButtonMUI color='primary' onClick={() => setWarning(true)}>
+            Open warning snackbar
+          </ButtonMUI>
+          <ButtonMUI onClick={() => setInfo(true)}>Open info snackbar</ButtonMUI>
+          <ButtonMUI variant='outlined' onClick={() => setSuccess(true)}>
+            Open success snackbar
+          </ButtonMUI>
+        </div>
       </section>
 
       <SnackbarMUI open={error} onClose={() => setError(false)}>
