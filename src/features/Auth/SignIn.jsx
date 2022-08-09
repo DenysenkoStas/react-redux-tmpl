@@ -113,7 +113,7 @@ const SignIn = () => {
         name='recaptcha'
         control={control}
         render={({field: {onChange}}) => (
-          <ReCaptchaV2 siteKey='6LcPyr8bAAAAAOzukES36-GsPCVHFjyaZyxLJ6sO' center onChange={onChange} />
+          <ReCaptchaV2 center onChange={onChange} />
         )}
       />
 
