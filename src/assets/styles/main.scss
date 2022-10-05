@@ -1,5 +1,6 @@
 @import 'reset';
 @import 'vars';
+@import 'helpers';
 @import 'mixins';
 @import '../fonts/Inter/stylesheet';
 @import '../fonts/Montserrat/stylesheet';
@@ -173,8 +174,10 @@ h3,
 .good-hover {
   transition: opacity ease 0.3s;
 
-  &:hover {
-    opacity: 0.7;
+  @media (hover) {
+    &:hover, &:focus-visible {
+      opacity: 0.7;
+    }
   }
 }
 
@@ -182,9 +185,11 @@ h3,
   cursor: pointer;
   transition: margin-top ease 0.3s, margin-bottom ease 0.3s;
 
-  &:hover {
-    margin-top: -3px;
-    margin-bottom: 3px;
+  @media (hover) {
+    &:hover, &:focus-visible {
+      margin-top: -3px;
+      margin-bottom: 3px;
+    }
   }
 }
 
@@ -194,8 +199,10 @@ h3,
 
 // Animations
 .pulse {
-  &:hover {
-    animation: pulse 2s infinite;
+  @media (hover) {
+    &:hover, &:focus-visible {
+      animation: pulse 2s infinite;
+    }
   }
 }
 

@@ -1,95 +1,3 @@
-$sizes: 100;
-$mediumSizes: 300;
-$bigSizes: 2000;
-$unit: 1px;
-
-// For margin & padding
-@mixin generateIndentClass($prefix, $property) {
-  @for $i from 1 through $mediumSizes {
-    .#{$prefix}-#{$i} {
-      #{$property}: $i * $unit;
-    }
-  }
-}
-
-$rules: [ [m, margin], [ml, margin-left], [mt, margin-top], [mb, margin-bottom], [mr, margin-right], [p, padding], [pl,
-  padding-left], [pt, padding-top], [pb, padding-bottom], [pr, padding-right], ];
-
-@each $item in $rules {
-  @include generateIndentClass(nth($item, 1), nth($item, 2));
-}
-
-// For margin & padding - X/Y
-@mixin indentXYClasses {
-  @for $i from 1 through $mediumSizes {
-    $value: $i * $unit;
-    .mx-#{$i} {
-      margin-left: $value;
-      margin-right: $value;
-    }
-    .my-#{$i} {
-      margin-top: $value;
-      margin-bottom: $value;
-    }
-    .px-#{$i} {
-      padding-left: $value;
-      padding-right: $value;
-    }
-    .py-#{$i} {
-      padding-top: $value;
-      padding-bottom: $value;
-    }
-  }
-}
-
-@include indentXYClasses;
-
-// For width
-@mixin width {
-  // width in percents
-  @for $i from 1 through $sizes {
-    .w-#{$i} {
-      width: $i * 1%;
-    }
-  }
-
-  // min/max-width in px
-  @for $i from 1 through $bigSizes {
-    $value: $i * $unit;
-    .min-w-#{$i} {
-      min-width: $value;
-    }
-    .max-w-#{$i} {
-      max-width: $value;
-    }
-  }
-}
-
-@include width;
-
-// For height
-@mixin height {
-  // height in percents
-  @for $i from 1 through $sizes {
-    .h-#{$i} {
-      height: $i * 1%;
-    }
-  }
-
-  // min/max-height in px
-  @for $i from 1 through $bigSizes {
-    $value: $i * $unit;
-    .min-h-#{$i} {
-      min-height: $value;
-    }
-    .max-h-#{$i} {
-      max-height: $value;
-    }
-  }
-}
-
-@include height;
-
 // Convert px to em
 $browser-context: 16;
 
@@ -184,4 +92,24 @@ $xxl: 1400px; // 87.5em / large desktop
     scrollbar-face-color: $thumb-color;
     scrollbar-track-color: $track-color;
   }
+}
+
+// Truncated text
+%truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Visually hidden
+%visuallyHidden {
+  position: absolute;
+  overflow: hidden;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
 }
