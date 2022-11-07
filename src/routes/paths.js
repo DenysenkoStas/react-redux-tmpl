@@ -39,8 +39,6 @@ export const mainPath = {
   dashboard: `${rootMainPath}/dashboard`,
   examples: `${rootMainPath}/examples`,
   navLink: `${rootMainPath}/nav-link`,
-  navLink2: `${rootMainPath}/nav-link-2`,
-  navLink3: `${rootMainPath}/nav-link-3`
 };
 
 export const examplesPath = [

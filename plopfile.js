@@ -7,76 +7,80 @@ const reactComponentGenerator = () => ({
       type: 'list',
       name: 'component',
       message: 'Component type',
-      choices: ['Function', 'Class', 'Redux'],
-      default: 0,
+      choices: ['Function', 'Redux', 'Class'],
+      default: 0
     },
     {
       type: 'list',
       name: 'base',
       message: 'Base directory',
       choices: ['features', 'shared'],
-      default: 0,
+      default: 0
     },
     {
       type: 'directory',
       name: 'directory',
       message: 'AsyncSelect directory',
       basePath: './src/features',
-      when: (answers) => answers.base === 'features',
+      when: (answers) => answers.base === 'features'
     },
     {
       type: 'directory',
       name: 'directory',
       message: 'AsyncSelect directory',
       basePath: './src/shared',
-      when: (answers) => answers.base === 'shared',
+      when: (answers) => answers.base === 'shared'
     },
     {
       type: 'input',
       name: 'name',
-      message: 'Component name',
-    },
+      message: 'Component name'
+    }
   ],
   actions: function (data) {
     return [
       {
         type: 'add',
         path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{pascalCase name}}.jsx`,
-        templateFile: `plop-templates/component/${data.component === 'Class' ? 'Class' : ''}Component.hbs`,
+        templateFile: `plop-templates/component/${data.component === 'Class' ? 'Class' : ''}Component.hbs`
       },
       {
         type: 'add',
-        path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{pascalCase name}}.scss`,
-        templateFile: 'plop-templates/component/Component.scss.hbs',
+        path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{pascalCase name}}.module.scss`,
+        templateFile: 'plop-templates/component/Component.scss.hbs'
       },
       {
         type: 'add',
         path: `src/${data.base}/{{directory}}/{{pascalCase name}}/index.js`,
-        templateFile: 'plop-templates/component/Component.index.hbs',
+        templateFile: 'plop-templates/component/Component.index.hbs'
       },
       // For Redux & Saga
       {
-        type: `${data.component === 'Redux' && 'add'}`,
+        type: 'add',
         path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{camelCase name}}ActionTypes.js`,
         templateFile: 'plop-templates/component/reduxActionTypes.hbs',
+        skip: (data) => (data.component === 'Redux' ? false : '')
       },
       {
-        type: `${data.component === 'Redux' && 'add'}`,
+        type: 'add',
         path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{camelCase name}}Actions.js`,
         templateFile: 'plop-templates/component/reduxActions.hbs',
+        skip: (data) => (data.component === 'Redux' ? false : '')
       },
       {
-        type: `${data.component === 'Redux' && 'add'}`,
+        type: 'add',
         path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{camelCase name}}Reducer.js`,
         templateFile: 'plop-templates/component/reduxReducer.hbs',
+        skip: (data) => (data.component === 'Redux' ? false : '')
       },
       {
-        type: `${data.component === 'Redux' && 'add'}`,
+        type: 'add',
         path: `src/${data.base}/{{directory}}/{{pascalCase name}}/{{camelCase name}}Saga.js`,
         templateFile: 'plop-templates/component/reduxSaga.hbs',
-      },
+        skip: (data) => (data.component === 'Redux' ? false : '')
+      }
     ];
-  },
+  }
 });
 
 module.exports = function (plop) {

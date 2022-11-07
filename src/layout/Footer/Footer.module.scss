@@ -1,21 +1,21 @@
-.footer {
+.root {
   margin-top: auto;
   background-color: var(--white);
   border-top: 1px solid rgba(184, 200, 214, 0.5);
 
-  &__container {
+  .container {
     display: flex;
     align-items: center;
     min-height: 75px;
   }
 
-  &__nav {
+  .nav {
     display: flex;
     align-items: center;
     min-height: 70px;
   }
 
-  &__link {
+  .link {
     padding: 20px;
     color: var(--primary);
     opacity: 0.5;
@@ -25,28 +25,29 @@
     }
 
     &:hover,
-    &.active {
+    &:focus-visible,
+    &:global(.active) {
       color: var(--primary);
       opacity: 1;
     }
   }
 
-  &__info {
+  .info {
     margin-left: auto;
     margin-right: 30px;
   }
 
-  &__socials {
+  .socials {
     display: flex;
     column-gap: 30px;
   }
 }
 
-.social-item {
+.socialItem {
   width: 28px;
   height: 28px;
 
-  &__link {
+  .socialLink {
     opacity: 0.7;
 
     &:hover {
@@ -54,7 +55,7 @@
     }
   }
 
-  &__icon {
+  .socialIcon {
     max-width: 28px;
     max-height: 28px;
   }

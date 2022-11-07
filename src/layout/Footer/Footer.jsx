@@ -1,82 +1,70 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {mainPath} from '../../routes/paths';
+import linkedinIcon from '../../assets/icons/linkedin.svg';
+import facebookIcon from '../../assets/icons/facebook.svg';
+import instagramIcon from '../../assets/icons/instagram.svg';
+import twitterIcon from '../../assets/icons/twitter.svg';
+import styles from './Footer.module.scss';
 
-import './Footer.scss';
+const navLinks = [
+  {path: mainPath.examples, name: 'Examples', strict: true},
+  {path: mainPath.navLink, name: 'Nav link'}
+];
 
-import {ReactComponent as LinkedinIcon} from '../../assets/icons/linkedin.svg';
-import {ReactComponent as FacebookIcon} from '../../assets/icons/facebook.svg';
-import {ReactComponent as InstagramIcon} from '../../assets/icons/instagram.svg';
-import {ReactComponent as TwitterIcon} from '../../assets/icons/twitter.svg';
+const infoLinks = [
+  {path: mainPath.navLink, name: 'Help center'},
+  {path: mainPath.navLink, name: 'About'}
+];
+
+const socialLinks = [
+  {path: 'https://www.linkedin.com/', name: 'Linkedin', icon: linkedinIcon},
+  {path: 'https://www.facebook.com/', name: 'Facebook', icon: facebookIcon},
+  {path: 'https://www.instagram.com/', name: 'Instagram', icon: instagramIcon},
+  {path: 'https://twitter.com/', name: 'Twitter', icon: twitterIcon}
+];
 
 const Footer = () => {
   return (
-    <footer className='footer'>
-      <div className='footer__container container'>
-        <nav className='footer__nav'>
-          <NavLink className='footer__link' to={mainPath.examples} strict>
-            Examples
-          </NavLink>
-          <NavLink className='footer__link' to={mainPath.navLink}>
-            Nav link
-          </NavLink>
-        </nav>
+    <footer className={styles.root}>
+      <div className={`${styles.container} container`}>
+        {navLinks?.length > 0 && (
+          <nav className={styles.nav}>
+            {navLinks?.map(({path, name, strict}) => (
+              <NavLink key={name} className={styles.link} to={path} strict={strict}>
+                {name}
+              </NavLink>
+            ))}
+          </nav>
+        )}
 
-        <div className='footer__info'>
-          <NavLink className='footer__link' to={mainPath.navLink2}>
-            Help center
-          </NavLink>
-          <NavLink className='footer__link' to={mainPath.navLink3}>
-            About
-          </NavLink>
-        </div>
+        {infoLinks?.length > 0 && (
+          <div className={styles.info}>
+            {infoLinks?.map(({path, name}) => (
+              <NavLink key={name} className={styles.link} to={path}>
+                {name}
+              </NavLink>
+            ))}
+          </div>
+        )}
 
-        <ul className='footer__socials'>
-          <li className='social-item'>
-            <a
-              className='social-item__link'
-              href='https://www.linkedin.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='Linkedin'
-            >
-              <LinkedinIcon className='social-item__icon' />
-            </a>
-          </li>
-          <li className='social-item'>
-            <a
-              className='social-item__link'
-              href='https://www.facebook.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='Facebook'
-            >
-              <FacebookIcon className='social-item__icon' />
-            </a>
-          </li>
-          <li className='social-item'>
-            <a
-              className='social-item__link'
-              href='https://www.instagram.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='Instagram'
-            >
-              <InstagramIcon className='social-item__icon' />
-            </a>
-          </li>
-          <li className='social-item'>
-            <a
-              className='social-item__link'
-              href='https://twitter.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='Twitter'
-            >
-              <TwitterIcon className='social-item__icon' />
-            </a>
-          </li>
-        </ul>
+        {socialLinks?.length > 0 && (
+          <ul className={styles.socials}>
+            {socialLinks?.map(({path, name, icon}) => (
+              <li key={name} className={styles.socialItem}>
+                <a
+                  className={styles.socialLink}
+                  href={path}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  aria-label={name}
+                >
+                  <img className={styles.socialIcon} src={icon} alt={name} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </footer>
   );

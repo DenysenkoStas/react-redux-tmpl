@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-
-import './{{pascalCase name}}.scss';
+import styles from './{{pascalCase name}}.module.scss';
 
 class {{pascalCase name}} extends Component {
   render() {
     return (
-      <div className='{{kebabCase name}}'>
+      <div className={styles.root}>
         {{pascalCase name}}
       </div>
     );
