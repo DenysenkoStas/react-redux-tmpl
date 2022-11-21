@@ -1,38 +1,26 @@
-.auth-page {
-  display: flex;
-  height: 100vh;
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    background-color: var(--white);
-  }
-}
-
-.auth-box {
+.root {
   margin: auto;
   padding: 24px;
   width: 100%;
   max-width: 530px;
 
-  &__title {
+  .title {
     margin-bottom: 16px;
   }
 
-  &__desc {
+  .desc {
     margin-bottom: 72px;
   }
 
-  &__input {
+  .input {
     margin-bottom: 48px;
   }
 
-  &__res-pass-wrap {
+  .resPassWrap {
     position: relative;
   }
 
-  &__res-pass-link {
+  .resPassLink {
     position: absolute;
     top: -18px;
     right: 0;
@@ -41,13 +29,7 @@
     font-weight: 600;
   }
 
-  &__input-group {
-    display: flex;
-    gap: 24px;
-  }
-
-  &__rounded-wrap {
-    margin-top: 64px;
+  .roundedWrap {
     padding-top: 24px;
     padding-bottom: 32px;
     text-align: center;
@@ -55,24 +37,23 @@
     border-radius: 8px;
   }
 
-  &__btn {
+  .btn {
     display: flex;
     margin-top: 64px;
     margin-left: auto;
     margin-right: auto;
-    width: fit-content;
   }
 
-  &__footer {
+  .footer {
     margin-top: 104px;
     text-align: center;
   }
 
-  &__footer-text {
+  .footerText {
     margin-right: 16px;
   }
 
-  &__link {
+  .link {
     font-weight: 700;
   }
 }

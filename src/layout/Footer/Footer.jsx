@@ -8,13 +8,13 @@ import twitterIcon from '../../assets/icons/twitter.svg';
 import styles from './Footer.module.scss';
 
 const navLinks = [
-  {path: mainPath.examples, name: 'Examples', strict: true},
-  {path: mainPath.navLink, name: 'Nav link'}
+  {path: mainPath.examples.path, name: mainPath.examples.name, strict: true},
+  {path: mainPath.navLink.path, name: mainPath.navLink.name}
 ];
 
 const infoLinks = [
-  {path: mainPath.navLink, name: 'Help center'},
-  {path: mainPath.navLink, name: 'About'}
+  {path: mainPath.navLink.path, name: 'Help center'},
+  {path: mainPath.navLink.path, name: 'About'}
 ];
 
 const socialLinks = [

@@ -70,3 +70,16 @@ export const shuffleArray = (array) => {
   }
   return array;
 };
+
+export const dateForQuery = (date) => encodeURIComponent(date?.toISOString().replace('.000Z', ''));
+
+export const formatNumber = (value) =>
+  Number(value)
+    .toLocaleString('fr', {
+      maximumFractionDigits: 2
+    })
+    .replace(',', '.');
+
+export const isNegative = (num) => Math.sign(num) === -1;
+
+export const capitalize = (string) => string && string.charAt(0).toUpperCase() + string.slice(1);

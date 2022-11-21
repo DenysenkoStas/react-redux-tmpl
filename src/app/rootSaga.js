@@ -11,12 +11,16 @@ export function* openErrorSnack(e) {
   yield put({
     type: 'ERROR_SNACK_OPEN',
     payload:
-      e && e.error && e.error.response.data === null
-        ? e.error.response.statusText
-        : e && e.error && e.error.response && e.error.response.data
-        ? e.error.response.data.detail
-        : 'Something went wrong',
+      e?.error?.response?.data === null
+        ? e?.error?.response?.statusText
+        : e?.error?.response?.data
+        ? e?.error?.response?.data?.detail
+        : 'Something went wrong'
+        ? e?.error?.data
+        : 'Something went wrong'
   });
+
+  console.log(e);
 }
 
 export function* openSuccessSnack(e) {

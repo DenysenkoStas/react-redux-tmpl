@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import SnackbarMUI from '../../shared/SnackbarMUI';
-import ButtonMUI from '../../shared/ButtonMUI';
+import {ExampleLayout} from './Examples';
+import {SnackbarMUI, ButtonMUI} from '../../shared';
 
 const SnackbarMUIExample = () => {
   const [error, setError] = useState(false);
@@ -9,28 +9,20 @@ const SnackbarMUIExample = () => {
   const [success, setSuccess] = useState(false);
 
   return (
-    <>
-      <h2 className='mb-15'>SnackbarMUI</h2>
-
-      <section className='card-wrap'>
-        <p>
-          <b>Props:</b> autoHideDuration, children, errors, onClose, open, severity
-        </p>
-
-        <p className='mb-10 mt-25'>severity="error / warning / info / success"</p>
-        <div className='flex gap-25'>
-          <ButtonMUI color='secondary' onClick={() => setError(true)}>
-            Open error snackbar
-          </ButtonMUI>
-          <ButtonMUI color='primary' onClick={() => setWarning(true)}>
-            Open warning snackbar
-          </ButtonMUI>
-          <ButtonMUI onClick={() => setInfo(true)}>Open info snackbar</ButtonMUI>
-          <ButtonMUI variant='outlined' onClick={() => setSuccess(true)}>
-            Open success snackbar
-          </ButtonMUI>
-        </div>
-      </section>
+    <ExampleLayout propsList='autoHideDuration, children, errors, onClose, open, severity'>
+      <p className='mb-10 mt-25'>severity="error / warning / info / success"</p>
+      <div className='flex gap-25'>
+        <ButtonMUI color='secondary' onClick={() => setError(true)}>
+          Open error snackbar
+        </ButtonMUI>
+        <ButtonMUI color='primary' onClick={() => setWarning(true)}>
+          Open warning snackbar
+        </ButtonMUI>
+        <ButtonMUI onClick={() => setInfo(true)}>Open info snackbar</ButtonMUI>
+        <ButtonMUI variant='outlined' onClick={() => setSuccess(true)}>
+          Open success snackbar
+        </ButtonMUI>
+      </div>
 
       <SnackbarMUI open={error} onClose={() => setError(false)}>
         Error snackbar
@@ -44,7 +36,7 @@ const SnackbarMUIExample = () => {
       <SnackbarMUI open={success} onClose={() => setSuccess(false)} severity='success'>
         Success snackbar
       </SnackbarMUI>
-    </>
+    </ExampleLayout>
   );
 };
 

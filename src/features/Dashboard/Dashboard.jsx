@@ -1,21 +1,13 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {ButtonMUI, Pagination} from '../../shared';
-
+import {dashboardData} from '../../helpers/mockData';
 import styles from './Dashboard.module.scss';
 
 const Dashboard = () => {
-  let data = [
-    {id: '2746234293', name: 'Calvin', email: 'calvin.reynolds@gmail.com', referrals: '12', profit: '1,425.50'},
-    {id: '9283420941', name: 'Rosa', email: 'rosa_gilbert@gmail.com', referrals: '8', profit: '852.75'},
-    {id: '0293389241', name: 'Bettie', email: 'bettie.higgins@gmail.com', referrals: '7', profit: '640.00'},
-    {id: '4949234293', name: 'Calvin', email: 'calvin.reynolds@gmail.com', referrals: '12', profit: '1,425.50'},
-    {id: '2334909023', name: 'Rosa', email: 'rosa_gilbert@gmail.com', referrals: '8', profit: '852.75'},
-    {id: '2323389241', name: 'Bettie', email: 'bettie.higgins@gmail.com', referrals: '7', profit: '640.00'},
-    {id: '3429327462', name: 'Calvin', email: 'calvin.reynolds@gmail.com', referrals: '12', profit: '1,425.50'},
-    {id: '8342092941', name: 'Rosa', email: 'rosa_gilbert@gmail.com', referrals: '8', profit: '852.75'},
-    {id: '0292413389', name: 'Bettie', email: 'bettie.higgins@gmail.com', referrals: '7', profit: '640.00'},
-    {id: '6234227493', name: 'Calvin', email: 'calvin.reynolds@gmail.com', referrals: '12', profit: '1,425.50'}
-  ];
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    if (dashboardData?.length > 0) setData(dashboardData);
+  }, [dashboardData]);
 
   return (
     <main className={`${styles.dashboard} page-wrap`}>

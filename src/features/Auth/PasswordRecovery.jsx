@@ -2,17 +2,17 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {Controller, useForm} from 'react-hook-form';
-import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {authPath} from '../../routes/paths';
 import {postPassRecovery} from './authActions';
+import {passwordRecoverySchema} from './authSchema';
 import {useToggle} from '../../helpers/hooks';
 import InputMUI from '../../shared/InputMUI';
 import ButtonMUI from '../../shared/ButtonMUI';
 import SnackbarMUI from '../../shared/SnackbarMUI';
-
 import {ReactComponent as ArrowBlue} from '../../assets/icons/arrow-blue.svg';
 import {ReactComponent as EnvelopeIcon} from '../../assets/icons/envelope.svg';
+import styles from './Auth.module.scss';
 
 const PasswordRecovery = () => {
   const dispatch = useDispatch();
@@ -22,10 +22,6 @@ const PasswordRecovery = () => {
   const [sent, setSent] = useState(false);
   const [error, toggleError] = useToggle(false);
 
-  const schema = yup.object({
-    email: yup.string().required('Required').email('Incorrect email')
-  });
-
   const {
     control,
     handleSubmit,
@@ -34,7 +30,7 @@ const PasswordRecovery = () => {
   } = useForm({
     mode: 'onTouched',
     reValidateMode: 'onChange',
-    resolver: yupResolver(schema),
+    resolver: yupResolver(passwordRecoverySchema),
     defaultValues: {
       email: ''
     }
@@ -52,14 +48,14 @@ const PasswordRecovery = () => {
   };
 
   return (
-    <form className='auth-box' onSubmit={handleSubmit(onSubmit)}>
-      <Link className='backlink' to={authPath.signIn}>
+    <form className={styles.root} onSubmit={handleSubmit(onSubmit)}>
+      <Link className='backlink' to={authPath.signIn.path}>
         <ArrowBlue />
-        <span>SIGN IN</span>
+        <span>{authPath.signIn.name}</span>
       </Link>
 
-      <h1 className='auth-box__title mt-8'>Password recovery</h1>
-      <p className='auth-box__desc mb-80'>
+      <h1 className={`${styles.title} mt-8`}>{authPath.passRecovery.name}</h1>
+      <p className={`${styles.desc} mb-80`}>
         {!sent ? 'Enter your email to continue' : 'We have sent you an email with a link to reset your password'}
       </p>
 
@@ -70,7 +66,7 @@ const PasswordRecovery = () => {
             control={control}
             render={({field}) => (
               <InputMUI
-                className='auth-box__input'
+                className={styles.input}
                 type='email'
                 label='Email'
                 fullWidth
@@ -80,12 +76,12 @@ const PasswordRecovery = () => {
             )}
           />
 
-          <ButtonMUI className='auth-box__btn' disabled={!isValid || loading} loading={loading} formAction>
+          <ButtonMUI className={styles.btn} disabled={!isValid || loading} loading={loading} formAction>
             Next
           </ButtonMUI>
         </>
       ) : (
-        <div className='auth-box__rounded-wrap'>
+        <div className={`${styles.roundedWrap} mt-64`}>
           <EnvelopeIcon />
         </div>
       )}

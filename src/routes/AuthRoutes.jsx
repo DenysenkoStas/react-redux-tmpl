@@ -9,12 +9,11 @@ const AuthRoutes = () => {
 
   return (
     <Switch>
-      <Redirect from={rootAuthPath} exact to={authPath.signIn} />
-      <Route path={authPath.signIn} exact component={SignIn} />
-      <Route path={authPath.signUp} exact component={SignUp} />
-      {/*<Route path={authPath.signUpWizard} exact component={SignUpWizard} />*/}
-      <Route path={authPath.passRecovery} exact component={PasswordRecovery} />
-      <Route path={authPath.passConfirm} exact component={PasswordConfirm} />
+      <Redirect from={rootAuthPath} exact to={authPath.signIn.path} />
+      <Route path={authPath.signIn.path} exact component={SignIn} />
+      <Route path={authPath.signUp.path} exact component={SignUp} />
+      <Route path={authPath.passRecovery.path} exact component={PasswordRecovery} />
+      <Route path={authPath.passConfirm.path} exact component={PasswordConfirm} />
       <Route path='*' component={NotFound} />
     </Switch>
   );

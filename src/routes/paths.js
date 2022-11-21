@@ -28,41 +28,76 @@ export const rootAuthPath = '/auth';
 export const rootMainPath = '/main';
 
 export const authPath = {
-  signIn: `${rootAuthPath}/sign-in`,
-  signUp: `${rootAuthPath}/sign-up`,
-  signUpWizard: `${rootAuthPath}/sign-up-wizard`,
-  passRecovery: `${rootAuthPath}/password-recovery`,
-  passConfirm: `${rootAuthPath}/password-confirm`
+  signIn: {path: `${rootAuthPath}/sign-in`, name: 'Sign In'},
+  signUp: {path: `${rootAuthPath}/sign-up`, name: 'Sign up'},
+  passRecovery: {path: `${rootAuthPath}/password-recovery`, name: 'Password recovery'},
+  passConfirm: {path: `${rootAuthPath}/password-confirm`, name: 'Reset password'}
 };
 
 export const mainPath = {
-  dashboard: `${rootMainPath}/dashboard`,
-  examples: `${rootMainPath}/examples`,
-  navLink: `${rootMainPath}/nav-link`,
+  dashboard: {path: `${rootMainPath}/dashboard`, name: 'Dashboard'},
+  examples: {path: `${rootMainPath}/examples`, name: 'Examples'},
+  navLink: {path: `${rootMainPath}/nav-link`, name: 'Nav link'}
 };
 
-export const examplesPath = [
-  {path: `${mainPath.examples}/accordion-mui`, name: 'AccordionMUI', component: AccordionMUIExample},
-  {path: `${mainPath.examples}/button-mui`, name: 'ButtonMUI', component: ButtonMUIExample},
-  {path: `${mainPath.examples}/checkbox-mui`, name: 'CheckboxMUI', component: CheckboxMUIExample},
-  {path: `${mainPath.examples}/date-picker-mui`, name: 'DatePickerMUI', component: DatePickerMUIExample},
-  {path: `${mainPath.examples}/dialog-mui`, name: 'DialogMUI', component: DialogMUIExample},
-  {path: `${mainPath.examples}/error-boundary`, name: 'ErrorBoundary', component: ErrorBoundaryExample},
-  {path: `${mainPath.examples}/icon-button-mui`, name: 'IconButtonMUI', component: IconButtonMUIExample},
-  {path: `${mainPath.examples}/input-mui`, name: 'InputMUI', component: InputMUIExample},
-  {path: `${mainPath.examples}/loader-mui`, name: 'LoaderMUI', component: LoaderMUIExample},
-  {path: `${mainPath.examples}/multi-select-mui`, name: 'MultiSelectMUI', component: MultiSelectMUIExample},
-  {path: `${mainPath.examples}/not-found`, name: 'NotFound', component: NotFoundExample},
-  {path: `${mainPath.examples}/pagination`, name: 'Pagination', component: PaginationExample},
-  {path: `${mainPath.examples}/radio-mui`, name: 'RadioMUI', component: RadioMUIExample},
-  {path: `${mainPath.examples}/react-hook-form`, name: 'React Hook Form', component: ReactHookFormExample},
-  {path: `${mainPath.examples}/react-toastify`, name: 'React-Toastify', component: ReactToastifyExample},
-  {path: `${mainPath.examples}/re-captcha-v2`, name: 'ReCaptchaV2', component: ReCaptchaV2Example},
-  {path: `${mainPath.examples}/select-component`, name: 'SelectComponent', component: SelectComponentExample},
-  {path: `${mainPath.examples}/skeleton-mui`, name: 'SkeletonMUI', component: SkeletonMUIExample},
-  {path: `${mainPath.examples}/snackbar-mui`, name: 'SnackbarMUI', component: SnackbarMUIExample},
-  {path: `${mainPath.examples}/switch-mui`, name: 'SwitchMUI', component: SwitchMUIExample},
-  {path: `${mainPath.examples}/tabs`, name: 'Tabs', component: TabsExample},
-  {path: `${mainPath.examples}/tooltip-mui`, name: 'TooltipMUI', component: TooltipMUIExample},
-  {path: `${mainPath.examples}/transitioned-block`, name: 'TransitionedBlock', component: TransitionedBlockExample}
-];
+export const examplesPath = {
+  accordionMUI: {
+    path: `${mainPath.examples.path}/accordion-mui`,
+    name: 'AccordionMUI',
+    component: AccordionMUIExample
+  },
+  buttonMUI: {path: `${mainPath.examples.path}/button-mui`, name: 'ButtonMUI', component: ButtonMUIExample},
+  checkboxMUI: {path: `${mainPath.examples.path}/checkbox-mui`, name: 'CheckboxMUI', component: CheckboxMUIExample},
+  datePickerMUI: {
+    path: `${mainPath.examples.path}/date-picker-mui`,
+    name: 'DatePickerMUI',
+    component: DatePickerMUIExample
+  },
+  dialogMUI: {path: `${mainPath.examples.path}/dialog-mui`, name: 'DialogMUI', component: DialogMUIExample},
+  errorBoundary: {
+    path: `${mainPath.examples.path}/error-boundary`,
+    name: 'ErrorBoundary',
+    component: ErrorBoundaryExample
+  },
+  iconButtonMUI: {
+    path: `${mainPath.examples.path}/icon-button-mui`,
+    name: 'IconButtonMUI',
+    component: IconButtonMUIExample
+  },
+  inputMUI: {path: `${mainPath.examples.path}/input-mui`, name: 'InputMUI', component: InputMUIExample},
+  loaderMUI: {path: `${mainPath.examples.path}/loader-mui`, name: 'LoaderMUI', component: LoaderMUIExample},
+  multiSelectMUI: {
+    path: `${mainPath.examples.path}/multi-select-mui`,
+    name: 'MultiSelectMUI',
+    component: MultiSelectMUIExample
+  },
+  notFound: {path: `${mainPath.examples.path}/not-found`, name: 'NotFound', component: NotFoundExample},
+  pagination: {path: `${mainPath.examples.path}/pagination`, name: 'Pagination', component: PaginationExample},
+  radioMUI: {path: `${mainPath.examples.path}/radio-mui`, name: 'RadioMUI', component: RadioMUIExample},
+  reactHookForm: {
+    path: `${mainPath.examples.path}/react-hook-form`,
+    name: 'React Hook Form',
+    component: ReactHookFormExample
+  },
+  reactToastify: {
+    path: `${mainPath.examples.path}/react-toastify`,
+    name: 'React-Toastify',
+    component: ReactToastifyExample
+  },
+  reCaptchaV2: {path: `${mainPath.examples.path}/re-captcha-v2`, name: 'ReCaptchaV2', component: ReCaptchaV2Example},
+  selectComponent: {
+    path: `${mainPath.examples.path}/select-component`,
+    name: 'SelectComponent',
+    component: SelectComponentExample
+  },
+  skeletonMUI: {path: `${mainPath.examples.path}/skeleton-mui`, name: 'SkeletonMUI', component: SkeletonMUIExample},
+  snackbarMUI: {path: `${mainPath.examples.path}/snackbar-mui`, name: 'SnackbarMUI', component: SnackbarMUIExample},
+  switchMUI: {path: `${mainPath.examples.path}/switch-mui`, name: 'SwitchMUI', component: SwitchMUIExample},
+  tabs: {path: `${mainPath.examples.path}/tabs`, name: 'Tabs', component: TabsExample},
+  tooltipMUI: {path: `${mainPath.examples.path}/tooltip-mui`, name: 'TooltipMUI', component: TooltipMUIExample},
+  transitionedBlock: {
+    path: `${mainPath.examples.path}/transitioned-block`,
+    name: 'TransitionedBlock',
+    component: TransitionedBlockExample
+  }
+};

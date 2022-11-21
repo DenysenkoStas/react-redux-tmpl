@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {postEmailVer} from './authActions';
-import {useQueryParams, useToggle} from '../../helpers/hooks';
-import DialogMUI from '../../shared/DialogMUI';
-import ButtonMUI from '../../shared/ButtonMUI';
-import LoaderMUI from '../../shared/LoaderMUI';
+import {postEmailVer} from '../authActions';
+import {useQueryParams, useToggle} from '../../../helpers/hooks';
+import DialogMUI from '../../../shared/DialogMUI';
+import ButtonMUI from '../../../shared/ButtonMUI';
+import LoaderMUI from '../../../shared/LoaderMUI';
 
-const EmailVerification = () => {
+const EmailVerificationDialog = () => {
   const dispatch = useDispatch();
   const {loading} = useSelector(({app}) => app);
   const {emailVerError} = useSelector(({auth}) => auth);
@@ -51,4 +51,4 @@ const EmailVerification = () => {
   );
 };
 
-export default EmailVerification;
+export default EmailVerificationDialog;

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
+import {rootMainPath, rootAuthPath} from './paths';
 import AuthContainer from '../containers/AuthContainer';
 import MainContainer from '../containers/MainContainer';
-import {rootMainPath, rootAuthPath} from './paths';
 
 const AppRoutes = () => {
   return (

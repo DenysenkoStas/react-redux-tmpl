@@ -1,14 +1,13 @@
 import React from 'react';
 import SideBg from '../../layout/SideBg';
 import AuthRoutes from '../../routes/AuthRoutes';
-
-import './AuthContainer.scss';
+import styles from './AuthContainer.module.scss';
 
 const AuthContainer = () => {
   return (
-    <main className='auth-page'>
+    <main className={styles.root}>
       <SideBg />
-      <div className='auth-page__content'>
+      <div className={styles.content}>
         <AuthRoutes />
       </div>
     </main>

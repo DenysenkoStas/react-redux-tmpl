@@ -1,28 +1,20 @@
 import React from 'react';
-import ButtonMUI from '../../shared/ButtonMUI';
-import DialogMUI from '../../shared/DialogMUI';
 import {useToggle} from '../../helpers/hooks';
+import {ExampleLayout} from './Examples';
+import {ButtonMUI, DialogMUI} from '../../shared';
 
 const DialogMUIExample = () => {
   const [dialog, toggleDialog] = useToggle();
   const [secondDialog, toggleSecondDialog] = useToggle();
 
   return (
-    <>
-      <h2 className='mb-15'>DialogMUI</h2>
-
-      <section className='card-wrap'>
-        <p>
-          <b>Props:</b> children, className, fullScreen, onClose, open
-        </p>
-
-        <div className='flex gap-25 mt-25'>
-          <ButtonMUI onClick={toggleDialog}>Simple dialog</ButtonMUI>
-          <ButtonMUI variant='outlined' onClick={toggleSecondDialog}>
-            Full screen dialog
-          </ButtonMUI>
-        </div>
-      </section>
+    <ExampleLayout propsList='children, className, fullScreen, onClose, open'>
+      <div className='flex gap-25 mt-25'>
+        <ButtonMUI onClick={toggleDialog}>Simple dialog</ButtonMUI>
+        <ButtonMUI variant='outlined' onClick={toggleSecondDialog}>
+          Full screen dialog
+        </ButtonMUI>
+      </div>
 
       <DialogMUI open={dialog} onClose={toggleDialog}>
         <h2 className='mb-15'>Dialog title</h2>
@@ -70,7 +62,7 @@ const DialogMUIExample = () => {
           Close dialog
         </ButtonMUI>
       </DialogMUI>
-    </>
+    </ExampleLayout>
   );
 };
 

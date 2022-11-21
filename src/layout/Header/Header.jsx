@@ -9,9 +9,22 @@ import {ReactComponent as LogoutIcon} from '../../assets/icons/logout.svg';
 import styles from './Header.module.scss';
 
 const navLinks = [
-  {path: mainPath.dashboard, name: 'Dashboard', icon: <PlusIcon className={styles.icon} />},
-  {path: mainPath.examples, name: 'Examples', icon: <BoxIcon className={styles.icon} />, strict: true},
-  {path: mainPath.navLink, name: 'Nav link', icon: <FolderIcon className={styles.icon} />}
+  {
+    path: mainPath.dashboard.path,
+    name: mainPath.dashboard.name,
+    icon: <PlusIcon className={styles.icon} />
+  },
+  {
+    path: mainPath.examples.path,
+    name: mainPath.examples.name,
+    icon: <BoxIcon className={styles.icon} />,
+    strict: true
+  },
+  {
+    path: mainPath.navLink.path,
+    name: mainPath.navLink.name,
+    icon: <FolderIcon className={styles.icon} />
+  }
 ];
 
 const Header = () => {
@@ -19,13 +32,13 @@ const Header = () => {
 
   const logout = () => {
     localStorage.removeItem('token');
-    history.push(authPath.signIn);
+    history.push(authPath.signIn.path);
   };
 
   return (
     <header className={styles.root}>
       <div className={`${styles.container} container`}>
-        <Link className='good-hover my-auto' to={mainPath.dashboard}>
+        <Link className='good-hover my-auto' to={mainPath.dashboard.path}>
           <img className={styles.logo} src={logoImg} alt='Logo' />
         </Link>
 

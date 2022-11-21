@@ -8,3 +8,15 @@ export const useToggle = (initialState = false) => {
   const toggle = useCallback(() => setState((state) => !state), []);
   return [state, toggle];
 };
+
+export const useCurrentPageName = (pathsObj) => {
+  const currentPath = useLocation()?.pathname;
+  let name = '';
+
+  if (typeof pathsObj === 'object') {
+    Object?.values(pathsObj)?.find((obj) => {
+      if (obj?.path === currentPath) name = obj?.name || '';
+    });
+  }
+  return name;
+};

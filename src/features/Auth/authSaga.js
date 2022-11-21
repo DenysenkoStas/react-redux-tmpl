@@ -3,7 +3,7 @@ import {disableButtonLoader, disableLoader, enableButtonLoader, enableLoader, op
 
 export function* handleProfileSnacks() {
   yield takeEvery('USER_INFO_FAIL', openErrorSnack);
-  yield takeEvery('SIGN_IN_FAIL', () => openErrorSnack());
+  yield takeEvery('SIGN_IN_FAIL', openErrorSnack);
 }
 
 export function* handleAuthLoaders() {

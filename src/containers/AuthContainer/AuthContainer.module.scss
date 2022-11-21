@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  height: 100vh;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: var(--white);
+  }
+}

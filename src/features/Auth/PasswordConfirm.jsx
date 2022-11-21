@@ -2,16 +2,16 @@ import React, {useEffect, useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {Controller, useForm} from 'react-hook-form';
-import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {authPath} from '../../routes/paths';
 import {postPassConfirm} from './authActions';
+import {passwordConfirmSchema} from './authSchema';
 import {useQueryParams, useToggle} from '../../helpers/hooks';
 import InputMUI from '../../shared/InputMUI';
 import ButtonMUI from '../../shared/ButtonMUI';
 import SnackbarMUI from '../../shared/SnackbarMUI/SnackbarMUI';
-
 import {ReactComponent as LockIcon} from '../../assets/icons/lock.svg';
+import styles from './Auth.module.scss';
 
 const PasswordConfirm = () => {
   const history = useHistory();
@@ -31,21 +31,12 @@ const PasswordConfirm = () => {
     if (queryParams.has('security_token')) {
       setToken({security_token: queryParams.get('security_token')});
     } else {
-      history.push(authPath.signIn);
+      history.push(authPath.signIn.path);
     }
   }, []);
 
   const [sent, setSent] = useState(false);
   const [error, toggleError] = useToggle(false);
-
-  const schema = yup.object({
-    password: yup.string().min(8, 'Min 8 characters').required('Field is required'),
-    confirm_password: yup
-      .string()
-      .min(8, 'Min 8 characters')
-      .oneOf([yup.ref('password'), null], 'Passwords must match')
-      .required('Required')
-  });
 
   const {
     control,
@@ -55,7 +46,7 @@ const PasswordConfirm = () => {
   } = useForm({
     mode: 'onTouched',
     reValidateMode: 'onChange',
-    resolver: yupResolver(schema),
+    resolver: yupResolver(passwordConfirmSchema),
     shouldFocusError: true,
     defaultValues: {
       password: '',
@@ -79,9 +70,9 @@ const PasswordConfirm = () => {
   };
 
   return (
-    <form className='auth-box' onSubmit={handleSubmit(onSubmit)}>
-      <h1 className='auth-box__title'>Reset password</h1>
-      <p className='auth-box__desc'>
+    <form className={styles.root} onSubmit={handleSubmit(onSubmit)}>
+      <h1 className={styles.title}>{authPath.passConfirm.name}</h1>
+      <p className={styles.desc}>
         {!sent ? 'Enter and confirm your new password' : 'Your new password have been set successfully.'}
       </p>
       {sent && <p>Now you can sign in.</p>}
@@ -93,7 +84,7 @@ const PasswordConfirm = () => {
             control={control}
             render={({field}) => (
               <InputMUI
-                className='auth-box__input'
+                className={styles.input}
                 type='password'
                 label='New password'
                 fullWidth
@@ -108,7 +99,7 @@ const PasswordConfirm = () => {
             control={control}
             render={({field}) => (
               <InputMUI
-                className='auth-box__input'
+                className={styles.input}
                 type='password'
                 label='Repeat Password'
                 fullWidth
@@ -118,18 +109,18 @@ const PasswordConfirm = () => {
             )}
           />
 
-          <ButtonMUI className='auth-box__btn' disabled={!isValid || loading} loading={loading} formAction>
+          <ButtonMUI className={styles.btn} disabled={!isValid || loading} loading={loading} formAction>
             Next
           </ButtonMUI>
         </>
       ) : (
         <>
-          <div className='auth-box__rounded-wrap mt-40'>
+          <div className={`${styles.roundedWrap} mt-40`}>
             <LockIcon />
           </div>
 
-          <ButtonMUI className='auth-box__btn' component={Link} to={authPath.signIn}>
-            Sign in
+          <ButtonMUI className={styles.btn} component={Link} to={authPath.signIn.path}>
+            {authPath.signIn.name}
           </ButtonMUI>
         </>
       )}

@@ -2,16 +2,16 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {Controller, useForm} from 'react-hook-form';
-import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {authPath} from '../../routes/paths';
+import {signUpSchema} from './authSchema';
 import {postSignUp} from './authActions';
 import {useToggle} from '../../helpers/hooks';
 import InputMUI from '../../shared/InputMUI';
 import ButtonMUI from '../../shared/ButtonMUI';
-import {ReCaptchaV2} from '../../shared/ReCaptchaV2';
 import SnackbarMUI from '../../shared/SnackbarMUI';
-import SignUpSuccessDialog from './SignUpSuccessDialog';
+import SignUpSuccessDialog from './Dialogs/SignUpSuccessDialog';
+import styles from './Auth.module.scss';
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -21,16 +21,6 @@ const SignUp = () => {
   const [dialog, toggleDialog] = useToggle(false);
   const [error, toggleError] = useToggle(false);
 
-  const schema = yup.object({
-    email: yup.string().email('Enter a valid email').required('Field is required'),
-    password: yup.string().min(8, 'Min 8 characters').required('Field is required'),
-    repeat_password: yup
-      .string()
-      .min(8, 'Min 8 characters')
-      .oneOf([yup.ref('password'), null], 'Passwords must match')
-      .required('Required')
-  });
-
   const {
     control,
     handleSubmit,
@@ -39,7 +29,7 @@ const SignUp = () => {
   } = useForm({
     mode: 'onTouched',
     reValidateMode: 'onChange',
-    resolver: yupResolver(schema),
+    resolver: yupResolver(signUpSchema),
     defaultValues: {
       email: '',
       password: '',
@@ -49,7 +39,7 @@ const SignUp = () => {
 
   const onSubmit = async (data) => {
     const res = await dispatch(postSignUp(data));
-    const errors = res.error?.response.data;
+    const errors = res?.error?.response?.data;
 
     if (res?.payload) toggleDialog();
     if (res?.error) {
@@ -61,16 +51,16 @@ const SignUp = () => {
   };
 
   return (
-    <form className='auth-box' onSubmit={handleSubmit(onSubmit)}>
-      <h1 className='auth-box__title'>Sign up</h1>
-      <p className='auth-box__desc'>Provide your credentials below</p>
+    <form className={styles.root} onSubmit={handleSubmit(onSubmit)}>
+      <h1 className={styles.title}>{authPath.signUp.name}</h1>
+      <p className={styles.desc}>Provide your credentials below</p>
 
       <Controller
         name='email'
         control={control}
         render={({field}) => (
           <InputMUI
-            className='auth-box__input'
+            className={styles.input}
             type='email'
             label='Email'
             fullWidth
@@ -85,7 +75,7 @@ const SignUp = () => {
         control={control}
         render={({field}) => (
           <InputMUI
-            className='auth-box__input'
+            className={styles.input}
             type='password'
             label='Password'
             fullWidth
@@ -100,7 +90,7 @@ const SignUp = () => {
         control={control}
         render={({field}) => (
           <InputMUI
-            className='auth-box__input'
+            className={styles.input}
             type='password'
             label='Repeat Password'
             fullWidth
@@ -110,20 +100,14 @@ const SignUp = () => {
         )}
       />
 
-      <Controller
-        name='recaptcha'
-        control={control}
-        render={({field: {onChange}}) => <ReCaptchaV2 center onChange={onChange} />}
-      />
-
-      <ButtonMUI className='auth-box__btn' disabled={!isValid || loading} loading={loading} formAction>
-        Sign up
+      <ButtonMUI className={styles.btn} disabled={!isValid || loading} loading={loading} formAction>
+        {authPath.signUp.name}
       </ButtonMUI>
 
-      <div className='auth-box__footer'>
-        <span className='auth-box__footer-text'>Already a member?</span>
-        <Link className='auth-box__link' to={authPath.signIn}>
-          SIGN IN
+      <div className={styles.footer}>
+        <span className={styles.footerText}>Already a member?</span>
+        <Link className={styles.link} to={authPath.signIn.path}>
+          {authPath.signIn.name.toUpperCase()}
         </Link>
       </div>
 

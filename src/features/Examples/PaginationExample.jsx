@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {ExampleLayout} from './Examples';
 import Pagination from '../../shared/Pagination';
 
 const PaginationExample = () => {
@@ -18,28 +19,20 @@ const PaginationExample = () => {
   const handlePageClick = (e) => getPost(e.selected + 1);
 
   return (
-    <>
-      <h2 className='mb-15'>Pagination</h2>
+    <ExampleLayout propsList='active, className, marginPagesDisplayed, onChange, pageCount, pageRangeDisplayed, position'>
+      {posts &&
+        posts.map(({id, title, body}) => (
+          <article key={id} className='demo-article mb-10 p-8'>
+            <h3>
+              <span>{id}. </span>
+              <span className='demo-article__title'>{title}</span>
+            </h3>
+            <p className='demo-article__text'>{body}</p>
+          </article>
+        ))}
 
-      <section className='card-wrap'>
-        <p className='mb-25'>
-          <b>Props:</b> active, className, marginPagesDisplayed, onChange, pageCount, pageRangeDisplayed, position
-        </p>
-
-        {posts &&
-          posts.map(({id, title, body}) => (
-            <article key={id} className='demo-article mb-10 p-8'>
-              <h3>
-                <span>{id}. </span>
-                <span className='demo-article__title'>{title}</span>
-              </h3>
-              <p className='demo-article__text'>{body}</p>
-            </article>
-          ))}
-
-        <Pagination pageCount={totalPages} onChange={handlePageClick} />
-      </section>
-    </>
+      <Pagination pageCount={totalPages} onChange={handlePageClick} />
+    </ExampleLayout>
   );
 };
 

@@ -1,25 +1,47 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {NavLink, Redirect, Route, Switch} from 'react-router-dom';
 import {examplesPath, mainPath} from '../../routes/paths';
+import {useCurrentPageName} from '../../helpers/hooks';
+import styles from './Examples.module.scss';
 
-import './Examples.scss';
+export const ExampleLayout = ({propsList = '', children}) => {
+  const title = useCurrentPageName(examplesPath);
+
+  if (!children) return null;
+  return (
+    <Fragment>
+      {title && <h2 className='mb-16'>{title}</h2>}
+      <section className='card-wrap'>
+        {propsList && (
+          <p>
+            <b>Props:</b> {propsList}
+          </p>
+        )}
+        {children}
+      </section>
+    </Fragment>
+  );
+};
 
 const Examples = () => {
+  const examplesData = Object.values(examplesPath);
+
+  if (!examplesData) return null;
   return (
-    <main className='examples page-wrap'>
-      <nav className='examples__nav'>
-        {examplesPath.map(({path, name}, key) => (
-          <NavLink key={key} className='examples__nav-link' to={path}>
+    <main className={`${styles.root} page-wrap`}>
+      <nav className={styles.nav}>
+        {examplesData?.map(({path, name}) => (
+          <NavLink key={name} className={styles.navLink} to={path}>
             {name}
           </NavLink>
         ))}
       </nav>
 
-      <div className='examples__content p-30'>
+      <div className={styles.content}>
         <Switch>
-          <Redirect from={mainPath.examples} exact to={examplesPath[0].path} />
-          {examplesPath.map(({path, component}, key) => (
-            <Route key={key} path={path} component={component} />
+          <Redirect from={mainPath.examples.path} exact to={examplesPath.accordionMUI.path} />
+          {examplesData?.map(({path, name, component}) => (
+            <Route key={name} path={path} component={component} />
           ))}
         </Switch>
       </div>
