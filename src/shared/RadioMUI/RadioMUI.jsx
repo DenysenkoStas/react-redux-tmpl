@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import Radio from '@material-ui/core/Radio';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
-
-import './RadioMUI.scss';
+import styles from './RadioMUI.module.scss';
 
 const RadioMUI = ({
   checked,
@@ -28,11 +27,11 @@ const RadioMUI = ({
     <Radio
       className={className}
       classes={{
-        root: `radio-mui${padding ? ' radio-mui--padding' : ''}${size === 'small' ? ' radio-mui--small' : ''}`,
-        checked: 'radio-mui--checked',
-        disabled: 'radio-mui--disabled',
-        colorPrimary: 'radio-mui-color--primary',
-        colorSecondary: 'radio-mui-color--secondary'
+        root: `${styles.root}${padding ? ` ${styles.padding}` : ''}${size === 'small' ? ` ${styles.small}` : ''}`,
+        checked: styles.checked,
+        disabled: styles.disabled,
+        colorPrimary: styles.colorPrimary,
+        colorSecondary: styles.colorSecondary
       }}
       checked={checked}
       checkedIcon={checkedIcon}

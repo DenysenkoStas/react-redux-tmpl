@@ -94,11 +94,28 @@ $xxl: 1400px; // 87.5em / large desktop
   }
 }
 
+// Background color on hover
+@mixin bgColorOnHover($bg-color) {
+  @if ($bg-color) {
+    @media (hover) {
+      &:hover,
+      &:focus-visible {
+        background-color: $bg-color;
+      }
+    }
+  }
+}
+
+
 // Truncated text
 %truncated {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.truncated {
+  @extend %truncated;
 }
 
 // Visually hidden
@@ -112,4 +129,8 @@ $xxl: 1400px; // 87.5em / large desktop
   white-space: nowrap;
   border: 0;
   clip: rect(0 0 0 0);
+}
+
+.visually-hidden {
+  @extend %visuallyHidden;
 }

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-
-import './ErrorBoundary.scss';
+import styles from './ErrorBoundary.module.scss';
 
 class ErrorBoundary extends Component {
   state = {
@@ -23,13 +22,13 @@ class ErrorBoundary extends Component {
 
     if (errorInfo) {
       return (
-        <div className={`error-boundary${className ? ` ${className}` : ''}`}>
-          <h2 className='error-boundary__title'>Something went wrong!</h2>
+        <div className={`${styles.root}${className ? ` ${className}` : ''}`}>
+          <h2 className={styles.title}>Something went wrong!</h2>
           {details && (
-            <details className='error-boundary__details'>
-              <summary className='error-boundary__summary'>Details</summary>
-              <div className='error-boundary__desc'>
-                <div className='error-boundary__desc--inner'>
+            <details className={styles.details}>
+              <summary className={styles.summary}>Details</summary>
+              <div className={styles.desc}>
+                <div className={styles.descInner}>
                   {error && error.toString()}
                   <br />
                   {errorInfo.componentStack}

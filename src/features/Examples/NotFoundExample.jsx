@@ -1,11 +1,16 @@
 import React from 'react';
 import {ExampleLayout} from './Examples';
-import NotFound from '../../shared/NotFound';
+import {NotFound, ButtonMUI} from '../../shared';
 import {ReactComponent as LogoIcon} from '../../assets/images/logo.svg';
 
 const NotFoundExample = () => {
   return (
-    <ExampleLayout propsList='className, color, icon, noData, small, title'>
+    <ExampleLayout propsList='children, className, color, icon, noData, small, title'>
+      <p className='mb-10 mt-25'>children={`{<ButtonMUI>Home</ButtonMUI>}`}</p>
+      <div className='flex gap-25'>
+        <NotFound color='primary' children={<ButtonMUI>Home</ButtonMUI>} />
+      </div>
+
       <p className='mb-10 mt-25'>color="primary / secondary"</p>
       <div className='flex gap-25'>
         <NotFound color='primary' />

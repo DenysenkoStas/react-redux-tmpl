@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
-
-import './DialogMUI.scss';
-
 import {ReactComponent as CloseIcon} from './icons/close.svg';
+import styles from './DialogMUI.module.scss';
 
 const DialogMUI = ({open, onClose, className = '', children, fullScreen = false}) => {
   return (
@@ -13,14 +11,15 @@ const DialogMUI = ({open, onClose, className = '', children, fullScreen = false}
       onClose={onClose}
       className={className}
       classes={{
-        root: 'dialog-mui',
-        paper: 'dialog-mui__paper',
+        root: styles.root,
+        paper: styles.paper,
+        paperFullScreen: styles.paperFullScreen
       }}
       fullScreen={fullScreen}
     >
-      <div className='dialog-mui__content'>
-        <button onClick={onClose} className='dialog-mui__close-button' aria-label='Close dialog button'>
-          <CloseIcon className='dialog-mui__close-icon' />
+      <div className={styles.content}>
+        <button className={styles.closeButton} aria-label='Close dialog button' onClick={onClose}>
+          <CloseIcon className={styles.closeIcon} />
         </button>
         {children}
       </div>
@@ -33,7 +32,7 @@ DialogMUI.propTypes = {
   className: PropTypes.string,
   fullScreen: PropTypes.bool,
   onClose: PropTypes.func,
-  open: PropTypes.bool,
+  open: PropTypes.bool
 };
 
 export default DialogMUI;

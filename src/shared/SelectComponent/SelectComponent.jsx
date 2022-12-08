@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select, {components} from 'react-select';
-
-import './SelectComponent.scss';
-
 import {ReactComponent as ExpandIcon} from './icons/chevron-down.svg';
+import styles from './SelectComponent.module.scss';
 
 export const DropdownIndicator = (props) => {
   return (
     components.DropdownIndicator && (
       <components.DropdownIndicator {...props}>
-        <div className={props.selectProps.menuIsOpen ? 'select-indicator indicator-active' : 'select-indicator'}>
+        <div className={`${styles.indicator} ${props.selectProps.menuIsOpen ? ` ${styles.indicatorActive}` : ''}`}>
           <ExpandIcon alt='Expand icon' />
         </div>
       </components.DropdownIndicator>
@@ -42,8 +40,8 @@ const SelectComponent = ({
     {...input}
     inputId={id}
     menuIsOpen={menuIsOpen}
-    className={`select-component${isSearchable ? ' select-component--searchable' : ''}${
-      withSearchIcon ? ' select-component--search-icon' : ''
+    className={`${styles.root}${isSearchable ? ` ${styles.searchable}` : ''}${
+      withSearchIcon ? ` ${styles.searchIcon}` : ''
     }${className && ` ${className}`}`}
     classNamePrefix='select'
     isDisabled={disabled}

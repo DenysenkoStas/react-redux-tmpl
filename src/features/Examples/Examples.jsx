@@ -13,7 +13,7 @@ export const ExampleLayout = ({propsList = '', children}) => {
       {title && <h2 className='mb-16'>{title}</h2>}
       <section className='card-wrap'>
         {propsList && (
-          <p>
+          <p className='mb-24'>
             <b>Props:</b> {propsList}
           </p>
         )}

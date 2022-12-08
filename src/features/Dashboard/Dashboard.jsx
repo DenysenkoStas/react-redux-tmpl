@@ -10,8 +10,8 @@ const Dashboard = () => {
   }, [dashboardData]);
 
   return (
-    <main className={`${styles.dashboard} page-wrap`}>
-      <div className={`${styles.dashboardInner} container`}>
+    <main className={`${styles.root} page-wrap`}>
+      <div className={`${styles.container} container`}>
         <h1>Dashboard</h1>
 
         <section className='card-wrap'>

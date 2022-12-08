@@ -1,27 +1,33 @@
-import React from 'react';
+import React, {Children} from 'react';
 import PropTypes from 'prop-types';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
+import styles from './TransitionedBlock.module.scss';
 
-import './TransitionedBlock.scss';
+const FadeTransition = (props) => {
+  const classNames = {
+    appear: styles.fadeAppear,
+    appearActive: styles.fadeAppearActive
+  };
+  return <CSSTransition {...props} classNames={classNames} in appear enter={false} exit={false} timeout={500} />;
+};
 
-const TransitionedBlock = ({children, className = '', tag = 'div'}) => (
-  <ReactCSSTransitionGroup
-    transitionName='block-animation'
-    component={tag}
-    className={className}
-    transitionAppear
-    transitionAppearTimeout={900}
-    transitionEnterTimeout={700}
-    transitionLeaveTimeout={500}
-  >
-    {children}
-  </ReactCSSTransitionGroup>
-);
+const TransitionedBlock = ({children, className = '', tag = 'div'}) => {
+  const items = Children.map(children, (child) => {
+    return <FadeTransition>{child}</FadeTransition>;
+  });
+
+  if (!children) return null;
+  return (
+    <TransitionGroup className={`${styles.root}${className && ` ${className}`}`} component={tag}>
+      {items}
+    </TransitionGroup>
+  );
+};
 
 TransitionedBlock.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  tag: PropTypes.string,
+  tag: PropTypes.string
 };
 
 export default TransitionedBlock;

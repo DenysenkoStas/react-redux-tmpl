@@ -172,7 +172,7 @@ h3,
 }
 
 .good-hover {
-  transition: opacity ease 0.3s;
+  transition: opacity var(--transition-duration);
 
   @media (hover) {
     &:hover, &:focus-visible {
@@ -183,7 +183,7 @@ h3,
 
 .card-hover {
   cursor: pointer;
-  transition: margin-top ease 0.3s, margin-bottom ease 0.3s;
+  transition: margin-top var(--transition-duration), margin-bottom var(--transition-duration);
 
   @media (hover) {
     &:hover, &:focus-visible {

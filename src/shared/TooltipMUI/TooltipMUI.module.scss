@@ -1,0 +1,14 @@
+.root {
+  font-family: inherit;
+}
+
+.errorColor {
+  background-color: var(--error);
+
+  .arrow {
+    color: var(--error);
+  }
+}
+
+.arrow {
+}

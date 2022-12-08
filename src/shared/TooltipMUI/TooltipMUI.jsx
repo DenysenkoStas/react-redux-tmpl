@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Tooltip from '@material-ui/core/Tooltip';
-
-import './TooltipMUI.scss';
+import styles from './TooltipMUI.module.scss';
 
 const TooltipMUI = ({
   arrow = false,
@@ -45,8 +44,8 @@ const TooltipMUI = ({
       placement={placement}
       title={title}
       classes={{
-        tooltip: `tooltip-mui${errorColor ? ' tooltip-mui--error-color' : ''}`,
-        arrow: 'tooltip-mui__arrow'
+        tooltip: `${styles.root}${errorColor ? ` ${styles.errorColor}` : ''}`,
+        arrow: styles.arrow
       }}
     >
       {children}

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from '@material-ui/lab/Skeleton';
-
-import './SkeletonMUI.scss';
+import styles from './SkeletonMUI.module.scss';
 
 const SkeletonMUI = ({
   animation = 'pulse',
@@ -12,7 +11,7 @@ const SkeletonMUI = ({
   height,
   loading = true,
   variant = 'text',
-  width,
+  width
 }) => {
   if (loading) {
     return (
@@ -21,15 +20,15 @@ const SkeletonMUI = ({
         animation={animation}
         children={children}
         classes={{
-          root: 'skeleton-mui',
-          text: 'skeleton-mui--text',
-          rect: 'skeleton-mui--rect',
-          circle: 'skeleton-mui--circle',
-          pulse: 'skeleton-mui--pulse',
-          wave: 'skeleton-mui--wave',
-          withChildren: 'skeleton-mui--with-children',
-          fitContent: 'skeleton-mui--fit-content',
-          heightAuto: 'skeleton-mui--height-auto',
+          root: styles.root,
+          text: styles.text,
+          rect: styles.rect,
+          circle: styles.circle,
+          pulse: styles.pulse,
+          wave: styles.wave,
+          withChildren: styles.withChildren,
+          fitContent: styles.fitContent,
+          heightAuto: styles.heightAuto
         }}
         component={component}
         width={width}
@@ -50,7 +49,7 @@ SkeletonMUI.propTypes = {
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   loading: PropTypes.bool.isRequired,
   variant: PropTypes.oneOf(['text', 'rect', 'circle']),
-  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default SkeletonMUI;

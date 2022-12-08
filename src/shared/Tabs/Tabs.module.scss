@@ -1,0 +1,48 @@
+.root {
+  display: block;
+}
+
+.menu {
+  margin-bottom: 20px;
+}
+
+.btn {
+  position: relative;
+  padding: 10px 15px;
+  font-weight: 600;
+  color: var(--primary);
+
+  &:after {
+    content: '';
+    width: 0;
+    transition: width var(--transition-duration);
+  }
+
+  &:not(:last-of-type) {
+    margin-right: 10px;
+  }
+
+  &Active,
+  &:hover,
+  &:focus-visible {
+    color: var(--info);
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--info);
+    }
+  }
+}
+
+.panel {
+  display: block;
+}
+
+.item {
+  display: block;
+}

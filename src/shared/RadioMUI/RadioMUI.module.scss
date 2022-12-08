@@ -1,0 +1,30 @@
+.root {
+  padding: 0;
+  color: var(--info);
+
+  &.padding {
+    padding: 8px;
+  }
+
+  &.checked {
+  }
+
+  &.disabled {
+    color: rgba(0, 0, 0, 0.2);
+  }
+
+  &.small :global(.MuiSvgIcon-root) {
+    width: 20px;
+    height: 20px;
+  }
+
+  &.color {
+    &Primary {
+      color: var(--primary);
+    }
+
+    &Secondary {
+      color: var(--error);
+    }
+  }
+}

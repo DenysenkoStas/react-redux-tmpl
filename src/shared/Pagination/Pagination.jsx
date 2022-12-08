@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
-
-import './Pagination.scss';
-
+import {capitalize} from '../../helpers/functions';
 import {ReactComponent as PrevIcon} from './icons/prev.svg';
 import {ReactComponent as NextIcon} from './icons/next.svg';
+import styles from './Pagination.module.scss';
 
 const Pagination = ({
   active,
@@ -21,20 +20,23 @@ const Pagination = ({
       pageCount={pageCount}
       pageRangeDisplayed={pageRangeDisplayed}
       marginPagesDisplayed={marginPagesDisplayed}
-      previousLabel={<PrevIcon className='pagination__icon' />}
-      nextLabel={<NextIcon className='pagination__icon' />}
+      previousLabel={<PrevIcon className={styles.icon} />}
+      nextLabel={<NextIcon className={styles.icon} />}
       onPageChange={onChange}
       forcePage={active}
-      containerClassName={`pagination${position && ` pagination--${position}`}${className && ` ${className}`}`}
-      pageClassName='pagination__item'
-      pageLinkClassName='pagination__link'
-      activeLinkClassName='pagination__link--active'
-      breakClassName='pagination__ellipsis'
-      breakLinkClassName='pagination__ellipsis-link'
-      previousClassName='pagination__prev-item'
-      nextClassName='pagination__next-item'
-      previousLinkClassName='pagination__prev-link'
-      nextLinkClassName='pagination__next-link'
+      containerClassName={`${styles.root}${position && ` ${styles[`position${capitalize(position)}`]}`}${
+        className && ` ${className}`
+      }`}
+      pageClassName={styles.item}
+      pageLinkClassName={styles.link}
+      activeLinkClassName={styles.linkActive}
+      breakClassName={styles.ellipsis}
+      breakLinkClassName={styles.ellipsisLink}
+      previousClassName={styles.prevItem}
+      nextClassName={styles.nextItem}
+      previousLinkClassName={styles.prevLink}
+      nextLinkClassName={styles.nextLink}
+      disabledClassName={styles.disabled}
     />
   );
 };

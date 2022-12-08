@@ -1,0 +1,46 @@
+@import 'src/assets/styles/mixins';
+
+.root {
+  color: var(--info);
+  @include bgColorOnHover(lighten(#3796f6, 37%));
+
+  &.disabled {
+    color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.color {
+  &Primary {
+    color: var(--primary);
+    @include bgColorOnHover(lighten(#204569, 70%));
+  }
+
+  &Secondary {
+    color: var(--error);
+    @include bgColorOnHover(lighten(#e44b4b, 37%));
+  }
+}
+
+.edgeStart {
+  margin-left: -12px;
+}
+
+.edgeEnd {
+  margin-right: -12px;
+}
+
+.sizeSmall {
+  padding: 4px;
+
+  &.edgeStart {
+    margin-left: -4px;
+  }
+
+  &.edgeEnd {
+    margin-right: -4px;
+  }
+}
+
+.label {
+  width: 100%;
+}

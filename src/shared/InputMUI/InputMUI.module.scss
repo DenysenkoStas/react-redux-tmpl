@@ -1,0 +1,146 @@
+.root {
+  .label {
+    font-family: inherit;
+    font-size: 14px;
+    transform: translate(14px, 17px) scale(1);
+
+    & + .formControl {
+      margin-top: 0;
+    }
+
+    &Focused {
+      color: var(--info);
+    }
+
+    &Shrink {
+      transform: translate(0, -6px) scale(0.75);
+
+      &.labelOutlined {
+        transform: translate(13px, -6px) scale(0.75);
+      }
+
+      &.labelFilled {
+        transform: translate(13px, 2px) scale(0.75);
+      }
+    }
+
+    &Error {
+      color: var(--error);
+    }
+
+    &Disabled {
+    }
+  }
+
+  .input {
+    padding-right: 0;
+    max-width: 200px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: inherit;
+    font-weight: 400;
+    letter-spacing: normal;
+    color: var(--dark);
+    border-radius: 4px;
+
+    &.disabled {
+      color: var(--gray);
+    }
+
+    &.multiline {
+      padding: 0;
+    }
+
+    &:global(.MuiInputBase-fullWidth) {
+      max-width: 100%;
+    }
+  }
+
+  // Outline input
+  .outlined {
+    .notchedOutline {
+      border-color: var(--gray);
+      transition: border-color var(--transition-duration);
+    }
+
+    &:hover {
+      .notchedOutline {
+        border-color: var(--info);
+      }
+    }
+
+    &.focused {
+      .notchedOutline {
+        border-width: 1px;
+        border-color: var(--info);
+      }
+    }
+
+    &.disabled {
+      .notchedOutline {
+        border-color: var(--gray);
+      }
+    }
+
+    &.error {
+      .notchedOutline {
+        border-color: var(--error);
+      }
+    }
+  }
+
+  // Filled input
+  .filled {
+    background-color: var(--light);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+
+  // Underline for Standard input & Filled input
+  .underline {
+    &:hover:not(.disabled):before {
+      border-bottom: 1px solid var(--info);
+    }
+
+    &:before {
+      border-color: var(--gray);
+    }
+
+    &:after {
+      border-bottom: 1px solid var(--info);
+    }
+  }
+
+  .inputElement {
+    box-sizing: border-box;
+    padding: 14px 40px 14px 14px;
+    height: 48px;
+
+    &.inputMarginDense {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      height: 38px;
+    }
+  }
+
+  .endAdornment {
+    position: absolute;
+    right: 0;
+  }
+
+  .helperText {
+    position: absolute;
+    bottom: -20px;
+    font-family: inherit;
+
+    &Error {
+      color: var(--error);
+    }
+  }
+
+  .errorIcon {
+    margin-right: 14px;
+    cursor: pointer;
+    fill: var(--error);
+  }
+}

@@ -1,11 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Checkbox} from '@material-ui/core';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
-import PropTypes from 'prop-types';
-
-import './CheckboxMUI.scss';
+import styles from './CheckboxMUI.module.scss';
 
 const CheckboxMUI = ({
   className = '',
@@ -32,12 +31,12 @@ const CheckboxMUI = ({
     <Checkbox
       className={className}
       classes={{
-        root: `checkbox-mui${padding ? ' checkbox-mui--padding' : ''}`,
-        checked: 'checkbox-mui--checked',
-        disabled: 'checkbox-mui--disabled',
-        indeterminate: 'checkbox-mui--indeterminate',
-        colorPrimary: 'checkbox-mui-color--primary',
-        colorSecondary: 'checkbox-mui-color--secondary'
+        root: `${styles.root}${padding ? ` ${styles.padding}` : ''}`,
+        checked: styles.checked,
+        disabled: styles.disabled,
+        indeterminate: styles.indeterminate,
+        colorPrimary: styles.colorPrimary,
+        colorSecondary: styles.colorSecondary
       }}
       checked={checked}
       checkedIcon={checkedIcon}
@@ -78,7 +77,7 @@ CheckboxMUI.propTypes = {
   padding: PropTypes.bool,
   required: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium']),
-  value: PropTypes.any,
+  value: PropTypes.any
 };
 
 export default CheckboxMUI;

@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+}
+
+.alert {
+  font-family: inherit;
+
+  &:global(.MuiAlert-filledError) {
+    background-color: var(--error);
+  }
+
+  :global(.MuiAlert-message) {
+    font-family: inherit;
+  }
+}

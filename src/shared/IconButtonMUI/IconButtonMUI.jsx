@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
-
-import './IconButtonMUI.scss';
+import styles from './IconButtonMUI.module.scss';
 
 const IconButtonMUI = ({
   children,
@@ -18,14 +17,14 @@ const IconButtonMUI = ({
   <IconButton
     className={className}
     classes={{
-      root: 'icon-button-mui',
-      edgeStart: 'icon-button-mui--edge-start',
-      edgeEnd: 'icon-button-mui--edge-end',
-      colorPrimary: 'icon-button-mui--color-primary',
-      colorSecondary: 'icon-button-mui--color-secondary',
-      disabled: 'icon-button-mui--disabled',
-      sizeSmall: 'icon-button-mui--size-small',
-      label: 'icon-button-mui__label',
+      root: styles.root,
+      edgeStart: styles.edgeStart,
+      edgeEnd: styles.edgeEnd,
+      colorPrimary: styles.colorPrimary,
+      colorSecondary: styles.colorSecondary,
+      disabled: styles.disabled,
+      sizeSmall: styles.sizeSmall,
+      label: styles.label,
     }}
     color={color}
     disabled={disabled}

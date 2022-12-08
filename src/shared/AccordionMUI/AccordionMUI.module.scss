@@ -1,0 +1,79 @@
+.root {
+  --bg-color-hover: rgba(0, 0, 0, 0.15);
+  --border-radius: 4px;
+}
+
+.item {
+  color: var(--white);
+  background-color: var(--info);
+  box-shadow: none;
+
+  &.colorDefault {
+    background-color: var(--info);
+  }
+
+  &.colorPrimary {
+    background-color: var(--primary);
+  }
+
+  &.colorSecondary {
+    background-color: var(--error);
+  }
+
+  &.rounded {
+    &:first-child {
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
+    }
+
+    &:last-child {
+      border-bottom-left-radius: var(--border-radius);
+      border-bottom-right-radius: var(--border-radius);
+    }
+  }
+
+  &.expanded {
+    margin: 8px 0;
+
+    &.minSpaces {
+      margin: 2px 0;
+    }
+  }
+
+  &.disabled {
+  }
+}
+
+.summary {
+  @media (hover) {
+    &:hover {
+      background-color: var(--bg-color-hover);
+    }
+  }
+
+  &.focusVisible {
+    background-color: var(--bg-color-hover);
+  }
+
+  &.expanded {
+    min-height: 56px;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+  }
+
+  .content {
+    &.expanded {
+      margin: 12px 0;
+    }
+  }
+
+  .expandIcon {
+    color: inherit;
+  }
+}
+
+.details {
+  display: block;
+}

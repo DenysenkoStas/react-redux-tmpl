@@ -1,38 +1,43 @@
 import {useState} from 'react';
 import PropTypes from 'prop-types';
-
-import './Tabs.scss';
+import styles from './Tabs.module.scss';
 
 export const TabItem = (props) => <div {...props} />;
+
+TabItem.propTypes = {
+  label: PropTypes.string.isRequired,
+  index: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+};
 
 export const Tabs = ({children, className = '', defaultIndex = 0, onTabClick}) => {
   const [bindIndex, setBindIndex] = useState(defaultIndex);
 
-  const changeTab = (newIndex) => {
+  const changeTab = (newIndex) => () => {
     if (typeof onTabClick === 'function') onTabClick(newIndex);
     setBindIndex(newIndex);
   };
 
-  const items = children.filter((item) => item.type.name === 'TabItem');
+  const items = children?.length > 0 ? children?.filter((item) => item?.type?.name.toString() === 'TabItem') : null;
 
+  if (!items) return null;
   return (
-    <div className={`tabs${className && ` ${className}`}`}>
-      <div className='tabs__menu'>
+    <div className={`${styles.root}${className && ` ${className}`}`}>
+      <div className={styles.menu}>
         {items.map(({props: {index, label}}) => (
           <button
             key={`tab-btn-${index}`}
-            className={`tabs__btn${bindIndex === index ? ' tabs__btn--active' : ''}`}
+            className={`${styles.btn}${bindIndex === index ? ` ${styles.btnActive}` : ''}`}
             type='button'
             role='tab'
-            onClick={() => changeTab(index)}
+            onClick={changeTab(index)}
           >
             {label}
           </button>
         ))}
       </div>
-      <div className='tabs__panel'>
+      <div className={styles.panel}>
         {items.map(({props}) =>
-          bindIndex === props.index ? <div {...props} key={`tab-item-${props.index}`} className='tabs__item' /> : null
+          bindIndex === props.index ? <div {...props} key={`tab-item-${props.index}`} className={styles.item} /> : null
         )}
       </div>
     </div>
@@ -40,7 +45,7 @@ export const Tabs = ({children, className = '', defaultIndex = 0, onTabClick}) =
 };
 
 Tabs.propTypes = {
-  children: PropTypes.any.isRequired,
+  children: PropTypes.arrayOf(PropTypes.shape({TabItem})).isRequired,
   className: PropTypes.string,
   defaultIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onTabClick: PropTypes.func

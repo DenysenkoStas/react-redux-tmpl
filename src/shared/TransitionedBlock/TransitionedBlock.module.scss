@@ -1,0 +1,10 @@
+.root {
+  .fadeAppear {
+    opacity: 0.01;
+  }
+
+  .fadeAppearActive {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+  }
+}

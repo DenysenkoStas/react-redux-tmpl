@@ -1,8 +1,7 @@
 import React from 'react';
-import {Button, CircularProgress} from '@material-ui/core';
 import PropTypes from 'prop-types';
-
-import './ButtonMUI.scss';
+import {Button, CircularProgress} from '@material-ui/core';
+import styles from './ButtonMUI.module.scss';
 
 const ButtonMUI = ({
   children,
@@ -26,20 +25,21 @@ const ButtonMUI = ({
     <Button
       className={className}
       classes={{
-        root: 'button-mui',
-        contained: 'button-mui--contained',
-        containedPrimary: 'button-mui--contained-primary',
-        containedSecondary: 'button-mui--contained-secondary',
-        outlined: 'button-mui--outlined',
-        outlinedPrimary: 'button-mui--outlined-primary',
-        outlinedSecondary: 'button-mui--outlined-secondary',
-        text: 'button-mui--text',
-        textPrimary: 'button-mui--text-primary',
-        textSecondary: 'button-mui--text-secondary',
-        sizeSmall: 'button-mui--small',
-        sizeLarge: 'button-mui--large',
-        startIcon: 'button-mui__start-icon',
-        endIcon: 'button-mui__end-icon',
+        root: styles.root,
+        contained: styles.contained,
+        containedPrimary: styles.containedPrimary,
+        containedSecondary: styles.containedSecondary,
+        outlined: styles.outlined,
+        outlinedPrimary: styles.outlinedPrimary,
+        outlinedSecondary: styles.outlinedSecondary,
+        text: styles.text,
+        textPrimary: styles.textPrimary,
+        textSecondary: styles.textSecondary,
+        disabled: styles.disabled,
+        sizeSmall: styles.sizeSmall,
+        sizeLarge: styles.sizeLarge,
+        startIcon: styles.startIcon,
+        endIcon: styles.endIcon
       }}
       color={color}
       component={component}
@@ -75,7 +75,7 @@ ButtonMUI.propTypes = {
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['large', 'medium', 'small']),
   startIcon: PropTypes.node,
-  variant: PropTypes.oneOf(['contained', 'outlined', 'text']),
+  variant: PropTypes.oneOf(['contained', 'outlined', 'text'])
 };
 
 export default ButtonMUI;

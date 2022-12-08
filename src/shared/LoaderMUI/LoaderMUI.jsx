@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {CircularProgress, LinearProgress} from '@material-ui/core';
-
-import './LoaderMUI.scss';
+import styles from './LoaderMUI.module.scss';
 
 const LoaderMUI = ({className = '', linear = false, color = 'primary', circleSize = 40, noBg = false, onClick}) => {
   if (!linear)
     return (
       <div
-        className={`circular-loader-mui${!noBg ? ' circular-loader-mui--bg' : ''}${className && ` ${className}`}`}
+        className={`${styles.backdrop}${!noBg ? ` ${styles.bg}` : ''}${className && ` ${className}`}`}
         onClick={onClick}
       >
         <CircularProgress
           classes={{
-            root: 'circular-loader-mui__root',
-            colorPrimary: 'circular-loader-mui__root--color-primary',
-            colorSecondary: 'circular-loader-mui__root--color-secondary',
+            root: styles.circular,
+            colorPrimary: styles.colorPrimary,
+            colorSecondary: styles.colorSecondary
           }}
           color={color}
           size={circleSize}
@@ -27,11 +26,11 @@ const LoaderMUI = ({className = '', linear = false, color = 'primary', circleSiz
     <LinearProgress
       className={className}
       classes={{
-        root: 'linear-loader-mui',
-        colorPrimary: 'linear-loader-mui--bg-primary',
-        colorSecondary: 'linear-loader-mui--bg-secondary',
-        barColorPrimary: 'linear-loader-mui__bar-primary',
-        barColorSecondary: 'linear-loader-mui__bar-secondary',
+        root: styles.linear,
+        colorPrimary: styles.colorPrimary,
+        colorSecondary: styles.colorSecondary,
+        barColorPrimary: styles.barColorPrimary,
+        barColorSecondary: styles.barColorSecondary
       }}
       color={color}
     />
@@ -44,7 +43,7 @@ LoaderMUI.propTypes = {
   circleSize: PropTypes.number,
   linear: PropTypes.bool,
   noBg: PropTypes.bool,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func
 };
 
 export default LoaderMUI;

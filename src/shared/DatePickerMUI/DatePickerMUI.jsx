@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {KeyboardDatePicker} from '@material-ui/pickers';
-
-import './DatePickerMUI.scss';
+import styles from './DatePickerMUI.module.scss';
 
 const DatePickerMUI = ({
   autoOk = true,
@@ -31,7 +30,7 @@ const DatePickerMUI = ({
   return (
     <KeyboardDatePicker
       autoOk={autoOk}
-      className={`date-picker-mui${className && ` ${className}`}`}
+      className={`${styles.root}${className && ` ${className}`}`}
       clearable={clearable}
       disableFuture={disableFuture}
       disablePast={disablePast}

@@ -1,17 +1,17 @@
 @import 'src/assets/styles/mixins';
 
-.dashboard {
+.root {
   padding-top: 24px;
   padding-bottom: 24px;
-
-  &Inner {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
 
   @include mq(lg-down) {
     padding-top: 8px;
     padding-bottom: 8px;
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }

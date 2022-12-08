@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {ExampleLayout} from './Examples';
 import Pagination from '../../shared/Pagination';
+import { capitalize } from "../../helpers/functions";
 
 const PaginationExample = () => {
   const [posts, setPosts] = useState([]);
@@ -23,11 +24,8 @@ const PaginationExample = () => {
       {posts &&
         posts.map(({id, title, body}) => (
           <article key={id} className='demo-article mb-10 p-8'>
-            <h3>
-              <span>{id}. </span>
-              <span className='demo-article__title'>{title}</span>
-            </h3>
-            <p className='demo-article__text'>{body}</p>
+            <h3 className='truncated'>{id}. {capitalize(title)}</h3>
+            <p className='truncated'>{capitalize(body)}</p>
           </article>
         ))}
 

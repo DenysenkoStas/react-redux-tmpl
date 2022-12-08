@@ -1,0 +1,99 @@
+@import 'src/assets/styles/mixins';
+
+.root {
+  --color-disabled: rgba(0, 0, 0, 0.2);
+  padding: 6px 16px;
+  min-width: 148px;
+  height: 48px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: normal;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.contained {
+  color: var(--white);
+  background-color: var(--info);
+  @include bgColorOnHover(darken(#3796f6, 10%));
+
+  &Primary {
+    background-color: var(--primary);
+    @include bgColorOnHover(darken(#204569, 10%));
+  }
+
+  &Secondary {
+    background-color: var(--error);
+    @include bgColorOnHover(darken(#e44b4b, 10%));
+  }
+
+  &.disabled {
+    color: var(--white);
+    background-color: var(--color-disabled);
+  }
+}
+
+.outlined {
+  color: var(--info);
+  border-color: var(--info);
+  @include bgColorOnHover(lighten(#3796f6, 35%));
+
+  &Primary {
+    color: var(--primary);
+    border-color: var(--primary);
+    @include bgColorOnHover(lighten(#204569, 60%));
+  }
+
+  &Secondary {
+    color: var(--error);
+    border-color: var(--error);
+    @include bgColorOnHover(lighten(#e44b4b, 35%));
+  }
+
+  &.disabled {
+    color: var(--color-disabled);
+    border-color: var(--color-disabled);
+  }
+}
+
+.text {
+  color: var(--info);
+  @include bgColorOnHover(lighten(#3796f6, 35%));
+
+  &Primary {
+    color: var(--primary);
+    @include bgColorOnHover(lighten(#204569, 60%));
+  }
+
+  &Secondary {
+    color: var(--error);
+    @include bgColorOnHover(lighten(#e44b4b, 35%));
+  }
+
+  &.disabled {
+    color: var(--color-disabled);
+  }
+}
+
+.sizeSmall {
+  min-width: 105px;
+  height: 35px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.sizeLarge {
+  min-width: 168px;
+  height: 56px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.startIcon svg,
+.endIcon svg {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
