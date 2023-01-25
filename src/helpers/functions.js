@@ -2,6 +2,11 @@ import React, {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import dayjs from 'dayjs';
 
+export const isDataArray = (array, minLength = 1) => Array.isArray(array) && array.length >= minLength;
+
+export const isDataObject = (object) =>
+  typeof object === 'object' && !Array.isArray(object) && Object.keys(object).length > 0;
+
 export const joinQueries = (arr) => `${arr.length && arr.length !== 0 ? '?' : ''}${arr.join('&')}`;
 
 export function getOption(label) {
@@ -101,11 +106,20 @@ export const objectToQueryString = (queryParams) => {
 
 export const scrollToElement = (ref) => ref && ref.current.scrollIntoView({behavior: 'smooth'});
 
-export const classList = (...classes) => classes.filter((item) => !!item).join(' ');
+export const classList = (...classes) => {
+  let result = '';
+  const addClass = (element) => (result += ` ${element}`);
+
+  classes.forEach((element) => {
+    if (!element) return;
+    if (typeof element === 'string' || typeof element === 'number') addClass(element);
+    if (isDataArray(element)) addClass(classList(...element));
+    if (isDataObject(element)) Object.keys(element).forEach((key) => element[key] && addClass(key));
+  });
+  return result.trim();
+};
 
 export const formatDate = (date, template = 'DD.MM.YYYY') => (date ? dayjs(date).format(template) : '-');
-
-export const isDataArray = (array, minLength = 1) => Array.isArray(array) && array.length >= minLength;
 
 export const calculatePercent = (value, total, digits = 2) => Number(((value / total) * 100).toFixed(digits));
 
