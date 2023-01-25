@@ -1,8 +1,13 @@
 @import 'src/assets/styles/mixins';
 
 .root {
-  color: var(--info);
-  @include bgColorOnHover(lighten(#3796f6, 37%));
+  width: min-content;
+  height: min-content;
+  transition: color var(--transition-duration), background-color var(--transition-duration);
+
+  &:focus-visible {
+    background-color: transparent !important;
+  }
 
   &.disabled {
     color: rgba(0, 0, 0, 0.2);
@@ -12,21 +17,33 @@
 .color {
   &Primary {
     color: var(--primary);
-    @include bgColorOnHover(lighten(#204569, 70%));
+    @include colorHover(var(--primary-dark), var(--primary-light));
   }
 
   &Secondary {
-    color: var(--error);
-    @include bgColorOnHover(lighten(#e44b4b, 37%));
+    color: var(--secondary);
+    @include colorHover(var(--secondary-dark), var(--secondary-light));
   }
-}
 
-.edgeStart {
-  margin-left: -12px;
-}
+  &Info {
+    color: var(--info);
+    @include colorHover(var(--info-dark), var(--info-light));
+  }
 
-.edgeEnd {
-  margin-right: -12px;
+  &Success {
+    color: var(--success);
+    @include colorHover(var(--success-dark), var(--success-light));
+  }
+
+  &Error {
+    color: var(--error);
+    @include colorHover(var(--error-dark), var(--error-light));
+  }
+
+  &Warning {
+    color: var(--warning);
+    @include colorHover(var(--warning-dark), var(--warning-light));
+  }
 }
 
 .sizeSmall {
@@ -41,6 +58,26 @@
   }
 }
 
-.label {
-  width: 100%;
+.sizeMedium {
+  padding: 8px;
+
+  &.edgeStart {
+    margin-left: -8px;
+  }
+
+  &.edgeEnd {
+    margin-right: -8px;
+  }
+}
+
+.sizeLarge {
+  padding: 12px;
+
+  &.edgeStart {
+    margin-left: -12px;
+  }
+
+  &.edgeEnd {
+    margin-right: -12px;
+  }
 }

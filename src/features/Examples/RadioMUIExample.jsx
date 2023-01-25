@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {ExampleLayout} from './Examples';
 import RadioMUI from '../../shared/RadioMUI';
-import GradeIcon from '@material-ui/icons/Grade';
-import GradeOutlinedIcon from '@material-ui/icons/GradeOutlined';
+import GradeIcon from '@mui/icons-material/Grade';
+import GradeOutlinedIcon from '@mui/icons-material/GradeOutlined';
 
 const RadioMUIExample = () => {
   const [value, setValue] = useState(null);
@@ -13,11 +13,14 @@ const RadioMUIExample = () => {
       propsList='checked, checkedIcon, className, color, disableRipple, disabled, icon, id, inputProps, inputRef,
           padding, onChange, required, size, value'
     >
-      <p className='mb-10 mt-25'>color="default / primary / secondary"</p>
+      <p className='mb-10 mt-25'>color="primary / secondary / info / success / error / warning"</p>
       <div className='flex gap-25'>
-        <RadioMUI checked={value === 'default'} onChange={handleChange} value='default' />
-        <RadioMUI color='primary' checked={value === 'primary'} onChange={handleChange} value='primary' />
+        <RadioMUI checked={value === 'primary'} onChange={handleChange} value='primary' />
         <RadioMUI color='secondary' checked={value === 'secondary'} onChange={handleChange} value='secondary' />
+        <RadioMUI color='info' checked={value === 'info'} onChange={handleChange} value='info' />
+        <RadioMUI color='success' checked={value === 'success'} onChange={handleChange} value='success' />
+        <RadioMUI color='error' checked={value === 'error'} onChange={handleChange} value='error' />
+        <RadioMUI color='warning' checked={value === 'warning'} onChange={handleChange} value='warning' />
       </div>
 
       <p className='mb-10 mt-25'>disabled</p>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Skeleton from '@material-ui/lab/Skeleton';
+import Skeleton from '@mui/material/Skeleton';
 import styles from './SkeletonMUI.module.scss';
 
 const SkeletonMUI = ({
@@ -22,8 +22,8 @@ const SkeletonMUI = ({
         classes={{
           root: styles.root,
           text: styles.text,
-          rect: styles.rect,
-          circle: styles.circle,
+          rectangular: styles.rectangular,
+          circular: styles.circular,
           pulse: styles.pulse,
           wave: styles.wave,
           withChildren: styles.withChildren,
@@ -48,7 +48,7 @@ SkeletonMUI.propTypes = {
   component: PropTypes.elementType,
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   loading: PropTypes.bool.isRequired,
-  variant: PropTypes.oneOf(['text', 'rect', 'circle']),
+  variant: PropTypes.oneOf(['text', 'circular', 'rectangular', 'rounded']),
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 

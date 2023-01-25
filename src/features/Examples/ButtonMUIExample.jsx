@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {ButtonGroup} from '@material-ui/core';
 import {ExampleLayout} from './Examples';
 import ButtonMUI from '../../shared/ButtonMUI';
 import {ReactComponent as FolderIcon} from '../../assets/icons/folder-white.svg';
@@ -8,14 +7,61 @@ import {ReactComponent as FolderIcon} from '../../assets/icons/folder-white.svg'
 const ButtonMUIExample = () => {
   return (
     <ExampleLayout
-      propsList='children, className, color, component, disabled, endIcon, formAction (type="submit"), fullWidth,
-          href, loading, noShadow, onClick, size, startIcon, variant'
+      propsList='children, className, color, component, disabled, disableElevation, endIcon, formAction (type="submit"), fullWidth,
+          href, loading, onClick, size, startIcon, variant'
     >
-      <p className='mb-10 mt-25'>color="default / primary / secondary"</p>
+      <p className='mb-10 mt-25'>color="primary / secondary / info / success / error / warning"</p>
       <div className='flex gap-25'>
-        <ButtonMUI>Default</ButtonMUI>
-        <ButtonMUI color='primary'>Primary</ButtonMUI>
-        <ButtonMUI color='secondary'>Secondary</ButtonMUI>
+        <div className='flex gap-25'>
+          <ButtonMUI color='primary'>Primary</ButtonMUI>
+          <ButtonMUI color='secondary'>Secondary</ButtonMUI>
+          <ButtonMUI color='success'>Success</ButtonMUI>
+          <ButtonMUI color='error'>Error</ButtonMUI>
+          <ButtonMUI color='info'>Info</ButtonMUI>
+          <ButtonMUI color='warning'>Warning</ButtonMUI>
+        </div>
+
+        <div className='flex gap-25'>
+          <ButtonMUI color='primary' variant='outlined'>
+            Primary
+          </ButtonMUI>
+          <ButtonMUI color='secondary' variant='outlined'>
+            Secondary
+          </ButtonMUI>
+          <ButtonMUI color='success' variant='outlined'>
+            Success
+          </ButtonMUI>
+          <ButtonMUI color='error' variant='outlined'>
+            Error
+          </ButtonMUI>
+          <ButtonMUI color='info' variant='outlined'>
+            Info
+          </ButtonMUI>
+          <ButtonMUI color='warning' variant='outlined'>
+            Warning
+          </ButtonMUI>
+        </div>
+
+        <div className='flex gap-25'>
+          <ButtonMUI color='primary' variant='text'>
+            Primary
+          </ButtonMUI>
+          <ButtonMUI color='secondary' variant='text'>
+            Secondary
+          </ButtonMUI>
+          <ButtonMUI color='success' variant='text'>
+            Success
+          </ButtonMUI>
+          <ButtonMUI color='error' variant='text'>
+            Error
+          </ButtonMUI>
+          <ButtonMUI color='info' variant='text'>
+            Info
+          </ButtonMUI>
+          <ButtonMUI color='warning' variant='text'>
+            Warning
+          </ButtonMUI>
+        </div>
       </div>
 
       <p className='mb-10 mt-25'>component={'{Link}'} to="/main/dashboard"</p>
@@ -25,6 +71,9 @@ const ButtonMUIExample = () => {
 
       <p className='mb-10 mt-25'>disabled</p>
       <ButtonMUI disabled>Disabled</ButtonMUI>
+
+      <p className='mb-10 mt-25'>disableElevation={'{false}'}</p>
+      <ButtonMUI disableElevation={false}>Elevation</ButtonMUI>
 
       <p className='mb-10 mt-25'>
         startIcon={'{<FolderIcon />}'} / endIcon={'{<FolderIcon />}'}
@@ -38,15 +87,12 @@ const ButtonMUIExample = () => {
       <ButtonMUI fullWidth>Full width</ButtonMUI>
 
       <p className='mb-10 mt-25'>href="https://v4.mui.com/ru/components/buttons/" target="_blank"</p>
-      <ButtonMUI href='https://v4.mui.com/ru/components/buttons/' target='_blank'>
+      <ButtonMUI href='https://mui.com/material-ui/react-button/' target='_blank'>
         Href
       </ButtonMUI>
 
       <p className='mb-10 mt-25'>loading</p>
       <ButtonMUI loading>Loading</ButtonMUI>
-
-      <p className='mb-10 mt-25'>noShadow</p>
-      <ButtonMUI noShadow>No shadow</ButtonMUI>
 
       <p className='mb-10 mt-25'>size="small / medium / large"</p>
       <div className='flex gap-25'>
@@ -60,30 +106,6 @@ const ButtonMUIExample = () => {
         <ButtonMUI>Contained</ButtonMUI>
         <ButtonMUI variant='outlined'>Outlined</ButtonMUI>
         <ButtonMUI variant='text'>Text</ButtonMUI>
-      </div>
-
-      <p className='mb-10 mt-25'>
-        <b>ButtonGroup wrapper: </b>
-        <a href='https://v4.mui.com/components/button-group/' target='_blank'>
-          https://v4.mui.com/components/button-group/
-        </a>
-      </p>
-      <div className='flex gap-25'>
-        <ButtonGroup color='default' fullWidth variant='contained' orientation='vertical' aria-label='button group'>
-          <ButtonMUI>Button</ButtonMUI>
-          <ButtonMUI>Button</ButtonMUI>
-          <ButtonMUI>Button</ButtonMUI>
-        </ButtonGroup>
-        <ButtonGroup color='primary' size='small' aria-label='button group'>
-          <ButtonMUI>Button</ButtonMUI>
-          <ButtonMUI>Button</ButtonMUI>
-          <ButtonMUI>Button</ButtonMUI>
-        </ButtonGroup>
-        <ButtonGroup color='secondary' size='large' aria-label='button group'>
-          <ButtonMUI>Button</ButtonMUI>
-          <ButtonMUI>Button</ButtonMUI>
-          <ButtonMUI>Button</ButtonMUI>
-        </ButtonGroup>
       </div>
     </ExampleLayout>
   );

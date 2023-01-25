@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Dialog from '@material-ui/core/Dialog';
+import Dialog from '@mui/material/Dialog';
 import {ReactComponent as CloseIcon} from './icons/close.svg';
 import styles from './DialogMUI.module.scss';
 
@@ -27,6 +27,7 @@ const DialogMUI = ({open, onClose, className = '', children, fullScreen = false}
   );
 };
 
+DialogMUI.muiName = 'Dialog';
 DialogMUI.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,

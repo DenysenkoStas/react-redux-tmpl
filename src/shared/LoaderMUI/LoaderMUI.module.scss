@@ -18,7 +18,7 @@
   }
 
   &.colorSecondary {
-    color: var(--error);
+    color: var(--secondary);
   }
 }
 
@@ -27,18 +27,18 @@
   height: 2px;
 
   &.colorPrimary {
-    background-color: rgba(55, 150, 246, 0.3);
+    background-color: var(--primary-light);
   }
 
   &.colorSecondary {
-    background-color: rgba(228, 75, 75, 0.3);
+    background-color: var(--secondary-light);
   }
 
   &.barColorPrimary {
-    background-color: var(--info);
+    background-color: var(--primary);
   }
 
   &.barColorSecondary {
-    background-color: var(--error);
+    background-color: var(--secondary);
   }
 }

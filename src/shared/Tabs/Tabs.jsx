@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {Children, useState} from 'react';
 import PropTypes from 'prop-types';
 import styles from './Tabs.module.scss';
 
@@ -17,7 +17,7 @@ export const Tabs = ({children, className = '', defaultIndex = 0, onTabClick}) =
     setBindIndex(newIndex);
   };
 
-  const items = children?.length > 0 ? children?.filter((item) => item?.type?.name.toString() === 'TabItem') : null;
+  const items = children?.length > 0 && Children.map(children, (child) => child.type.name === 'TabItem' && child);
 
   if (!items) return null;
   return (

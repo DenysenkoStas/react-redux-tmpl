@@ -1,155 +1,117 @@
 .root {
+  display: inline-flex;
+
   :global {
-    .MuiFormLabel-root {
-      font-family: inherit;
-      font-size: 14px;
-      transform: translate(14px, 17px) scale(1);
-
-      & + .MuiInput-formControl {
-        margin-top: 0;
-      }
-
-      &.Mui-focused {
-        color: var(--info);
-      }
-    }
-
-    .MuiInputLabel-shrink {
-      transform: translate(0, -6px) scale(0.75);
-    }
-
-    .MuiInputLabel-outlined.MuiInputLabel-shrink {
-      transform: translate(13px, -6px) scale(0.75);
-    }
-
-    .MuiInputLabel-filled.MuiInputLabel-shrink {
-      transform: translate(13px, 2px) scale(0.75);
-    }
-
-    .MuiInputBase-root {
-      padding-right: 0;
-      max-width: 200px;
-      font-family: inherit;
-      font-size: 14px;
-      line-height: inherit;
-      font-weight: 400;
-      letter-spacing: normal;
-      color: var(--dark);
-      border-radius: 4px;
-
-      &.Mui-disabled {
-        color: var(--gray);
-      }
-    }
-
-    .MuiInputBase-input {
-      box-sizing: border-box;
-      padding: 14px;
-      height: 48px;
-    }
-
     .MuiIconButton-root {
+      margin-right: 0;
       color: var(--gray);
-    }
-
-    // Outline input
-    .MuiOutlinedInput-root {
-      &:hover {
-        .MuiOutlinedInput-notchedOutline {
-          border-color: var(--info);
-        }
-      }
-
-      &.Mui-focused {
-        .MuiOutlinedInput-notchedOutline {
-          border-width: 1px;
-          border-color: var(--info);
-        }
-      }
-
-      &.Mui-disabled {
-        .MuiOutlinedInput-notchedOutline {
-          border-color: var(--gray);
-        }
-      }
-
-      &.Mui-error {
-        .MuiOutlinedInput-notchedOutline {
-          border-color: var(--error);
-        }
-      }
-    }
-
-    .MuiOutlinedInput-input {
-    }
-
-    .MuiOutlinedInput-notchedOutline {
-      border-color: var(--gray);
-      transition: border-color var(--transition-duration);
-    }
-
-    // Standard input & Filled input
-    .MuiInput-underline,
-    .MuiFilledInput-underline {
-      &:hover:not(.Mui-disabled):before {
-        border-bottom: 1px solid var(--info);
-      }
-
-      &:before {
-        border-color: var(--gray);
-      }
-
-      &:after {
-        border-bottom: 1px solid var(--info);
-      }
-    }
-
-    // Filled input
-    .MuiFilledInput-root {
-      background-color: var(--light);
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-    }
-
-    .MuiFormHelperText-root.Mui-error {
-      color: var(--error);
     }
   }
 }
 
 :global {
   // Calendar
-  .MuiPickersBasePicker-container {
-    .MuiPickersToolbar-toolbar {
-      background-color: var(--info);
+  .MuiPickersPopper-root,
+  .MuiPickersDialog-root {
+    .MuiPickersPopper-paper {
+      margin-top: 4px;
+      margin-bottom: 4px;
     }
 
-    .MuiPickersBasePicker-pickerView {
+    .MuiButtonBase-root,
+    .MuiTypography-root {
+      font-family: inherit;
+      letter-spacing: normal;
+    }
+
+    .MuiPickersToolbar-root {
+      color: var(--white);
+      background-color: var(--info);
+
+      .MuiTypography-root {
+        color: var(--white);
+      }
+
+      .MuiDatePickerToolbar-title {
+        color: var(--white);
+      }
+    }
+
+    .MuiCalendarPicker-root {
       background-color: var(--white);
     }
 
-    .MuiButton-text,
-    .MuiTypography-root {
+    .MuiPickersCalendarHeader-labelContainer {
       font-family: inherit;
+      font-weight: 400;
+      color: var(--dark);
     }
 
-    .MuiPickersDay-day {
-      color: var(--primary);
+    .MuiPickersCalendarHeader-switchViewButton {
+      color: var(--dark);
     }
 
-    .MuiPickersDay-dayDisabled {
+    .MuiPickersArrowSwitcher-button {
+      color: var(--dark);
+
+      &.Mui-disabled {
+        color: var(--gray);
+      }
+    }
+
+    .MuiDayPicker-weekDayLabel {
+      font-weight: 500;
       color: var(--gray);
     }
 
-    .MuiPickersDay-daySelected {
-      color: var(--white);
-      background-color: var(--info);
-    }
-  }
+    .MuiPickersDay-root {
+      color: var(--dark);
 
-  .MuiPickersModal-dialogRoot {
-    .MuiButton-textPrimary {
-      color: var(--info);
+      &.Mui-selected {
+        color: var(--white);
+        background-color: var(--info);
+      }
+
+      &.Mui-disabled {
+        color: var(--gray);
+      }
+    }
+
+    .MuiPickersDay-dayOutsideMonth {
+      color: var(--gray);
+    }
+
+    &.MuiPickersDay-today:not(.Mui-selected) {
+      border: 1px solid var(--dark);
+    }
+
+    .PrivatePickersYear-yearButton {
+      font-family: inherit;
+      letter-spacing: normal;
+
+      &.Mui-selected {
+        background-color: var(--info);
+      }
+
+      &.Mui-disabled {
+        color: var(--gray);
+      }
+    }
+
+    .PrivatePickersMonth-root {
+      &.Mui-selected {
+        background-color: var(--info);
+      }
+
+      &.Mui-disabled {
+        color: var(--gray);
+      }
+    }
+
+    .MuiDialogActions-root {
+      .MuiButtonBase-root {
+        color: var(--info);
+      }
     }
   }
 }

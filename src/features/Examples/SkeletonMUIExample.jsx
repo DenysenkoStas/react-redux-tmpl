@@ -24,7 +24,7 @@ const SkeletonMUIExample = () => {
       </div>
 
       <p className='mb-10 mt-25'>children</p>
-      <SkeletonMUI variant='rect' loading={loading}>
+      <SkeletonMUI variant='rectangular' loading={loading}>
         <LogoIcon />
       </SkeletonMUI>
       <SkeletonMUI loading={loading}>
@@ -37,13 +37,14 @@ const SkeletonMUIExample = () => {
       <p className='mb-10 mt-25'>
         height={'{70}'} width={'{100}'}
       </p>
-      <SkeletonMUI variant='rect' height={70} width={100} loading />
+      <SkeletonMUI variant='rectangular' height={70} width={100} loading />
 
-      <p className='mb-10 mt-25'>variant="text / circle / rect"</p>
+      <p className='mb-10 mt-25'>variant="text / circular / rectangular / rounded"</p>
       <div className='flex flex--column'>
         <SkeletonMUI variant='text' width={210} loading />
-        <SkeletonMUI className='mb-4' variant='circle' width={40} height={40} loading />
-        <SkeletonMUI variant='rect' width={210} height={118} loading />
+        <SkeletonMUI className='mb-4' variant='circular' width={40} height={40} loading />
+        <SkeletonMUI className='mb-4' variant='rectangular' width={210} height={60} loading />
+        <SkeletonMUI variant='rounded' width={210} height={40} loading />
       </div>
     </ExampleLayout>
   );

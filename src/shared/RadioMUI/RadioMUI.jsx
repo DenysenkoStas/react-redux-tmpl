@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Radio from '@material-ui/core/Radio';
-import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import Radio from '@mui/material/Radio';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import styles from './RadioMUI.module.scss';
 
 const RadioMUI = ({
   checked,
   className = '',
   checkedIcon = <RadioButtonCheckedIcon />,
-  color = 'default',
+  color = 'primary',
   disabled = false,
   disableRipple = false,
   icon = <RadioButtonUncheckedIcon />,
@@ -25,13 +25,19 @@ const RadioMUI = ({
 }) => {
   return (
     <Radio
-      className={className}
+      className={`${styles.root} ${padding ? ` ${styles.padding}` : ''}${size === 'small' ? ` ${styles.small}` : ''}${
+        className && ` ${className}`
+      }`}
       classes={{
-        root: `${styles.root}${padding ? ` ${styles.padding}` : ''}${size === 'small' ? ` ${styles.small}` : ''}`,
+        // root: styles.root,
         checked: styles.checked,
         disabled: styles.disabled,
         colorPrimary: styles.colorPrimary,
-        colorSecondary: styles.colorSecondary
+        colorSecondary: styles.colorSecondary,
+        colorInfo: styles.colorInfo,
+        colorSuccess: styles.colorSuccess,
+        colorError: styles.colorError,
+        colorWarning: styles.colorWarning
       }}
       checked={checked}
       checkedIcon={checkedIcon}
@@ -55,7 +61,7 @@ RadioMUI.propTypes = {
   checked: PropTypes.bool,
   checkedIcon: PropTypes.node,
   className: PropTypes.string,
-  color: PropTypes.oneOf(['default', 'primary', 'secondary']),
+  color: PropTypes.oneOf(['primary', 'secondary', 'info', 'success', 'error', 'warning']),
   disableRipple: PropTypes.bool,
   disabled: PropTypes.bool,
   icon: PropTypes.node,

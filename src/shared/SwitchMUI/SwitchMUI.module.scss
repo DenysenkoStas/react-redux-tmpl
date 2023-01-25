@@ -1,5 +1,5 @@
 .root {
-  --switch-color: var(--info);
+  --switch-color: var(--primary);
   --track-color: var(--gray);
   padding: 8px;
 }
@@ -22,10 +22,14 @@
       background-color: var(--switch-color);
       opacity: 0.5;
     }
+
+    &.disabled {
+      color: var(--gray);
+    }
   }
 
   &.disabled {
-    --switch-color: var(--track-color);
+    color: var(--gray);
 
     & + .track {
       opacity: 0.3;
@@ -40,7 +44,27 @@
 
 .colorSecondary,
 .colorSecondary + .track {
+  --switch-color: var(--secondary);
+}
+
+.colorInfo,
+.colorInfo + .track {
+  --switch-color: var(--info);
+}
+
+.colorSuccess,
+.colorSuccess + .track {
+  --switch-color: var(--success);
+}
+
+.colorError,
+.colorError + .track {
   --switch-color: var(--error);
+}
+
+.colorWarning,
+.colorWarning + .track {
+  --switch-color: var(--warning);
 }
 
 .sizeSmall {

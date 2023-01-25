@@ -12,14 +12,14 @@ const SnackbarMUIExample = () => {
     <ExampleLayout propsList='autoHideDuration, children, errors, onClose, open, severity'>
       <p className='mb-10 mt-25'>severity="error / warning / info / success"</p>
       <div className='flex gap-25'>
-        <ButtonMUI color='secondary' onClick={() => setError(true)}>
+        <ButtonMUI color='error' onClick={() => setError(true)}>
           Open error snackbar
         </ButtonMUI>
-        <ButtonMUI color='primary' onClick={() => setWarning(true)}>
+        <ButtonMUI color='warning' onClick={() => setWarning(true)}>
           Open warning snackbar
         </ButtonMUI>
-        <ButtonMUI onClick={() => setInfo(true)}>Open info snackbar</ButtonMUI>
-        <ButtonMUI variant='outlined' onClick={() => setSuccess(true)}>
+        <ButtonMUI color='info' onClick={() => setInfo(true)}>Open info snackbar</ButtonMUI>
+        <ButtonMUI color='success' variant='outlined' onClick={() => setSuccess(true)}>
           Open success snackbar
         </ButtonMUI>
       </div>

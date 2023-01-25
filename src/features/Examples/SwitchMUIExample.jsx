@@ -8,11 +8,14 @@ const SwitchMUIExample = () => {
       propsList='checked, checkedIcon, className, color, defaultChecked, disableRipple, disabled, edge, icon, id,
           inputProps, inputRef, onChange, required, size, value'
     >
-      <p className='mb-10 mt-25'>color="default / primary / secondary"</p>
+      <p className='mb-10 mt-25'>color="primary / secondary / info / success / error / warning"</p>
       <div className='flex gap-25'>
         <SwitchMUI defaultChecked />
-        <SwitchMUI color='primary' defaultChecked />
         <SwitchMUI color='secondary' defaultChecked />
+        <SwitchMUI color='info' defaultChecked />
+        <SwitchMUI color='success' defaultChecked />
+        <SwitchMUI color='error' defaultChecked />
+        <SwitchMUI color='warning' defaultChecked />
       </div>
 
       <p className='mb-10 mt-25'>disabled</p>
