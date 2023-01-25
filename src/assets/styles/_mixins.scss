@@ -94,18 +94,17 @@ $xxl: 1400px; // 87.5em / large desktop
   }
 }
 
-// Background color on hover
-@mixin bgColorOnHover($bg-color) {
-  @if ($bg-color) {
-    @media (hover) {
-      &:hover,
-      &:focus-visible {
-        background-color: $bg-color;
-      }
+// Colors on hover
+@mixin colorHover($color: null, $bg-color: null, $border-color: null) {
+  @media (hover) {
+    &:hover,
+    &:focus-visible {
+      color: $color;
+      background-color: $bg-color;
+      border-color: $border-color;
     }
   }
 }
-
 
 // Truncated text
 %truncated {

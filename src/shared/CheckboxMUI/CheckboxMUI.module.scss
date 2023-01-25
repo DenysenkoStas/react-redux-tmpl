@@ -9,20 +9,34 @@
   &.checked {
   }
 
-  &.disabled {
-    color: rgba(0, 0, 0, 0.2);
-  }
-
   &.indeterminate {
   }
 
-  &.color {
-    &Primary {
-      color: var(--primary);
-    }
+  &.colorPrimary {
+    color: var(--primary);
+  }
 
-    &Secondary {
-      color: var(--error);
-    }
+  &.colorSecondary {
+    color: var(--secondary);
+  }
+
+  &.colorInfo {
+    color: var(--info);
+  }
+
+  &.colorSuccess {
+    color: var(--success);
+  }
+
+  &.colorError {
+    color: var(--error);
+  }
+
+  &.colorWarning {
+    color: var(--warning);
+  }
+
+  &.disabled {
+    color: rgba(0, 0, 0, 0.2);
   }
 }

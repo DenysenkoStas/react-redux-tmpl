@@ -1,7 +1,16 @@
 .root {
+  display: inline-flex;
+  max-width: 200px;
+
+  &:global(.MuiFormControl-fullWidth) {
+    max-width: 100%;
+  }
+
   .label {
     font-family: inherit;
     font-size: 14px;
+    line-height: 1;
+    letter-spacing: normal;
     transform: translate(14px, 17px) scale(1);
 
     & + .formControl {
@@ -29,12 +38,12 @@
     }
 
     &Disabled {
+      color: var(--gray);
     }
   }
 
   .input {
     padding-right: 0;
-    max-width: 200px;
     font-family: inherit;
     font-size: 14px;
     line-height: inherit;
@@ -49,10 +58,6 @@
 
     &.multiline {
       padding: 0;
-    }
-
-    &:global(.MuiInputBase-fullWidth) {
-      max-width: 100%;
     }
   }
 
@@ -116,7 +121,7 @@
     padding: 14px 40px 14px 14px;
     height: 48px;
 
-    &.inputMarginDense {
+    &.inputSizeSmall {
       padding-top: 10px;
       padding-bottom: 10px;
       height: 38px;
@@ -130,8 +135,18 @@
 
   .helperText {
     position: absolute;
-    bottom: -20px;
+    top: 100%;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
     font-family: inherit;
+    letter-spacing: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     &Error {
       color: var(--error);
@@ -139,7 +154,7 @@
   }
 
   .errorIcon {
-    margin-right: 14px;
+    margin-right: 8px;
     cursor: pointer;
     fill: var(--error);
   }

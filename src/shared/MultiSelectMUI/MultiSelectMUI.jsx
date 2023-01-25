@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
-import {ListItemText, MenuItem, Select} from '@material-ui/core';
-import CheckboxMUI from '../CheckboxMUI';
+import {ListItemText, MenuItem} from '@mui/material';
+import {CheckboxMUI, InputMUI} from '../index';
 import {ReactComponent as ArrowIcon} from './icons/chevron-down.svg';
 import styles from './MultiSelectMUI.module.scss';
 
-const renderValue = (moreText) => (selected) => {
+const renderValue = (moreText, placeholder) => (selected) => {
+  if (selected.length === 0 && placeholder) return <span className={styles.placeholder}>{placeholder}</span>;
   if (selected.length <= 3) return selected.join(', ');
   return `${selected[0]}, ${selected[1]} + ${moreText} ${selected.length - 2}`;
 };
@@ -19,69 +20,60 @@ const option = (el, value) => {
   );
 };
 
-const MultiSelectMUI = ({
-  className = '',
-  disabled,
-  items,
-  label,
-  moreText = 'more',
-  onChange,
-  placeholder = 'Select...',
-  value
-}) => {
-  const rootClasses = [styles.root];
-  const labelClasses = [styles.label];
-  if (label) rootClasses.push(styles.withLabel);
-  if (disabled) {
-    rootClasses.push(styles.disabled);
-    labelClasses.push(styles.disabled);
-  }
-  if (className) rootClasses.push(className);
+const MultiSelectMUI = forwardRef(
+  (
+    {className = '', disabled, label, moreText = 'more', onChange, options, placeholder = 'Select...', value, ...props},
+    ref
+  ) => {
+    const rootClasses = [styles.root];
+    if (label) rootClasses.push(styles.withLabel);
+    if (className) rootClasses.push(className);
 
-  return (
-    <div className={rootClasses.join(' ')}>
-      {label && <label className={labelClasses.join(' ')}>{label}</label>}
-      {value.length === 0 && <span className={styles.placeholder}>{placeholder}</span>}
-      <Select
-        className={styles.selectWrap}
-        classes={{
-          select: styles.select,
-          disabled: styles.disabled,
-          icon: styles.icon
-        }}
+    return (
+      <InputMUI
+        className={rootClasses.join(' ')}
         disabled={disabled}
-        multiple
+        label={label}
+        variant='outlined'
         value={value}
         onChange={onChange}
-        IconComponent={ArrowIcon}
-        renderValue={renderValue(moreText)}
-        MenuProps={{
-          classes: {paper: styles.menu},
-          anchorOrigin: {
-            vertical: 'bottom',
-            horizontal: 'left'
-          },
-          transformOrigin: {
-            vertical: 'top',
-            horizontal: 'left'
-          },
-          getContentAnchorEl: null
+        select
+        SelectProps={{
+          classes: {icon: styles.icon},
+          displayEmpty: !!placeholder,
+          multiple: true,
+          IconComponent: ArrowIcon,
+          renderValue: renderValue(moreText, placeholder),
+          MenuProps: {
+            classes: {paper: styles.menu},
+            anchorOrigin: {
+              vertical: 'bottom',
+              horizontal: 'left'
+            },
+            transformOrigin: {
+              vertical: 'top',
+              horizontal: 'left'
+            }
+          }
         }}
+        {...props}
+        ref={ref}
       >
-        {items?.filter((el) => value.indexOf(el) > -1)?.map((el) => option(el, value))}
-        {items?.filter((el) => value.indexOf(el) > -1).length > 0 && <div className={styles.menuDivider} />}
-        {items?.filter((el) => value.indexOf(el) === -1)?.map((el) => option(el, value))}
-      </Select>
-    </div>
-  );
-};
+        {options?.filter((el) => value?.indexOf(el) > -1)?.map((el) => option(el, value))}
+        {options?.filter((el) => value?.indexOf(el) > -1).length > 0 && <div className={styles.menuDivider} />}
+        {options?.filter((el) => value?.indexOf(el) === -1)?.map((el) => option(el, value))}
+      </InputMUI>
+    );
+  }
+);
 
+MultiSelectMUI.muiName = 'Select';
 MultiSelectMUI.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  items: PropTypes.array.isRequired,
   label: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  options: PropTypes.array.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.array.isRequired
 };

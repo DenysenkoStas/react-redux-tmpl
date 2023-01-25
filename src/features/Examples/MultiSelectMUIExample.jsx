@@ -8,23 +8,17 @@ const MultiSelectMUIExample = () => {
   const onSelectChange = (event) => setItem(event.target.value);
 
   return (
-    <ExampleLayout propsList='className, disabled, items, label, moreText, onChange, placeholder, value'>
-      <p className='mb-10 mt-25'>label="Select label" / disabled</p>
+    <ExampleLayout propsList='className, disabled, label, moreText, onChange, options, placeholder, value'>
+      <p className='mb-10 mt-25'>disabled / label="Label"</p>
       <div className='flex gap-25'>
-        <MultiSelectMUI label='Select label' value={item} items={multiSelectOptions} onChange={onSelectChange} />
-        <MultiSelectMUI
-          label='Select label'
-          disabled
-          value={item}
-          items={multiSelectOptions}
-          onChange={onSelectChange}
-        />
+        <MultiSelectMUI disabled value={item} options={multiSelectOptions} onChange={onSelectChange} />
+        <MultiSelectMUI label='Label' value={item} options={multiSelectOptions} onChange={onSelectChange} />
       </div>
 
-      <p className='mb-10 mt-25'>moreText="ещё" / placeholder="Выберите..."</p>
+      <p className='mb-10 mt-25'>moreText="ще" / placeholder="Виберіть..."</p>
       <div className='flex gap-25'>
-        <MultiSelectMUI moreText='ещё' value={item} items={multiSelectOptions} onChange={onSelectChange} />
-        <MultiSelectMUI placeholder='Выберите...' value={item} items={multiSelectOptions} onChange={onSelectChange} />
+        <MultiSelectMUI moreText='ще' value={item} options={multiSelectOptions} onChange={onSelectChange} />
+        <MultiSelectMUI placeholder='Виберіть...' value={item} options={multiSelectOptions} onChange={onSelectChange} />
       </div>
     </ExampleLayout>
   );

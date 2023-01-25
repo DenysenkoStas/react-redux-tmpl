@@ -1,8 +1,8 @@
 import React from 'react';
 import {ExampleLayout} from './Examples';
 import CheckboxMUI from '../../shared/CheckboxMUI';
-import AlarmOnIcon from '@material-ui/icons/AlarmOn';
-import AlarmOffIcon from '@material-ui/icons/AlarmOff';
+import AlarmOnIcon from '@mui/icons-material/AlarmOn';
+import AlarmOffIcon from '@mui/icons-material/AlarmOff';
 
 const CheckboxMUIExample = () => {
   return (
@@ -10,11 +10,14 @@ const CheckboxMUIExample = () => {
       propsList='checked, checkedIcon, className, color, defaultChecked, disableRipple, disabled, icon, id,
           indeterminate, indeterminateIcon, inputProps, inputRef, onChange, padding, required, size, value'
     >
-      <p className='mb-10 mt-25'>color="default / primary / secondary"</p>
+      <p className='mb-10 mt-25'>color="primary / secondary / info / success / error / warning"</p>
       <div className='flex gap-25'>
         <CheckboxMUI defaultChecked />
-        <CheckboxMUI color='primary' defaultChecked />
         <CheckboxMUI color='secondary' defaultChecked />
+        <CheckboxMUI color='info' defaultChecked />
+        <CheckboxMUI color='success' defaultChecked />
+        <CheckboxMUI color='error' defaultChecked />
+        <CheckboxMUI color='warning' defaultChecked />
       </div>
 
       <p className='mb-10 mt-25'>disabled</p>

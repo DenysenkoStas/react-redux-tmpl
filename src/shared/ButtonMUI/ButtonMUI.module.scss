@@ -11,89 +11,151 @@
   font-weight: 500;
   letter-spacing: normal;
   border-radius: 4px;
-  box-shadow: none;
-}
 
-.contained {
-  color: var(--white);
-  background-color: var(--info);
-  @include bgColorOnHover(darken(#3796f6, 10%));
+  &:global(.MuiButton) {
+    &-contained {
+      color: var(--white);
+      background-color: var(--primary);
+      @include colorHover($bg-color: var(--primary-dark));
 
-  &Primary {
-    background-color: var(--primary);
-    @include bgColorOnHover(darken(#204569, 10%));
+      &Primary {
+      }
+
+      &Secondary {
+        background-color: var(--secondary);
+        @include colorHover($bg-color: var(--secondary-dark));
+      }
+
+      &Info {
+        background-color: var(--info);
+        @include colorHover($bg-color: var(--info-dark));
+      }
+
+      &Success {
+        background-color: var(--success);
+        @include colorHover($bg-color: var(--success-dark));
+      }
+
+      &Error {
+        background-color: var(--error);
+        @include colorHover($bg-color: var(--error-dark));
+      }
+
+      &Warning {
+        background-color: var(--warning);
+        @include colorHover($bg-color: var(--warning-dark));
+      }
+
+      &:disabled,
+      &[aria-disabled='true'] {
+        color: var(--white);
+        background-color: var(--color-disabled);
+      }
+    }
+
+    &-outlined {
+      color: var(--primary);
+      border-color: currentColor;
+      @include colorHover($bg-color: var(--primary-light));
+
+      &Primary {
+      }
+
+      &Secondary {
+        color: var(--secondary);
+        @include colorHover($bg-color: var(--secondary-light));
+      }
+
+      &Info {
+        color: var(--info);
+        @include colorHover($bg-color: var(--info-light));
+      }
+
+      &Success {
+        color: var(--success);
+        @include colorHover($bg-color: var(--success-light));
+      }
+
+      &Error {
+        color: var(--error);
+        @include colorHover($bg-color: var(--error-light));
+      }
+
+      &Warning {
+        color: var(--warning);
+        @include colorHover($bg-color: var(--warning-light));
+      }
+
+      &:disabled,
+      &[aria-disabled='true'] {
+        color: var(--color-disabled);
+        border-color: var(--color-disabled);
+      }
+    }
+
+    &-text {
+      color: var(--primary);
+      @include colorHover($bg-color: var(--primary-light));
+
+      &Primary {
+      }
+
+      &Secondary {
+        color: var(--secondary);
+        @include colorHover($bg-color: var(--secondary-light));
+      }
+
+      &Info {
+        color: var(--info);
+        @include colorHover($bg-color: var(--info-light));
+      }
+
+      &Success {
+        color: var(--success);
+        @include colorHover($bg-color: var(--success-light));
+      }
+
+      &Error {
+        color: var(--error);
+        @include colorHover($bg-color: var(--error-light));
+      }
+
+      &Warning {
+        color: var(--warning);
+        @include colorHover($bg-color: var(--warning-light));
+      }
+
+      &:disabled,
+      &[aria-disabled='true'] {
+        color: var(--color-disabled);
+      }
+    }
+
+    &-sizeSmall {
+      min-width: 105px;
+      height: 35px;
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    &-sizeLarge {
+      min-width: 168px;
+      height: 56px;
+      font-size: 18px;
+      line-height: 20px;
+    }
   }
 
-  &Secondary {
-    background-color: var(--error);
-    @include bgColorOnHover(darken(#e44b4b, 10%));
+  :global {
+    .MuiButton {
+      &-startIcon,
+      &-endIcon {
+        svg {
+          width: 20px;
+          height: 20px;
+          object-fit: contain;
+        }
+      }
+    }
   }
-
-  &.disabled {
-    color: var(--white);
-    background-color: var(--color-disabled);
-  }
-}
-
-.outlined {
-  color: var(--info);
-  border-color: var(--info);
-  @include bgColorOnHover(lighten(#3796f6, 35%));
-
-  &Primary {
-    color: var(--primary);
-    border-color: var(--primary);
-    @include bgColorOnHover(lighten(#204569, 60%));
-  }
-
-  &Secondary {
-    color: var(--error);
-    border-color: var(--error);
-    @include bgColorOnHover(lighten(#e44b4b, 35%));
-  }
-
-  &.disabled {
-    color: var(--color-disabled);
-    border-color: var(--color-disabled);
-  }
-}
-
-.text {
-  color: var(--info);
-  @include bgColorOnHover(lighten(#3796f6, 35%));
-
-  &Primary {
-    color: var(--primary);
-    @include bgColorOnHover(lighten(#204569, 60%));
-  }
-
-  &Secondary {
-    color: var(--error);
-    @include bgColorOnHover(lighten(#e44b4b, 35%));
-  }
-
-  &.disabled {
-    color: var(--color-disabled);
-  }
-}
-
-.sizeSmall {
-  min-width: 105px;
-  height: 35px;
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.sizeLarge {
-  min-width: 168px;
-  height: 56px;
-  font-size: 18px;
-  line-height: 20px;
-}
-
-.startIcon svg,
-.endIcon svg {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
 }

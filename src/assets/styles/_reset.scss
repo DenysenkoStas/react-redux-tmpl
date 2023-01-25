@@ -205,9 +205,12 @@ select {
 a,
 button {
   text-decoration: none;
-  background: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
   cursor: pointer;
-  transition: all ease 0.3s;
+  transition: {
+    duration: 0.3s;
+    property: color, background, background-color, border-color;
+  };
 }
 
 input[type='number']::-webkit-outer-spin-button,

@@ -1,10 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CircularProgress, LinearProgress} from '@material-ui/core';
+import {CircularProgress, LinearProgress} from '@mui/material';
 import styles from './LoaderMUI.module.scss';
 
 const LoaderMUI = ({className = '', linear = false, color = 'primary', circleSize = 40, noBg = false, onClick}) => {
-  if (!linear)
+  if (linear) {
+    LoaderMUI.muiName = 'LinearProgress';
+    return (
+      <LinearProgress
+        className={className}
+        classes={{
+          root: styles.linear,
+          colorPrimary: styles.colorPrimary,
+          colorSecondary: styles.colorSecondary,
+          barColorPrimary: styles.barColorPrimary,
+          barColorSecondary: styles.barColorSecondary
+        }}
+        color={color}
+      />
+    );
+  } else {
+    LoaderMUI.muiName = 'CircularProgress';
     return (
       <div
         className={`${styles.backdrop}${!noBg ? ` ${styles.bg}` : ''}${className && ` ${className}`}`}
@@ -21,20 +37,7 @@ const LoaderMUI = ({className = '', linear = false, color = 'primary', circleSiz
         />
       </div>
     );
-
-  return (
-    <LinearProgress
-      className={className}
-      classes={{
-        root: styles.linear,
-        colorPrimary: styles.colorPrimary,
-        colorSecondary: styles.colorSecondary,
-        barColorPrimary: styles.barColorPrimary,
-        barColorSecondary: styles.barColorSecondary
-      }}
-      color={color}
-    />
-  );
+  }
 };
 
 LoaderMUI.propTypes = {

@@ -5,19 +5,31 @@
 
 .item {
   color: var(--white);
-  background-color: var(--info);
+  background-color: var(--primary);
   box-shadow: none;
-
-  &.colorDefault {
-    background-color: var(--info);
-  }
 
   &.colorPrimary {
     background-color: var(--primary);
   }
 
   &.colorSecondary {
+    background-color: var(--secondary);
+  }
+
+  &.colorInfo {
+    background-color: var(--info);
+  }
+
+  &.colorSuccess {
+    background-color: var(--success);
+  }
+
+  &.colorError {
     background-color: var(--error);
+  }
+
+  &.colorWarning {
+    background-color: var(--warning);
   }
 
   &.rounded {
@@ -33,10 +45,17 @@
   }
 
   &.expanded {
-    margin: 8px 0;
+    &.gutters {
+      margin-top: 8px;
+      margin-bottom: 8px;
 
-    &.minSpaces {
-      margin: 2px 0;
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -69,7 +88,7 @@
     }
   }
 
-  .expandIcon {
+  .expandIconWrapper {
     color: inherit;
   }
 }

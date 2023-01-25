@@ -1,3 +1,5 @@
+@import 'src/assets/styles/mixins';
+
 .root {
   padding: 0;
   color: var(--info);
@@ -9,22 +11,42 @@
   &.checked {
   }
 
-  &.disabled {
-    color: rgba(0, 0, 0, 0.2);
-  }
-
   &.small :global(.MuiSvgIcon-root) {
     width: 20px;
     height: 20px;
   }
 
-  &.color {
-    &Primary {
-      color: var(--primary);
-    }
+  &.colorPrimary {
+    color: var(--primary);
+    @include colorHover(var(--primary-dark), var(--primary-light));
+  }
 
-    &Secondary {
-      color: var(--error);
-    }
+  &.colorSecondary {
+    color: var(--secondary);
+    @include colorHover(var(--secondary-dark), var(--secondary-light));
+  }
+
+  &.colorInfo {
+    color: var(--info);
+    @include colorHover(var(--info-dark), var(--info-light));
+  }
+
+  &.colorSuccess {
+    color: var(--success);
+    @include colorHover(var(--success-dark), var(--success-light));
+  }
+
+  &.colorError {
+    color: var(--error);
+    @include colorHover(var(--error-dark), var(--error-light));
+  }
+
+  &.colorWarning {
+    color: var(--warning);
+    @include colorHover(var(--warning-dark), var(--warning-light));
+  }
+
+  &.disabled {
+    color: rgba(0, 0, 0, 0.2);
   }
 }

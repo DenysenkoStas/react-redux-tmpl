@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Checkbox} from '@material-ui/core';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
+import Checkbox from '@mui/material/Checkbox';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
 import styles from './CheckboxMUI.module.scss';
 
 const CheckboxMUI = ({
   className = '',
   checked,
   checkedIcon = <CheckBoxIcon />,
-  color = 'default',
+  color = 'primary',
   disabled = false,
   disableRipple = false,
   defaultChecked,
@@ -29,14 +29,18 @@ const CheckboxMUI = ({
 }) => {
   return (
     <Checkbox
-      className={className}
+      className={`${styles.root}${padding ? ` ${styles.padding}` : ''}${className && ` ${className}`}`}
       classes={{
-        root: `${styles.root}${padding ? ` ${styles.padding}` : ''}`,
+        // root: `${styles.root}${padding ? ` ${styles.padding}` : ''}`,
         checked: styles.checked,
         disabled: styles.disabled,
         indeterminate: styles.indeterminate,
         colorPrimary: styles.colorPrimary,
-        colorSecondary: styles.colorSecondary
+        colorSecondary: styles.colorSecondary,
+        colorInfo: styles.colorInfo,
+        colorSuccess: styles.colorSuccess,
+        colorError: styles.colorError,
+        colorWarning: styles.colorWarning,
       }}
       checked={checked}
       checkedIcon={checkedIcon}
@@ -59,11 +63,12 @@ const CheckboxMUI = ({
   );
 };
 
+CheckboxMUI.muiName = 'Checkbox';
 CheckboxMUI.propTypes = {
   checked: PropTypes.bool,
   checkedIcon: PropTypes.node,
   className: PropTypes.string,
-  color: PropTypes.oneOf(['default', 'primary', 'secondary']),
+  color: PropTypes.oneOf(['primary', 'secondary', 'info', 'success', 'error', 'warning']),
   defaultChecked: PropTypes.bool,
   disableRipple: PropTypes.bool,
   disabled: PropTypes.bool,

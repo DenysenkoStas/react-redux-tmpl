@@ -5,25 +5,21 @@ import {ButtonMUI, TooltipMUI} from '../../shared';
 const TooltipMUIExample = () => {
   return (
     <ExampleLayout
-      propsList='arrow, children, className, disableFocusListener, disableHoverListener, disableTouchListener,
-          enterDelay, enterNextDelay, enterTouchDelay, errorColor, id, interactive, leaveDelay, leaveTouchDelay,
+      propsList='arrow, children, className, disableFocusListener, disableHoverListener, disableInteractive, disableTouchListener,
+          enterDelay, enterNextDelay, enterTouchDelay, errorColor, id, leaveDelay, leaveTouchDelay,
           onClose, onOpen, open, placement, title'
     >
       <p className='mb-10 mt-25'>arrow</p>
       <div className='flex'>
         <TooltipMUI title='Arrow' arrow>
-          <span>
-            <ButtonMUI>Arrow</ButtonMUI>
-          </span>
+          <ButtonMUI>Arrow</ButtonMUI>
         </TooltipMUI>
       </div>
 
       <p className='mb-10 mt-25'>errorColor</p>
       <div className='flex'>
         <TooltipMUI title='Arrow' errorColor>
-          <span>
-            <ButtonMUI>Error color</ButtonMUI>
-          </span>
+          <ButtonMUI>Error color</ButtonMUI>
         </TooltipMUI>
       </div>
 
@@ -34,29 +30,21 @@ const TooltipMUIExample = () => {
 
       <div className='flex gap-25'>
         <TooltipMUI title='Placement top'>
-          <span>
-            <ButtonMUI>Top</ButtonMUI>
-          </span>
+          <ButtonMUI>Top</ButtonMUI>
         </TooltipMUI>
 
         <TooltipMUI title='Position bottom' placement='bottom'>
-          <span>
-            <ButtonMUI variant='outlined'>Bottom</ButtonMUI>
-          </span>
+          <ButtonMUI variant='outlined'>Bottom</ButtonMUI>
         </TooltipMUI>
 
         <TooltipMUI title='Position left' placement='left'>
-          <span>
-            <ButtonMUI color='primary'>Left</ButtonMUI>
-          </span>
+          <ButtonMUI color='primary'>Left</ButtonMUI>
         </TooltipMUI>
 
         <TooltipMUI title='Position right' placement='right'>
-          <span>
-            <ButtonMUI variant='outlined' color='primary'>
-              Right
-            </ButtonMUI>
-          </span>
+          <ButtonMUI variant='outlined' color='primary'>
+            Right
+          </ButtonMUI>
         </TooltipMUI>
       </div>
     </ExampleLayout>

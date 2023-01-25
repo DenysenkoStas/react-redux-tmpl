@@ -1,57 +1,65 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '@mui/material/Tooltip';
 import styles from './TooltipMUI.module.scss';
 
-const TooltipMUI = ({
-  arrow = false,
-  children,
-  className = '',
-  disableFocusListener = false,
-  disableHoverListener = false,
-  disableTouchListener = false,
-  enterDelay = 100,
-  enterNextDelay = 0,
-  enterTouchDelay = 700,
-  errorColor = false,
-  id,
-  interactive = false,
-  leaveDelay = 0,
-  leaveTouchDelay = 1500,
-  onClose,
-  onOpen,
-  open,
-  placement = 'top',
-  title
-}) => {
-  return (
-    <Tooltip
-      arrow={arrow}
-      className={className}
-      disableFocusListener={disableFocusListener}
-      disableHoverListener={disableHoverListener}
-      disableTouchListener={disableTouchListener}
-      enterDelay={enterDelay}
-      enterNextDelay={enterNextDelay}
-      enterTouchDelay={enterTouchDelay}
-      id={id}
-      interactive={interactive}
-      leaveDelay={leaveDelay}
-      leaveTouchDelay={leaveTouchDelay}
-      onClose={onClose}
-      onOpen={onOpen}
-      open={open}
-      placement={placement}
-      title={title}
-      classes={{
-        tooltip: `${styles.root}${errorColor ? ` ${styles.errorColor}` : ''}`,
-        arrow: styles.arrow
-      }}
-    >
-      {children}
-    </Tooltip>
-  );
-};
+const TooltipMUI = forwardRef(
+  (
+    {
+      arrow = false,
+      children,
+      className = '',
+      disableFocusListener = false,
+      disableHoverListener = false,
+      disableInteractive = false,
+      disableTouchListener = false,
+      enterDelay = 100,
+      enterNextDelay = 0,
+      enterTouchDelay = 700,
+      errorColor = false,
+      id,
+      leaveDelay = 0,
+      leaveTouchDelay = 1500,
+      onClose,
+      onOpen,
+      open,
+      placement = 'top',
+      title,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <Tooltip
+        arrow={arrow}
+        className={className}
+        classes={{
+          tooltip: `${styles.root}${errorColor ? ` ${styles.errorColor}` : ''}`,
+          arrow: styles.arrow
+        }}
+        disableFocusListener={disableFocusListener}
+        disableHoverListener={disableHoverListener}
+        disableInteractive={disableInteractive}
+        disableTouchListener={disableTouchListener}
+        enterDelay={enterDelay}
+        enterNextDelay={enterNextDelay}
+        enterTouchDelay={enterTouchDelay}
+        id={id}
+        leaveDelay={leaveDelay}
+        leaveTouchDelay={leaveTouchDelay}
+        onClose={onClose}
+        onOpen={onOpen}
+        open={open}
+        placement={placement}
+        title={title}
+        {...props}
+        ref={ref}
+      >
+        {children}
+      </Tooltip>
+    );
+  }
+);
 
 TooltipMUI.propTypes = {
   arrow: PropTypes.bool,
@@ -59,13 +67,13 @@ TooltipMUI.propTypes = {
   className: PropTypes.string,
   disableFocusListener: PropTypes.bool,
   disableHoverListener: PropTypes.bool,
+  disableInteractive: PropTypes.bool,
   disableTouchListener: PropTypes.bool,
   enterDelay: PropTypes.number,
   enterNextDelay: PropTypes.number,
   enterTouchDelay: PropTypes.number,
   errorColor: PropTypes.bool,
   id: PropTypes.string,
-  interactive: PropTypes.bool,
   leaveDelay: PropTypes.number,
   leaveTouchDelay: PropTypes.number,
   onClose: PropTypes.func,
