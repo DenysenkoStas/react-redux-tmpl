@@ -14,7 +14,6 @@ import ReactToastifyExample from './ReactToastifyExample';
 import ReCaptchaV2Example from './ReCaptchaV2Example';
 import SelectComponentExample from './SelectComponentExample';
 import SkeletonMUIExample from './SkeletonMUIExample';
-import SnackbarMUIExample from './SnackbarMUIExample';
 import SwitchMUIExample from './SwitchMUIExample';
 import TabsExample from './TabsExample';
 import TooltipMUIExample from './TooltipMUIExample';
@@ -41,7 +40,6 @@ export {
   ReactToastifyExample,
   ReCaptchaV2Example,
   SelectComponentExample,
-  SnackbarMUIExample,
   SwitchMUIExample,
   TabsExample,
   TooltipMUIExample,

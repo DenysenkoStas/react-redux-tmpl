@@ -17,7 +17,6 @@ import {
   ReCaptchaV2Example,
   SelectComponentExample,
   SkeletonMUIExample,
-  SnackbarMUIExample,
   SwitchMUIExample,
   TabsExample,
   TooltipMUIExample,
@@ -91,7 +90,6 @@ export const examplesPath = {
     component: SelectComponentExample
   },
   skeletonMUI: {path: `${mainPath.examples.path}/skeleton-mui`, name: 'SkeletonMUI', component: SkeletonMUIExample},
-  snackbarMUI: {path: `${mainPath.examples.path}/snackbar-mui`, name: 'SnackbarMUI', component: SnackbarMUIExample},
   switchMUI: {path: `${mainPath.examples.path}/switch-mui`, name: 'SwitchMUI', component: SwitchMUIExample},
   tabs: {path: `${mainPath.examples.path}/tabs`, name: 'Tabs', component: TabsExample},
   tooltipMUI: {path: `${mainPath.examples.path}/tooltip-mui`, name: 'TooltipMUI', component: TooltipMUIExample},

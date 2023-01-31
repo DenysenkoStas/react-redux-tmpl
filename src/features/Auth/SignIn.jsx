@@ -6,8 +6,7 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {authPath, rootMainPath} from '../../routes/paths';
 import {postSignIn} from './authActions';
 import {signInSchema} from './authSchema';
-import InputMUI from '../../shared/InputMUI';
-import ButtonMUI from '../../shared/ButtonMUI';
+import {InputMUI, ButtonMUI} from '../../shared';
 import EmailVerificationDialog from './Dialogs/EmailVerificationDialog';
 import styles from './Auth.module.scss';
 
@@ -38,7 +37,7 @@ const SignIn = () => {
 
   const onSubmit = async (data) => {
     const res = await dispatch(postSignIn(data));
-    const errors = res.error?.response?.data;
+    const errors = res?.error?.response?.data;
 
     /* test login */
     if (await (data.email === 'admin@owlab.com' && data.password === 'Qwerty123!')) {
