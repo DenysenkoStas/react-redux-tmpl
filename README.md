@@ -44,7 +44,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [react: ^17.0.2](https://yarnpkg.com/package/react)
 - [react-addons-css-transition-group: ^15.6.2](https://yarnpkg.com/package/react-addons-css-transition-group)
 - [react-dom: ^17.0.2](https://yarnpkg.com/package/react-dom)
-- [react-google-recaptcha: ^2.1.0](https://yarnpkg.com/package/react-google-recaptcha)
 - [react-hook-form: ^7.15.4](https://yarnpkg.com/package/react-hook-form)
 - [react-paginate: ^7.1.3](https://yarnpkg.com/package/react-paginate)
 - [react-redux: ^7.2.4](https://yarnpkg.com/package/react-redux)

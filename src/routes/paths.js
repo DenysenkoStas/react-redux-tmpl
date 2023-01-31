@@ -14,7 +14,6 @@ import {
   RadioMUIExample,
   ReactHookFormExample,
   ReactToastifyExample,
-  ReCaptchaV2Example,
   SelectComponentExample,
   SkeletonMUIExample,
   SwitchMUIExample,
@@ -83,7 +82,6 @@ export const examplesPath = {
     name: 'React-Toastify',
     component: ReactToastifyExample
   },
-  reCaptchaV2: {path: `${mainPath.examples.path}/re-captcha-v2`, name: 'ReCaptchaV2', component: ReCaptchaV2Example},
   selectComponent: {
     path: `${mainPath.examples.path}/select-component`,
     name: 'SelectComponent',

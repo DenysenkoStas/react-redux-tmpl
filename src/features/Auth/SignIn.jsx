@@ -30,8 +30,7 @@ const SignIn = () => {
     resolver: yupResolver(signInSchema),
     defaultValues: {
       email: '',
-      password: '',
-      recaptcha: ''
+      password: ''
     }
   });
 
