@@ -23,16 +23,16 @@ export const Tabs = ({children, className = '', defaultIndex = 0, onTabClick}) =
   return (
     <div className={`${styles.root}${className && ` ${className}`}`}>
       <div className={styles.menu}>
-        {items.map(({props: {index, label}}) =>
-          index || index === 0 ? (
+        {items.map(({props}) =>
+          props?.index || props?.index === 0 ? (
             <button
-              key={`tab-btn-${index}`}
-              className={`${styles.btn}${bindIndex === index ? ` ${styles.btnActive}` : ''}`}
+              key={`tab-btn-${props?.index}`}
+              className={`${styles.btn}${bindIndex === props?.index ? ` ${styles.btnActive}` : ''}`}
               type='button'
               role='tab'
-              onClick={changeTab(index)}
+              onClick={changeTab(props?.index)}
             >
-              {label ? label : index}
+              {props?.label ? props?.label : props?.index}
             </button>
           ) : null
         )}
