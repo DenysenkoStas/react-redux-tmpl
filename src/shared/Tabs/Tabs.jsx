@@ -17,27 +17,31 @@ export const Tabs = ({children, className = '', defaultIndex = 0, onTabClick}) =
     setBindIndex(newIndex);
   };
 
-  const items = children?.length > 0 && Children.map(children, (child) => child.type.name === 'TabItem' && child);
+  const items = children?.length > 0 && Children.map(children, (child) => child?.type?.name === 'TabItem' && child);
 
-  if (!items) return null;
+  if (!items || !items?.length) return null;
   return (
     <div className={`${styles.root}${className && ` ${className}`}`}>
       <div className={styles.menu}>
-        {items.map(({props: {index, label}}) => (
-          <button
-            key={`tab-btn-${index}`}
-            className={`${styles.btn}${bindIndex === index ? ` ${styles.btnActive}` : ''}`}
-            type='button'
-            role='tab'
-            onClick={changeTab(index)}
-          >
-            {label}
-          </button>
-        ))}
+        {items.map(({props: {index, label}}) =>
+          index || index === 0 ? (
+            <button
+              key={`tab-btn-${index}`}
+              className={`${styles.btn}${bindIndex === index ? ` ${styles.btnActive}` : ''}`}
+              type='button'
+              role='tab'
+              onClick={changeTab(index)}
+            >
+              {label ? label : index}
+            </button>
+          ) : null
+        )}
       </div>
       <div className={styles.panel}>
         {items.map(({props}) =>
-          bindIndex === props.index ? <div {...props} key={`tab-item-${props.index}`} className={styles.item} /> : null
+          bindIndex === props?.index ? (
+            <div {...props} key={`tab-item-${props?.index}`} className={styles.item} />
+          ) : null
         )}
       </div>
     </div>
