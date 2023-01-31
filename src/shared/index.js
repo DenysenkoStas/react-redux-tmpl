@@ -10,7 +10,6 @@ import LoaderMUI from './LoaderMUI';
 import MultiSelectMUI from './MultiSelectMUI';
 import NotFound from './NotFound';
 import Pagination from './Pagination';
-import {ReCaptchaV2} from './ReCaptchaV2';
 import SelectComponent from './SelectComponent';
 import SkeletonMUI from './SkeletonMUI';
 import SwitchMUI from './SwitchMUI';
@@ -31,7 +30,6 @@ export {
   MultiSelectMUI,
   NotFound,
   Pagination,
-  ReCaptchaV2,
   SelectComponent,
   SkeletonMUI,
   SwitchMUI,

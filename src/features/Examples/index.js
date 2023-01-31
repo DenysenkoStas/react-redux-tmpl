@@ -11,7 +11,6 @@ import PaginationExample from './PaginationExample';
 import MultiSelectMUIExample from './MultiSelectMUIExample';
 import ReactHookFormExample from './ReactHookFormExample';
 import ReactToastifyExample from './ReactToastifyExample';
-import ReCaptchaV2Example from './ReCaptchaV2Example';
 import SelectComponentExample from './SelectComponentExample';
 import SkeletonMUIExample from './SkeletonMUIExample';
 import SwitchMUIExample from './SwitchMUIExample';
@@ -38,7 +37,6 @@ export {
   MultiSelectMUIExample,
   ReactHookFormExample,
   ReactToastifyExample,
-  ReCaptchaV2Example,
   SelectComponentExample,
   SwitchMUIExample,
   TabsExample,
