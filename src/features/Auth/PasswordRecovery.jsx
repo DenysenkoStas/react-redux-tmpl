@@ -6,10 +6,7 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {authPath} from '../../routes/paths';
 import {postPassRecovery} from './authActions';
 import {passwordRecoverySchema} from './authSchema';
-import {useToggle} from '../../helpers/hooks';
-import InputMUI from '../../shared/InputMUI';
-import ButtonMUI from '../../shared/ButtonMUI';
-import SnackbarMUI from '../../shared/SnackbarMUI';
+import {InputMUI, ButtonMUI} from '../../shared';
 import {ReactComponent as ArrowBlue} from '../../assets/icons/arrow-blue.svg';
 import {ReactComponent as EnvelopeIcon} from '../../assets/icons/envelope.svg';
 import styles from './Auth.module.scss';
@@ -17,10 +14,7 @@ import styles from './Auth.module.scss';
 const PasswordRecovery = () => {
   const dispatch = useDispatch();
   const {loading} = useSelector(({app}) => app);
-  const {passRecoveryError} = useSelector(({auth}) => auth);
-
   const [sent, setSent] = useState(false);
-  const [error, toggleError] = useToggle(false);
 
   const {
     control,
@@ -38,12 +32,11 @@ const PasswordRecovery = () => {
 
   const onSubmit = async (data) => {
     const res = await dispatch(postPassRecovery(data));
-    const errors = res.error?.response.data;
+    const errors = res?.error?.response?.data;
 
     if (res?.payload) setSent(true);
     if (res?.error) {
-      errors.email && setError('email', {type: 'manual', message: errors.email});
-      toggleError();
+      errors?.email && setError('email', {type: 'manual', message: errors.email});
     }
   };
 
@@ -85,8 +78,6 @@ const PasswordRecovery = () => {
           <EnvelopeIcon />
         </div>
       )}
-
-      <SnackbarMUI open={error} autoHideDuration={6000} onClose={toggleError} errors={passRecoveryError} />
     </form>
   );
 };

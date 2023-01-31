@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -7,13 +7,6 @@ import {ExampleLayout} from './Examples';
 import {SelectComponent, MultiSelectMUI, ButtonMUI} from '../../shared';
 
 const ReactHookFormExample = () => {
-  // for MultiSelectMUI
-  const [item, setItem] = useState([]);
-  const onSelectChange = (event) => {
-    setItem(event.target.value);
-    setValue('multi_select', event.target.value);
-  };
-
   const schema = yup.object({
     // select: yup.object().required('Field is required')
   });
@@ -22,7 +15,6 @@ const ReactHookFormExample = () => {
     control,
     handleSubmit,
     setError,
-    setValue,
     formState: {errors, isValid}
   } = useForm({
     mode: 'onTouched',
@@ -40,28 +32,17 @@ const ReactHookFormExample = () => {
 
   return (
     <ExampleLayout>
-      <form className='flex flex--column gap-25 max-w-350' onSubmit={handleSubmit(onSubmit)}>
+      <form className='flex flex--column gap-25 max-w-280' onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name='select'
           control={control}
-          render={({field: {onChange, onBlur, value}}) => (
-            <SelectComponent
-              onChange={onChange}
-              onBlur={onBlur}
-              value={selectOptions.find((option) => option?.value === value)}
-              options={selectOptions}
-            />
-          )}
+          render={({field}) => <SelectComponent {...field} options={selectOptions} />}
         />
-
         <Controller
           name='multi_select'
           control={control}
-          render={() => (
-            <MultiSelectMUI value={item} items={multiSelectOptions} onChange={onSelectChange} label='MultiSelectMUI' />
-          )}
+          render={({field}) => <MultiSelectMUI {...field} label='MultiSelectMUI' options={multiSelectOptions} />}
         />
-
         <ButtonMUI className='mx-auto max-w-160' formAction>
           Submit
         </ButtonMUI>

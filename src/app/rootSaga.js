@@ -1,8 +1,8 @@
 import {put, takeEvery, all} from 'redux-saga/effects';
-import {handleProfileSnacks, handleAuthLoaders} from '../features/Auth/authSaga';
+import {handleAuthSnacks, handleAuthLoaders} from '../features/Auth/authSaga';
 
 export default function* rootSaga() {
-  yield all([handleAuthLoaders(), handleSnack(), handleProfileSnacks()]);
+  yield all([handleAuthLoaders(), handleSnack(), handleAuthSnacks()]);
 }
 
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
@@ -19,8 +19,6 @@ export function* openErrorSnack(e) {
         ? e?.error?.data
         : 'Something went wrong'
   });
-
-  console.log(e);
 }
 
 export function* openSuccessSnack(e) {

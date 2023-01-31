@@ -6,10 +6,8 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {authPath} from '../../routes/paths';
 import {postPassConfirm} from './authActions';
 import {passwordConfirmSchema} from './authSchema';
-import {useQueryParams, useToggle} from '../../helpers/hooks';
-import InputMUI from '../../shared/InputMUI';
-import ButtonMUI from '../../shared/ButtonMUI';
-import SnackbarMUI from '../../shared/SnackbarMUI/SnackbarMUI';
+import {useQueryParams} from '../../helpers/hooks';
+import {InputMUI, ButtonMUI} from '../../shared';
 import {ReactComponent as LockIcon} from '../../assets/icons/lock.svg';
 import styles from './Auth.module.scss';
 
@@ -18,9 +16,8 @@ const PasswordConfirm = () => {
   const dispatch = useDispatch();
   const queryParams = useQueryParams();
   const {loading} = useSelector(({app}) => app);
-  const {passConfirmError} = useSelector(({auth}) => auth);
-
   const [token, setToken] = useState({});
+  const [sent, setSent] = useState(false);
 
   const deleteQuery = () => {
     queryParams.delete('security_token');
@@ -34,9 +31,6 @@ const PasswordConfirm = () => {
       history.push(authPath.signIn.path);
     }
   }, []);
-
-  const [sent, setSent] = useState(false);
-  const [error, toggleError] = useToggle(false);
 
   const {
     control,
@@ -56,16 +50,15 @@ const PasswordConfirm = () => {
 
   const onSubmit = async (data) => {
     const res = await dispatch(postPassConfirm({...data, ...token}));
-    const errors = res.error?.response.data;
+    const errors = res?.error?.response?.data;
 
     if (res?.payload) {
       setSent(true);
       deleteQuery();
     }
     if (res?.error) {
-      errors.password && setError('password', {type: 'manual', message: errors.password});
-      errors.confirm_password && setError('confirm_password', {type: 'manual', message: errors.confirm_password});
-      toggleError();
+      errors?.password && setError('password', {type: 'manual', message: errors.password});
+      errors?.confirm_password && setError('confirm_password', {type: 'manual', message: errors.confirm_password});
     }
   };
 
@@ -124,8 +117,6 @@ const PasswordConfirm = () => {
           </ButtonMUI>
         </>
       )}
-
-      <SnackbarMUI open={error} autoHideDuration={6000} onClose={toggleError} errors={passConfirmError} />
     </form>
   );
 };

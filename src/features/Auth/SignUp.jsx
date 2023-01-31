@@ -7,19 +7,14 @@ import {authPath} from '../../routes/paths';
 import {signUpSchema} from './authSchema';
 import {postSignUp} from './authActions';
 import {useToggle} from '../../helpers/hooks';
-import InputMUI from '../../shared/InputMUI';
-import ButtonMUI from '../../shared/ButtonMUI';
-import SnackbarMUI from '../../shared/SnackbarMUI';
+import {InputMUI, ButtonMUI} from '../../shared';
 import SignUpSuccessDialog from './Dialogs/SignUpSuccessDialog';
 import styles from './Auth.module.scss';
 
 const SignUp = () => {
   const dispatch = useDispatch();
   const {loading} = useSelector(({app}) => app);
-  const {signUpError} = useSelector(({auth}) => auth);
-
   const [dialog, toggleDialog] = useToggle(false);
-  const [error, toggleError] = useToggle(false);
 
   const {
     control,
@@ -43,10 +38,9 @@ const SignUp = () => {
 
     if (res?.payload) toggleDialog();
     if (res?.error) {
-      errors.email && setError('email', {type: 'manual', message: errors.email});
-      errors.password && setError('password', {type: 'manual', message: errors.password});
-      errors.repeat_password && setError('repeat_password', {type: 'manual', message: errors.repeat_password});
-      toggleError();
+      errors?.email && setError('email', {type: 'manual', message: errors.email});
+      errors?.password && setError('password', {type: 'manual', message: errors.password});
+      errors?.repeat_password && setError('repeat_password', {type: 'manual', message: errors.repeat_password});
     }
   };
 
@@ -110,8 +104,6 @@ const SignUp = () => {
           {authPath.signIn.name.toUpperCase()}
         </Link>
       </div>
-
-      <SnackbarMUI open={error} autoHideDuration={6000} onClose={toggleError} errors={signUpError} />
 
       <SignUpSuccessDialog open={dialog} onClose={toggleDialog} />
     </form>

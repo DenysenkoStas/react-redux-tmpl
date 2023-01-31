@@ -13,7 +13,6 @@ import Pagination from './Pagination';
 import {ReCaptchaV2} from './ReCaptchaV2';
 import SelectComponent from './SelectComponent';
 import SkeletonMUI from './SkeletonMUI';
-import SnackbarMUI from './SnackbarMUI';
 import SwitchMUI from './SwitchMUI';
 import {TabItem, Tabs} from './Tabs';
 import TooltipMUI from './TooltipMUI';
@@ -35,7 +34,6 @@ export {
   ReCaptchaV2,
   SelectComponent,
   SkeletonMUI,
-  SnackbarMUI,
   SwitchMUI,
   Tabs,
   TabItem,
