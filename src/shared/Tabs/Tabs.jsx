@@ -21,7 +21,7 @@ export const Tabs = ({children, className = '', defaultIndex = 0, onTabClick}) =
 
   const items = children?.length > 0 && Children.map(children, (child) => {
     console.log('Child', child);
-    return child?.type?.name === 'TabItem' && child
+    return child?.type?.name === TabItem?.name && child
   });
 
   console.log('Items', items);
