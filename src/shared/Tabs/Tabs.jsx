@@ -17,7 +17,14 @@ export const Tabs = ({children, className = '', defaultIndex = 0, onTabClick}) =
     setBindIndex(newIndex);
   };
 
-  const items = children?.length > 0 && Children.map(children, (child) => child?.type?.name === 'TabItem' && child);
+  console.log('Children', children);
+
+  const items = children?.length > 0 && Children.map(children, (child) => {
+    console.log('Child', child);
+    return child?.type?.name === 'TabItem' && child
+  });
+
+  console.log('Items', items);
 
   if (!items || !items?.length) return null;
   return (
