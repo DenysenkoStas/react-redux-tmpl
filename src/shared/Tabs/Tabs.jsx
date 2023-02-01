@@ -11,20 +11,12 @@ TabItem.propTypes = {
 
 export const Tabs = ({children, className = '', defaultIndex = 0, onTabClick}) => {
   const [bindIndex, setBindIndex] = useState(defaultIndex);
+  const items = children?.length > 0 && Children.map(children, (child) => child?.type?.name === TabItem?.name && child);
 
   const changeTab = (newIndex) => () => {
     if (typeof onTabClick === 'function') onTabClick(newIndex);
     setBindIndex(newIndex);
   };
-
-  console.log('Children', children);
-
-  const items = children?.length > 0 && Children.map(children, (child) => {
-    console.log('Child', child);
-    return child?.type?.name === TabItem?.name && child
-  });
-
-  console.log('Items', items);
 
   if (!items || !items?.length) return null;
   return (
@@ -33,13 +25,13 @@ export const Tabs = ({children, className = '', defaultIndex = 0, onTabClick}) =
         {items.map(({props}) =>
           props?.index || props?.index === 0 ? (
             <button
-              key={`tab-btn-${props?.index}`}
-              className={`${styles.btn}${bindIndex === props?.index ? ` ${styles.btnActive}` : ''}`}
+              key={`tab-btn-${props.index}`}
+              className={`${styles.btn}${bindIndex === props.index ? ` ${styles.btnActive}` : ''}`}
               type='button'
               role='tab'
-              onClick={changeTab(props?.index)}
+              onClick={changeTab(props.index)}
             >
-              {props?.label ? props?.label : props?.index}
+              {props?.label ? props.label : props.index}
             </button>
           ) : null
         )}
