@@ -14,6 +14,7 @@ import ReactToastifyExample from './ReactToastifyExample';
 import SelectComponentExample from './SelectComponentExample';
 import SkeletonMUIExample from './SkeletonMUIExample';
 import SwitchMUIExample from './SwitchMUIExample';
+import TableExample from './TableExample';
 import TabsExample from './TabsExample';
 import TooltipMUIExample from './TooltipMUIExample';
 import TransitionedBlockExample from './TransitionedBlockExample';
@@ -39,6 +40,7 @@ export {
   ReactToastifyExample,
   SelectComponentExample,
   SwitchMUIExample,
+  TableExample,
   TabsExample,
   TooltipMUIExample,
   TransitionedBlockExample,

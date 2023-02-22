@@ -170,6 +170,18 @@ h3,
   font-weight: 700;
 }
 
+.break-word {
+  overflow-wrap: break-word;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.truncate-two-lines {
+  @include truncateLineClamp();
+}
+
 .good-hover {
   transition: opacity var(--transition-duration);
 

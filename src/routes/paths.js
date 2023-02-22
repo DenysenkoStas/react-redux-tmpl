@@ -17,6 +17,7 @@ import {
   SelectComponentExample,
   SkeletonMUIExample,
   SwitchMUIExample,
+  TableExample,
   TabsExample,
   TooltipMUIExample,
   TransitionedBlockExample
@@ -89,6 +90,7 @@ export const examplesPath = {
   },
   skeletonMUI: {path: `${mainPath.examples.path}/skeleton-mui`, name: 'SkeletonMUI', component: SkeletonMUIExample},
   switchMUI: {path: `${mainPath.examples.path}/switch-mui`, name: 'SwitchMUI', component: SwitchMUIExample},
+  table: {path: `${mainPath.examples.path}/table`, name: 'Table', component: TableExample},
   tabs: {path: `${mainPath.examples.path}/tabs`, name: 'Tabs', component: TabsExample},
   tooltipMUI: {path: `${mainPath.examples.path}/tooltip-mui`, name: 'TooltipMUI', component: TooltipMUIExample},
   transitionedBlock: {

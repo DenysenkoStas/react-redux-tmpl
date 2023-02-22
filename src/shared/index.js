@@ -13,6 +13,7 @@ import Pagination from './Pagination';
 import SelectComponent from './SelectComponent';
 import SkeletonMUI from './SkeletonMUI';
 import SwitchMUI from './SwitchMUI';
+import Table from './Table';
 import {TabItem, Tabs} from './Tabs';
 import TooltipMUI from './TooltipMUI';
 import TransitionedBlock from './TransitionedBlock';
@@ -33,6 +34,7 @@ export {
   SelectComponent,
   SkeletonMUI,
   SwitchMUI,
+  Table,
   Tabs,
   TabItem,
   TooltipMUI,

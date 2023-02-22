@@ -117,6 +117,14 @@ $xxl: 1400px; // 87.5em / large desktop
   @extend %truncated;
 }
 
+// Truncate text after multiple lines
+@mixin truncateLineClamp($line-clamp: 2) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: $line-clamp;
+  -webkit-box-orient: vertical;
+}
+
 // Visually hidden
 %visuallyHidden {
   position: absolute;

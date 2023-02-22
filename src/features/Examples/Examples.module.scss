@@ -36,5 +36,6 @@
   padding: 32px;
   width: 80%;
   height: calc(100vh - 156px);
+  scrollbar-gutter: stable;
   @include scrollbar(15px, var(--primary), var(--light), 5px, 2px);
 }

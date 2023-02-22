@@ -1,0 +1,82 @@
+@import 'src/assets/styles/mixins';
+
+.root {
+  overflow-x: auto;
+  @include scrollbar(8px, var(--info), var(--light), 5px, 2px);
+}
+
+.table {
+  width: 100%;
+  color: var(--primary);
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  &Fixed {
+    table-layout: fixed;
+  }
+}
+
+.head {
+  display: table-header-group;
+}
+
+.body {
+  display: table-row-group;
+}
+
+.row {
+  display: table-row;
+
+  &Selected {
+    background-color: var(--light);
+  }
+}
+
+.header,
+.data {
+  padding: 8px 12px;
+  vertical-align: middle;
+}
+
+.header {
+  height: 45px;
+  line-height: 1;
+  color: var(--info);
+  border-bottom: 1px solid var(--info-light);
+
+  &Inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &Name {
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+
+.data {
+  height: 60px;
+  border-bottom: 1px solid var(--light);
+}
+
+.sortBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--info);
+
+  &.up path:first-child {
+    fill: var(--info);
+  }
+
+  &.down path:last-child {
+    fill: var(--info);
+  }
+}
+
+.sortIcon {
+  flex-shrink: 0;
+  fill: var(--info-light);
+}

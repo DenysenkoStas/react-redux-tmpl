@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
+import dayjs from 'dayjs';
 
 export const joinQueries = (arr) => `${arr.length && arr.length !== 0 ? '?' : ''}${arr.join('&')}`;
 
@@ -83,3 +84,22 @@ export const formatNumber = (value) =>
 export const isNegative = (num) => Math.sign(num) === -1;
 
 export const capitalize = (string) => string && string.charAt(0).toUpperCase() + string.slice(1);
+
+export const objectToQueryString = (queryParams) => {
+  return queryParams
+    ? Object.entries(queryParams).reduce((queryString, [key, value]) => {
+        const symbol = queryString.length === 0 ? '?' : '&';
+        queryString +=
+          (value || value === 0) && (typeof value === 'string' || typeof value === 'number')
+            ? `${symbol}${key}=${encodeURIComponent(value)}`
+            : '';
+        return queryString;
+      }, '')
+    : '';
+};
+
+export const scrollToElement = (ref) => ref && ref.current.scrollIntoView({behavior: 'smooth'});
+
+export const classList = (...classes) => classes.filter((item) => !!item).join(' ');
+
+export const formatDate = (date, template = 'DD.MM.YYYY') => (date ? dayjs(date).format(template) : '-');
