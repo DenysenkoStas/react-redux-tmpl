@@ -1,4 +1,4 @@
-import {useCallback, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {useLocation} from 'react-router-dom';
 
 export const useQueryParams = () => new URLSearchParams(useLocation().search);
@@ -19,4 +19,20 @@ export const useCurrentPageName = (pathsObj) => {
     });
   }
   return name;
+};
+
+export const useDebounce = (value, delay = 500) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value]);
+
+  return debouncedValue;
 };

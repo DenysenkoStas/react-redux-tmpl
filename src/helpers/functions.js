@@ -83,7 +83,8 @@ export const formatNumber = (value) =>
 
 export const isNegative = (num) => Math.sign(num) === -1;
 
-export const capitalize = (string) => string && string.charAt(0).toUpperCase() + string.slice(1);
+export const capitalize = (string) =>
+  typeof string === 'string' ? string.charAt(0).toUpperCase() + string.slice(1) : '';
 
 export const objectToQueryString = (queryParams) => {
   return queryParams
@@ -103,3 +104,27 @@ export const scrollToElement = (ref) => ref && ref.current.scrollIntoView({behav
 export const classList = (...classes) => classes.filter((item) => !!item).join(' ');
 
 export const formatDate = (date, template = 'DD.MM.YYYY') => (date ? dayjs(date).format(template) : '-');
+
+export const isDataArray = (array, minLength = 1) => Array.isArray(array) && array.length >= minLength;
+
+export const calculatePercent = (value, total, digits = 2) => Number(((value / total) * 100).toFixed(digits));
+
+export const getRandomItem = (array) => isDataArray(array) && array[Math.floor(Math.random() * array.length)];
+
+export const removeDuplicates = (array) => isDataArray(array) && [...new Set(array)];
+
+export const sortBy = (array, key) =>
+  isDataArray(array) && array.sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0));
+
+export const isEqual = (first, second) => !!(first && second) && JSON.stringify(first) === JSON.stringify(second);
+
+export const countOccurrences = (array, value) =>
+  isDataArray(array) &&
+  array.reduce((accumulator, currentValue) => (currentValue === value ? accumulator + 1 : accumulator), 0);
+
+export const wait = async (milliseconds = 500) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+const pluck = (array, key) => isDataArray(array) && array.filter((object) => object[key]).map((object) => object[key]);
+
+const insert = (array, index, newItem) =>
+  isDataArray(array) && typeof index === 'number' && [...array.slice(0, index), newItem, ...array.slice(index)];
